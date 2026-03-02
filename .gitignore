@@ -1,0 +1,15 @@
+# Build output
+target/
+
+# IDE
+.idea/
+*.iml
+
+# OS
+.DS_Store
+
+# Claude Code
+.claude/
+
+# Screenshots (local testing artifacts)
+screens/

@@ -1,0 +1,60 @@
+[
+    {
+        "title": "General",
+        "properties": [
+            {
+                "name": "id",
+                "label": "Menu ID",
+                "type": "hidden"
+            },
+            {
+                "name": "label",
+                "label": "Label",
+                "type": "textfield",
+                "required": "true",
+                "value": "Enrichment Workspace"
+            },
+            {
+                "name": "customId",
+                "label": "Custom ID",
+                "type": "textfield",
+                "regex_validation": "^[a-zA-Z0-9_]+$",
+                "validation_message": "Only alphanumeric and underscore allowed"
+            },
+            {
+                "name": "pageSize",
+                "label": "Page Size",
+                "type": "textfield",
+                "value": "20",
+                "description": "Number of records per page (default: 20)"
+            }
+        ]
+    },
+    {
+        "title": "API Connection",
+        "properties": [
+            {
+                "name": "apiBaseUrl",
+                "label": "API Base URL",
+                "type": "textfield",
+                "required": "true",
+                "value": "/jw/api/enrichment",
+                "description": "Base URL for the enrichment API (e.g. /jw/api/enrichment)"
+            },
+            {
+                "name": "apiId",
+                "label": "API Builder ID",
+                "type": "textfield",
+                "required": "true",
+                "description": "The API Builder ID (e.g. API-xxxx)"
+            },
+            {
+                "name": "apiKey",
+                "label": "API Key",
+                "type": "textfield",
+                "required": "true",
+                "description": "The API Key from API Builder Settings"
+            }
+        ]
+    }
+]

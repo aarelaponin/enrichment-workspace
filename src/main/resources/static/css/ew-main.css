@@ -1,0 +1,201 @@
+/* ── Enrichment Workspace ── */
+
+/* Container */
+.ew-container { font-family: 'Segoe UI', system-ui, sans-serif; padding: 16px; }
+
+/* Header */
+.ew-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.ew-header h2 { margin: 0; color: #1a365d; font-size: 1.3em; }
+.ew-badge { background: #e2e8f0; color: #475569; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; }
+.ew-badge-info { background: #dbeafe; color: #1d4ed8; }
+.ew-status { font-size: 0.8em; color: #64748b; margin-left: auto; }
+
+/* Tab bar */
+.ew-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 0;
+    overflow-x: auto;
+}
+.ew-tab {
+    padding: 10px 18px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.85em;
+    color: #64748b;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.15s, border-color 0.15s;
+}
+.ew-tab:hover { color: #1d4ed8; }
+.ew-tab.active {
+    color: #1d4ed8;
+    border-bottom-color: #1d4ed8;
+    font-weight: 600;
+}
+.ew-tab-badge {
+    background: #e2e8f0;
+    color: #475569;
+    padding: 1px 7px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    font-weight: 600;
+    min-width: 18px;
+    text-align: center;
+    display: none;
+}
+.ew-tab.active .ew-tab-badge { background: #dbeafe; color: #1d4ed8; }
+.ew-tab-badge.has-count { display: inline-block; }
+
+/* Toolbar */
+.ew-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 0;
+    flex-wrap: wrap;
+}
+.ew-toolbar-btn {
+    padding: 5px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.82em;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #334155;
+    transition: background 0.15s, opacity 0.15s;
+}
+.ew-toolbar-btn:hover:not(:disabled) { background: #f1f5f9; }
+.ew-toolbar-btn:disabled { opacity: 0.4; cursor: default; }
+.ew-toolbar-sep {
+    width: 1px;
+    height: 24px;
+    background: #e2e8f0;
+    margin: 0 4px;
+}
+.ew-toolbar-spacer { flex: 1; }
+.ew-selection-pill {
+    background: #dbeafe;
+    color: #1d4ed8;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+/* Filters */
+.ew-filters { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; flex-wrap: wrap; }
+.ew-select, .ew-input {
+    padding: 5px 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-size: 0.85em;
+}
+.ew-btn {
+    padding: 5px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.85em;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.ew-btn:hover { background: #f1f5f9; }
+.ew-btn-secondary { color: #64748b; }
+.ew-record-count { font-size: 0.8em; color: #64748b; margin-left: auto; }
+
+/* Table */
+.ew-table-wrap { overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 6px; }
+.ew-table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
+.ew-table thead { background: #f8fafc; position: sticky; top: 0; }
+.ew-table th {
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+    color: #475569;
+    border-bottom: 2px solid #e2e8f0;
+    white-space: nowrap;
+}
+.ew-table td { padding: 6px 10px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+.ew-table tbody tr[data-id] { cursor: pointer; }
+.ew-table tbody tr:hover { background: #f8fafc; }
+.ew-th-check { width: 32px; }
+.ew-th-amount { text-align: right !important; }
+.ew-sortable { cursor: pointer; user-select: none; }
+.ew-sortable:hover { color: #1d4ed8; }
+.ew-sortable.ew-sort-asc::after { content: ' \25B2'; font-size: 0.7em; }
+.ew-sortable.ew-sort-desc::after { content: ' \25BC'; font-size: 0.7em; }
+.ew-loading { text-align: center; color: #94a3b8; padding: 32px !important; }
+.ew-empty { text-align: center; color: #94a3b8; padding: 32px !important; font-style: italic; }
+.ew-error { text-align: center; color: #dc2626; padding: 32px !important; }
+
+/* Amounts */
+.ew-amount { text-align: right; font-variant-numeric: tabular-nums; }
+.ew-amount-total { text-align: right; font-variant-numeric: tabular-nums; font-weight: bold; }
+.ew-desc { max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Debit / Credit */
+.dc-D { color: #dc2626; font-weight: 600; }
+.dc-C { color: #16a34a; font-weight: 600; }
+
+/* Row tinting by status */
+.ew-table tbody tr.ew-row-error { background: #FFF5F5; }
+.ew-table tbody tr.ew-row-error:hover { background: #FEE2E2; }
+.ew-table tbody tr.ew-row-manual_review { background: #FFFBEB; }
+.ew-table tbody tr.ew-row-manual_review:hover { background: #FEF3C7; }
+.ew-table tbody tr.ew-row-ready { background: #F1F8E9; }
+.ew-table tbody tr.ew-row-ready:hover { background: #E8F5E9; }
+
+/* Error sub-row */
+.ew-error-row td { padding: 2px 10px 6px 42px !important; border-bottom: 1px solid #f1f5f9; }
+.ew-error-msg { color: #C62828; font-size: 0.85em; font-style: italic; }
+
+/* Origin badges */
+.origin-pipeline { background: #E3F2FD; color: #1565C0; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; }
+.origin-split    { background: #F3E5F5; color: #6A1B9A; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; }
+.origin-merge    { background: #E0F2F1; color: #00695C; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; }
+.origin-manual   { background: #FFF8E1; color: #F57F17; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; }
+
+/* Status badges */
+.st-new           { background: #E3F2FD; color: #1565C0; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; }
+.st-processing    { background: #FFF3E0; color: #E65100; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; }
+.st-enriched      { background: #E8F5E9; color: #2E7D32; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; }
+.st-error         { background: #FFEBEE; color: #C62828; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+.st-manual_review { background: #FFF8E1; color: #F57F17; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; }
+.st-in_review     { background: #F3E5F5; color: #6A1B9A; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; }
+.st-adjusted      { background: #E0F2F1; color: #00695C; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; }
+.st-ready         { background: #C8E6C9; color: #1B5E20; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+.st-paired        { background: #E8EAF6; color: #283593; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; }
+.st-superseded    { background: #F5F5F5; color: #9E9E9E; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; text-decoration: line-through; }
+.st-confirmed     { background: #E8F5E9; color: #1B5E20; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; }
+
+/* Confidence badges */
+.cf-rule_match      { background: #E8F5E9; color: #2E7D32; padding: 2px 6px; border-radius: 8px; font-size: 0.8em; }
+.cf-tentative       { background: #FFF8E1; color: #F57F17; padding: 2px 6px; border-radius: 8px; font-size: 0.8em; }
+.cf-unclassified    { background: #FFEBEE; color: #C62828; padding: 2px 6px; border-radius: 8px; font-size: 0.8em; }
+.cf-manual_override { background: #E0F2F1; color: #00695C; padding: 2px 6px; border-radius: 8px; font-size: 0.8em; }
+
+/* Pagination */
+.ew-pagination { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 12px; font-size: 0.85em; }
+.ew-pagination button {
+    padding: 4px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+}
+.ew-pagination button:hover { background: #f1f5f9; }
+.ew-pagination button:disabled { opacity: 0.5; cursor: default; }
+.ew-pagination button.ew-page-current { background: #1d4ed8; color: #fff; border-color: #1d4ed8; }
+.ew-pagination .ew-page-info { color: #64748b; }
