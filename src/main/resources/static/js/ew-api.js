@@ -108,6 +108,42 @@
     };
 
     /**
+     * Save (update) an enrichment record via POST /records/save.
+     * @param {string} id - Record ID
+     * @param {Object} data - { version, ...changedFields }
+     * @returns {Promise<Object>} - Updated record or error
+     */
+    EW.api.saveRecord = function(id, data) {
+        var body = JSON.parse(JSON.stringify(data));
+        body.id = id;
+
+        console.log('[EW] Saving record:', id, body);
+
+        // Piggyback on /records endpoint (the only route Joget reliably resolves).
+        // The 'save' query param triggers inline-save logic on the server.
+        var url = EW.apiBase + '/records?save=' + encodeURIComponent(JSON.stringify(body));
+
+        return fetch(url, { headers: headers() }).then(function(r) {
+            if (!r.ok) {
+                return r.text().then(function(text) {
+                    var msg = 'HTTP ' + r.status;
+                    var parsed = null;
+                    try { parsed = JSON.parse(text); } catch (e) { /* ignore */ }
+                    if (parsed && parsed.message) msg = parsed.message;
+                    else if (parsed && parsed.error) msg = parsed.error;
+                    else if (text) msg += ': ' + text.substring(0, 200);
+
+                    var err = new Error(msg);
+                    err.status = r.status;
+                    if (parsed) err.body = parsed;
+                    throw err;
+                });
+            }
+            return r.json();
+        });
+    };
+
+    /**
      * Fetch statement summary (placeholder — full implementation in Phase 9).
      * @param {Object} params - { statementId }
      * @returns {Promise<Object>} - { records/summary }
