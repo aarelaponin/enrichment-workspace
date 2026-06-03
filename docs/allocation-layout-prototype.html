@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allocation Breakdown — Layout Options</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root {
+    --accent: #1B4F72;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --border: #e2e8f0;
+    --text: #1e293b;
+    --muted: #64748b;
+    --green: #16a34a;
+    --green-bg: #dcfce7;
+    --blue: #2563eb;
+    --blue-bg: #dbeafe;
+    --amber: #d97706;
+    --amber-bg: #fef3c7;
+    --mono: "SF Mono", "Cascadia Code", "Consolas", monospace;
+    --panel-w: 480px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+
+  /* Tab switcher */
+  .tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--border);
+  }
+  .tab {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all .15s;
+    user-select: none;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .tab .rec {
+    font-size: 10px;
+    background: var(--accent);
+    color: #fff;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* Panel simulation */
+  .panel-frame {
+    width: var(--panel-w);
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.08);
+    overflow: hidden;
+  }
+  .panel-header {
+    background: var(--accent);
+    color: #fff;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .panel-header h3 { font-size: 14px; font-weight: 600; }
+  .panel-header .close { opacity: .7; cursor: pointer; font-size: 18px; }
+  .panel-body { padding: 16px 18px; }
+
+  /* Shared: status + progress */
+  .alloc-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 4px;
+  }
+  .badge-green { background: var(--green-bg); color: var(--green); }
+  .badge-blue { background: var(--blue-bg); color: var(--blue); }
+  .badge-buy { background: #dbeafe; color: #1d4ed8; font-size: 10px; padding: 1px 6px; border-radius: 3px; font-weight: 700; }
+  .badge-sell { background: #fce7f3; color: #be185d; font-size: 10px; padding: 1px 6px; border-radius: 3px; font-weight: 700; }
+
+  .progress-bar {
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--green);
+    border-radius: 3px;
+    transition: width .3s;
+  }
+  .progress-text {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .progress-text strong { color: var(--text); }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-bottom: 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Summary footer */
+  .alloc-summary-footer {
+    background: #f8fafc;
+    border-top: 1px solid var(--border);
+    padding: 10px 14px;
+    margin: 14px -18px -16px;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .alloc-summary-footer strong { color: var(--text); }
+
+  /* ─── OPTION A: Cards ─── */
+  .lot-card {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+  }
+  .lot-card-row1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .lot-card-customer {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .lot-card-qty {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-left: 8px;
+  }
+  .lot-card-row2 {
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .lot-card-row2 .val {
+    font-family: var(--mono);
+    color: var(--text);
+    font-size: 11px;
+  }
+  .lot-card-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 10px;
+    color: #94a3b8;
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px dashed #e2e8f0;
+  }
+
+  /* ─── OPTION B: Scrollable table ─── */
+  .scroll-wrap {
+    overflow-x: auto;
+    margin: 0 -18px;
+    padding: 0 18px;
+  }
+  .alloc-table {
+    width: max-content;
+    min-width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+  .alloc-table th {
+    text-align: left;
+    font-weight: 700;
+    color: var(--muted);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    padding: 6px 8px;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+  }
+  .alloc-table td {
+    padding: 7px 8px;
+    border-bottom: 1px solid #f1f5f9;
+    white-space: nowrap;
+  }
+  .alloc-table tr:hover td { background: #f8fafc; }
+  .alloc-table .mono { font-family: var(--mono); }
+  .alloc-table .bold { font-weight: 700; }
+  .scroll-hint {
+    font-size: 10px;
+    color: #94a3b8;
+    text-align: right;
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* ─── OPTION C: Compact + expand ─── */
+  .compact-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .compact-table th {
+    text-align: left;
+    font-weight: 700;
+    color: var(--muted);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    padding: 6px 6px;
+    border-bottom: 2px solid var(--border);
+  }
+  .compact-table td {
+    padding: 8px 6px;
+    border-bottom: 1px solid #f1f5f9;
+    cursor: pointer;
+  }
+  .compact-table tr:hover td { background: #f8fafc; }
+  .compact-table .mono { font-family: var(--mono); font-size: 11px; }
+  .expand-icon {
+    color: #94a3b8;
+    font-size: 10px;
+    transition: transform .2s;
+  }
+  .expand-icon.open { transform: rotate(90deg); }
+  .expand-row td {
+    padding: 0 6px;
+    border-bottom: 1px solid #f1f5f9;
+    cursor: default;
+  }
+  .expand-detail {
+    background: #f8fafc;
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin: 4px 0 8px;
+    font-size: 11px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 16px;
+  }
+  .expand-detail .lbl { color: var(--muted); }
+  .expand-detail .val { font-family: var(--mono); font-size: 11px; }
+
+  /* Layout */
+  .options { display: none; }
+  .options.active { display: block; }
+  .option-desc {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .option-desc strong { color: var(--accent); }
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+    font-size: 12px;
+  }
+  .pros-cons div { line-height: 1.6; }
+  .pros-cons .hdr { font-weight: 700; margin-bottom: 2px; }
+  .pro-hdr { color: var(--green); }
+  .con-hdr { color: #dc2626; }
+</style>
+</head>
+<body>
+
+<h1>Allocation Breakdown — Layout Comparison</h1>
+<p class="subtitle">Simulated 480px detail panel with real data from TRX-2BC7DB (MU equity, 100 shares, 3 customers)</p>
+
+<div class="tabs">
+  <div class="tab active" onclick="showOption('a')">Option A: Cards <span class="rec">REC</span></div>
+  <div class="tab" onclick="showOption('b')">Option B: Scrollable Table</div>
+  <div class="tab" onclick="showOption('c')">Option C: Compact + Expand</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- OPTION A: CARD LAYOUT                                             -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="options active" id="opt-a">
+  <div class="option-desc">
+    <strong>Card layout:</strong> Each lot rendered as a compact card. Customer name + direction badge on the first row, financial breakdown on the second row, lot ID and date as metadata below.
+    <div class="pros-cons">
+      <div><div class="hdr pro-hdr">Pros</div>No horizontal scrolling needed<br>All data visible at a glance<br>Works well in narrow panels<br>Consistent with detail panel style</div>
+      <div><div class="hdr con-hdr">Cons</div>Takes more vertical space<br>Harder to compare lots side-by-side<br>Not a traditional table format</div>
+    </div>
+  </div>
+
+  <div class="panel-frame">
+    <div class="panel-header">
+      <h3><i class="fas fa-chart-pie" style="margin-right:6px"></i> Fund Allocation</h3>
+      <span class="close">&times;</span>
+    </div>
+    <div class="panel-body">
+      <div class="alloc-status">
+        <span class="badge badge-green">Fully Allocated</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+      <div class="progress-text"><strong>100 / 100</strong> units allocated &middot; 3 lots &middot; 3 customers</div>
+
+      <div class="section-label">Allocation Lots</div>
+
+      <div class="lot-card">
+        <div class="lot-card-row1">
+          <span class="lot-card-customer">ADVERTA GRUPP O&Uuml;</span>
+          <span class="badge-buy">BUY</span>
+          <span class="lot-card-qty">35</span>
+        </div>
+        <div class="lot-card-row2">
+          <span>Amount <span class="val">4,970.00</span></span>
+          <span>Fee <span class="val">-6.96</span></span>
+          <span>Cost <span class="val" style="font-weight:700">4,963.04</span></span>
+          <span>USD</span>
+        </div>
+        <div class="lot-card-meta">
+          <span>LOT-000001</span>
+          <span>2024-06-26</span>
+          <span>EUR 4,554.46</span>
+        </div>
+      </div>
+
+      <div class="lot-card">
+        <div class="lot-card-row1">
+          <span class="lot-card-customer">Aktsiaselts IMG Konsultant</span>
+          <span class="badge-buy">BUY</span>
+          <span class="lot-card-qty">35</span>
+        </div>
+        <div class="lot-card-row2">
+          <span>Amount <span class="val">4,970.00</span></span>
+          <span>Fee <span class="val">-6.96</span></span>
+          <span>Cost <span class="val" style="font-weight:700">4,963.04</span></span>
+          <span>USD</span>
+        </div>
+        <div class="lot-card-meta">
+          <span>LOT-000002</span>
+          <span>2024-06-26</span>
+          <span>EUR 4,554.46</span>
+        </div>
+      </div>
+
+      <div class="lot-card">
+        <div class="lot-card-row1">
+          <span class="lot-card-customer">Balti turu teeninduse O&Uuml;</span>
+          <span class="badge-buy">BUY</span>
+          <span class="lot-card-qty">30</span>
+        </div>
+        <div class="lot-card-row2">
+          <span>Amount <span class="val">4,260.00</span></span>
+          <span>Fee <span class="val">-5.96</span></span>
+          <span>Cost <span class="val" style="font-weight:700">4,254.04</span></span>
+          <span>USD</span>
+        </div>
+        <div class="lot-card-meta">
+          <span>LOT-000003</span>
+          <span>2024-06-26</span>
+          <span>EUR 3,905.06</span>
+        </div>
+      </div>
+
+      <div class="alloc-summary-footer">
+        Total: <strong>14,200.00 USD</strong> &middot; Fee: <strong>-19.88 USD</strong> &middot; Cost: <strong>14,180.12 USD</strong><br>
+        EUR equivalent: <strong>13,013.98 EUR</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- OPTION B: SCROLLABLE TABLE                                        -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="options" id="opt-b">
+  <div class="option-desc">
+    <strong>Scrollable table:</strong> Full 9-column table that extends beyond the panel width. User scrolls horizontally to see all columns.
+    <div class="pros-cons">
+      <div><div class="hdr pro-hdr">Pros</div>Traditional tabular format<br>Easy to compare rows<br>Familiar to spreadsheet users</div>
+      <div><div class="hdr con-hdr">Cons</div>Requires horizontal scrolling<br>Some columns always hidden<br>Data can feel cramped</div>
+    </div>
+  </div>
+
+  <div class="panel-frame">
+    <div class="panel-header">
+      <h3><i class="fas fa-chart-pie" style="margin-right:6px"></i> Fund Allocation</h3>
+      <span class="close">&times;</span>
+    </div>
+    <div class="panel-body">
+      <div class="alloc-status">
+        <span class="badge badge-green">Fully Allocated</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+      <div class="progress-text"><strong>100 / 100</strong> units allocated &middot; 3 lots &middot; 3 customers</div>
+
+      <div class="section-label">Allocation Lots</div>
+
+      <div class="scroll-wrap">
+        <table class="alloc-table">
+          <thead>
+            <tr>
+              <th>Lot ID</th>
+              <th>Customer</th>
+              <th>Dir</th>
+              <th>Qty</th>
+              <th>Amount</th>
+              <th>Fee</th>
+              <th>Cost</th>
+              <th>EUR</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono">LOT-000001</td>
+              <td>ADVERTA GRUPP O&Uuml;</td>
+              <td><span class="badge-buy">BUY</span></td>
+              <td class="mono">35</td>
+              <td class="mono">4,970.00</td>
+              <td class="mono">-6.96</td>
+              <td class="mono bold">4,963.04</td>
+              <td class="mono">4,554.46</td>
+              <td>2024-06-26</td>
+            </tr>
+            <tr>
+              <td class="mono">LOT-000002</td>
+              <td>Aktsiaselts IMG Konsultant</td>
+              <td><span class="badge-buy">BUY</span></td>
+              <td class="mono">35</td>
+              <td class="mono">4,970.00</td>
+              <td class="mono">-6.96</td>
+              <td class="mono bold">4,963.04</td>
+              <td class="mono">4,554.46</td>
+              <td>2024-06-26</td>
+            </tr>
+            <tr>
+              <td class="mono">LOT-000003</td>
+              <td>Balti turu teeninduse O&Uuml;</td>
+              <td><span class="badge-buy">BUY</span></td>
+              <td class="mono">30</td>
+              <td class="mono">4,260.00</td>
+              <td class="mono">-5.96</td>
+              <td class="mono bold">4,254.04</td>
+              <td class="mono">3,905.06</td>
+              <td>2024-06-26</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="scroll-hint"><i class="fas fa-arrows-left-right"></i> Scroll to see all columns</div>
+
+      <div class="alloc-summary-footer">
+        Total: <strong>14,200.00 USD</strong> &middot; Fee: <strong>-19.88 USD</strong> &middot; Cost: <strong>14,180.12 USD</strong><br>
+        EUR equivalent: <strong>13,013.98 EUR</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- OPTION C: COMPACT + EXPAND                                        -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="options" id="opt-c">
+  <div class="option-desc">
+    <strong>Compact table + expand:</strong> 4-column table fits in the panel. Click any row to expand and see full financial details.
+    <div class="pros-cons">
+      <div><div class="hdr pro-hdr">Pros</div>Compact default view<br>No scrolling needed<br>Full details on demand<br>Table format for comparison</div>
+      <div><div class="hdr con-hdr">Cons</div>Requires click to see details<br>Financial data hidden by default<br>More complex interaction</div>
+    </div>
+  </div>
+
+  <div class="panel-frame">
+    <div class="panel-header">
+      <h3><i class="fas fa-chart-pie" style="margin-right:6px"></i> Fund Allocation</h3>
+      <span class="close">&times;</span>
+    </div>
+    <div class="panel-body">
+      <div class="alloc-status">
+        <span class="badge badge-green">Fully Allocated</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+      <div class="progress-text"><strong>100 / 100</strong> units allocated &middot; 3 lots &middot; 3 customers</div>
+
+      <div class="section-label">Allocation Lots <span style="font-weight:400;font-size:10px;color:#94a3b8;text-transform:none">(click to expand)</span></div>
+
+      <table class="compact-table">
+        <thead>
+          <tr>
+            <th style="width:16px"></th>
+            <th>Customer</th>
+            <th>Qty</th>
+            <th>Cost</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr onclick="toggleExpand(this)">
+            <td><i class="fas fa-chevron-right expand-icon"></i></td>
+            <td>ADVERTA GRUPP O&Uuml;</td>
+            <td class="mono">35</td>
+            <td class="mono">4,963.04</td>
+            <td>06-26</td>
+          </tr>
+          <tr class="expand-row" style="display:none">
+            <td colspan="5">
+              <div class="expand-detail">
+                <span class="lbl">Lot ID</span><span class="val">LOT-000001</span>
+                <span class="lbl">Direction</span><span class="val"><span class="badge-buy">BUY</span></span>
+                <span class="lbl">Amount</span><span class="val">4,970.00 USD</span>
+                <span class="lbl">Fee</span><span class="val">-6.96 USD</span>
+                <span class="lbl">Cost (total)</span><span class="val" style="font-weight:700">4,963.04 USD</span>
+                <span class="lbl">EUR equiv.</span><span class="val">4,554.46 EUR</span>
+              </div>
+            </td>
+          </tr>
+
+          <tr onclick="toggleExpand(this)" style="background:#f8fafc">
+            <td><i class="fas fa-chevron-right expand-icon open"></i></td>
+            <td>Aktsiaselts IMG Konsultant</td>
+            <td class="mono">35</td>
+            <td class="mono">4,963.04</td>
+            <td>06-26</td>
+          </tr>
+          <tr class="expand-row" style="">
+            <td colspan="5">
+              <div class="expand-detail">
+                <span class="lbl">Lot ID</span><span class="val">LOT-000002</span>
+                <span class="lbl">Direction</span><span class="val"><span class="badge-buy">BUY</span></span>
+                <span class="lbl">Amount</span><span class="val">4,970.00 USD</span>
+                <span class="lbl">Fee</span><span class="val">-6.96 USD</span>
+                <span class="lbl">Cost (total)</span><span class="val" style="font-weight:700">4,963.04 USD</span>
+                <span class="lbl">EUR equiv.</span><span class="val">4,554.46 EUR</span>
+              </div>
+            </td>
+          </tr>
+
+          <tr onclick="toggleExpand(this)">
+            <td><i class="fas fa-chevron-right expand-icon"></i></td>
+            <td>Balti turu teeninduse O&Uuml;</td>
+            <td class="mono">30</td>
+            <td class="mono">4,254.04</td>
+            <td>06-26</td>
+          </tr>
+          <tr class="expand-row" style="display:none">
+            <td colspan="5">
+              <div class="expand-detail">
+                <span class="lbl">Lot ID</span><span class="val">LOT-000003</span>
+                <span class="lbl">Direction</span><span class="val"><span class="badge-buy">BUY</span></span>
+                <span class="lbl">Amount</span><span class="val">4,260.00 USD</span>
+                <span class="lbl">Fee</span><span class="val">-5.96 USD</span>
+                <span class="lbl">Cost (total)</span><span class="val" style="font-weight:700">4,254.04 USD</span>
+                <span class="lbl">EUR equiv.</span><span class="val">3,905.06 EUR</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="alloc-summary-footer">
+        Total: <strong>14,200.00 USD</strong> &middot; Fee: <strong>-19.88 USD</strong> &middot; Cost: <strong>14,180.12 USD</strong><br>
+        EUR equivalent: <strong>13,013.98 EUR</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showOption(id) {
+  document.querySelectorAll('.options').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('opt-' + id).classList.add('active');
+  document.querySelectorAll('.tab')[{a:0,b:1,c:2}[id]].classList.add('active');
+}
+
+function toggleExpand(row) {
+  var detail = row.nextElementSibling;
+  var icon = row.querySelector('.expand-icon');
+  if (detail.style.display === 'none') {
+    detail.style.display = '';
+    icon.classList.add('open');
+  } else {
+    detail.style.display = 'none';
+    icon.classList.remove('open');
+  }
+}
+</script>
+</body>
+</html>

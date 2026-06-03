@@ -204,6 +204,409 @@
 
     // ── Panel rendering ──────────────────────────────────────────────────────
 
+    // ── Context helpers ──────────────────────────────────────────────────
+
+    var TY_CAT;
+    function getCat(ty) {
+        if (!TY_CAT) TY_CAT = (EW.dashboard && EW.dashboard.TY_CAT) || {};
+        return TY_CAT[ty] || '';
+    }
+    function isLoanType(ty) { return getCat(ty) === 'loan'; }
+    function isAllocType(r) {
+        var A = ['EQ_BUY','EQ_SELL','BOND_BUY','BOND_SELL','SEC_BUY','SEC_SELL'];
+        return A.indexOf(r.internal_type) >= 0;
+    }
+    var INCOME_TYPES = ['DIV_INCOME', 'DIV_TAX', 'BOND_INT'];
+    function isIncomeAllocType(r) { return INCOME_TYPES.indexOf(r.internal_type) >= 0; }
+    function isFundTrx(r) { return r.customer_code === '12345678' || getCat(r.internal_type) === 'fund' || isAllocType(r) || isIncomeAllocType(r); }
+
+    // ── Context ribbons ───────────────────────────────────────────────────
+
+    function renderRibbons(r) {
+        var h = '';
+        // Loan type without linked contract
+        if (isLoanType(r.internal_type) && !r.loan_id) {
+            h += '<div class="ew-ctx-ribbon amber">'
+                + '<i class="fas fa-exclamation-triangle"></i> '
+                + '<span>Loan transaction not linked to a contract</span>'
+                + '<button class="ew-ctx-btn" onclick="EW.actions.execute(\'linkLoan\')">Link Contract</button>'
+                + '</div>';
+        }
+        // LOAN_PAYMENT with linked contract — can split
+        if (r.internal_type === 'LOAN_PAYMENT' && r.loan_id) {
+            h += '<div class="ew-ctx-ribbon blue">'
+                + '<i class="fas fa-info-circle"></i> '
+                + '<span>Loan payment can be split into principal + interest</span>'
+                + '<button class="ew-ctx-btn" onclick="EW.actions.execute(\'loanPaymentSplit\')">Loan Split</button>'
+                + '</div>';
+        }
+        // Fund/sec transaction allocation ribbon
+        if (isFundTrx(r) && r.fund_allocation_status === 'allocated') {
+            h += '<div class="ew-ctx-ribbon green">'
+                + '<i class="fas fa-check-circle"></i> '
+                + '<span>Fully allocated</span>'
+                + '</div>';
+        } else if (isAllocType(r) && r.fund_allocation_status !== 'allocated') {
+            h += '<div class="ew-ctx-ribbon indigo">'
+                + '<i class="fas fa-chart-pie"></i> '
+                + '<span>Securities trade \u2014 allocate to customers</span>'
+                + '<button class="ew-ctx-btn" onclick="EW.actions.execute(\'allocFund\')">Allocate</button>'
+                + '</div>';
+        } else if (isFundTrx(r) && r.status !== 'paired' && r.fund_allocation_status !== 'allocated') {
+            var ribbonText = isIncomeAllocType(r)
+                ? 'Income transaction \u2014 allocate to investors'
+                : 'Fund transaction \u2014 allocate to investors';
+            h += '<div class="ew-ctx-ribbon blue">'
+                + '<i class="fas fa-chart-pie"></i> '
+                + '<span>' + ribbonText + '</span>'
+                + '<button class="ew-ctx-btn" onclick="EW.actions.execute(\'allocFund\')">Allocate</button>'
+                + '</div>';
+        }
+        // Unknown customer
+        if (r.customer_code === 'UNK') {
+            h += '<div class="ew-ctx-ribbon amber">'
+                + '<i class="fas fa-user-times"></i> '
+                + '<span>Unknown customer — manual assignment needed</span>'
+                + '<button class="ew-ctx-btn" onclick="EW.actions.execute(\'reassign\')">Reassign</button>'
+                + '</div>';
+        }
+        return h;
+    }
+
+    // ── Operation button bar ──────────────────────────────────────────────
+
+    function renderOpBar(r) {
+        if (!isEditable(r.status)) return '';
+        var h = '<div class="ew-op-bar">';
+        h += '<button class="ew-op-btn" onclick="EW.actions.execute(\'reclassify\')"><i class="fas fa-tag"></i> Reclassify</button>';
+        h += '<button class="ew-op-btn" onclick="EW.actions.execute(\'reassign\')"><i class="fas fa-user-edit"></i> Reassign</button>';
+        h += '<button class="ew-op-btn" onclick="EW.actions.execute(\'splitRecord\')"><i class="fas fa-code-branch"></i> Split</button>';
+        if (isLoanType(r.internal_type)) {
+            h += '<button class="ew-op-btn highlight" onclick="EW.actions.execute(\'loanPaymentSplit\')"><i class="fas fa-university"></i> Loan Split</button>';
+        }
+        if (isFundTrx(r) && r.fund_allocation_status !== 'allocated') {
+            var allocLabel = isAllocType(r) ? 'Allocate Trade'
+                : isIncomeAllocType(r) ? 'Allocate Income' : 'Fund Alloc';
+            h += '<button class="ew-op-btn highlight" onclick="EW.actions.execute(\'allocFund\')"><i class="fas fa-chart-pie"></i> ' + allocLabel + '</button>';
+        }
+        if (r.validated_currency && r.validated_currency !== 'EUR') {
+            h += '<button class="ew-op-btn" onclick="EW.actions.execute(\'fxOverride\')"><i class="fas fa-euro-sign"></i> FX Override</button>';
+        }
+        h += '</div>';
+        return h;
+    }
+
+    // ── Loan Contract section ─────────────────────────────────────────────
+
+    function renderLoanSection(r) {
+        if (!r.loan_id) return '';
+        return '<div class="ew-contract-card">'
+            + '<div class="ew-cc-hdr"><i class="fas fa-file-contract"></i> Linked Contract: ' + esc(r.loan_id) + '</div>'
+            + '<div class="ew-cc-grid">'
+            + '<div class="ew-cc-field"><label>Contract ID</label><div>' + esc(r.loan_id) + '</div></div>'
+            + '<div class="ew-cc-field"><label>Status</label><div>Active</div></div>'
+            + '</div>'
+            + '<div class="ew-cc-note">Full contract details available when loan API is connected.</div>'
+            + '</div>';
+    }
+
+    // ── Fund Allocation section ───────────────────────────────────────────
+
+    function renderFundSection(r) {
+        // Income types → dedicated rendering
+        if (isIncomeAllocType(r)) { return renderIncomeAllocSection(r); }
+
+        var allocStatus = r.fund_allocation_status || 'pending';
+        var statusLabel = allocStatus === 'allocated' ? 'Fully Allocated'
+            : allocStatus === 'partially_allocated' ? 'Partially Allocated' : 'Pending';
+        var statusCls = allocStatus === 'allocated' ? 'st-confirmed'
+            : allocStatus === 'partially_allocated' ? 'st-ready' : 'st-enriched';
+
+        var h = '<div class="ew-f-row">';
+        h += '<div class="ew-f-field"><label>Allocation Status</label>'
+            + '<span class="' + statusCls + '" style="font-size:.84em;padding:2px 8px;border-radius:3px">' + esc(statusLabel) + '</span></div>';
+        h += '</div>';
+        // Progress bar + breakdown placeholders — loaded async after DOM insertion
+        if (allocStatus !== 'pending') {
+            h += '<div id="ew-alloc-progress" class="ew-alloc-inline">'
+                + '<div class="ew-alloc-inline-loading"><i class="fas fa-spinner fa-spin"></i> Loading progress\u2026</div>'
+                + '</div>';
+            h += '<div id="ew-alloc-breakdown" class="ew-alloc-inline">'
+                + '<div class="ew-alloc-inline-loading"><i class="fas fa-spinner fa-spin"></i> Loading allocations\u2026</div>'
+                + '</div>';
+        }
+        if (isEditable(r.status) && allocStatus !== 'allocated') {
+            var btnLabel = isAllocType(r) ? 'Allocate Trade to Customer' : 'Allocate to Investors';
+            h += '<button class="ew-op-btn highlight" style="margin-top:6px" onclick="EW.actions.execute(\'allocFund\')">'
+                + '<i class="fas fa-chart-pie"></i> ' + btnLabel + '</button>';
+        }
+        return h;
+    }
+
+    // ── Income Allocation section ───────────────────────────────────────────
+
+    function renderIncomeAllocSection(r) {
+        var allocStatus = r.fund_allocation_status || 'pending';
+        var statusLabel = allocStatus === 'allocated' ? 'Fully Allocated' : 'Pending';
+        var statusCls = allocStatus === 'allocated' ? 'st-confirmed' : 'st-enriched';
+
+        var h = '<div class="ew-f-row">';
+        h += '<div class="ew-f-field"><label>Allocation Status</label>'
+            + '<span class="' + statusCls + '" style="font-size:.84em;padding:2px 8px;border-radius:3px">'
+            + esc(statusLabel) + '</span></div>';
+        h += '<div class="ew-f-field"><label>Asset</label><div>'
+            + esc(r.resolved_asset_id || '\u2014') + '</div></div>';
+        h += '</div>';
+
+        // Async-loaded allocation details
+        if (allocStatus === 'allocated') {
+            h += '<div id="ew-income-alloc-detail">'
+                + '<div class="ew-alloc-inline-loading"><i class="fas fa-spinner fa-spin"></i> Loading income allocations\u2026</div>'
+                + '</div>';
+        }
+
+        // Allocate button
+        if (isEditable(r.status) && allocStatus !== 'allocated') {
+            h += '<button class="ew-op-btn highlight" style="margin-top:6px" onclick="EW.actions.execute(\'allocFund\')">'
+                + '<i class="fas fa-coins"></i> Allocate Income</button>';
+        }
+
+        return h;
+    }
+
+    // ── Income allocation breakdown (async) ──────────────────────────────
+
+    function loadIncomeAllocationData(enrichmentId) {
+        var detailEl = document.getElementById('ew-income-alloc-detail');
+        if (!detailEl) return;
+        if (!EW.api.getIncomeAllocationSummary) return;
+
+        EW.api.getIncomeAllocationSummary(enrichmentId)
+            .then(function(data) {
+                var target = document.getElementById('ew-income-alloc-detail');
+                if (!target) return;
+                target.innerHTML = renderIncomeAllocBreakdown(data);
+            })
+            .catch(function() {
+                var target = document.getElementById('ew-income-alloc-detail');
+                if (target) target.innerHTML = '<div class="ew-alloc-inline-summary" style="color:#94a3b8;font-style:italic">Could not load income allocation details.</div>';
+            });
+    }
+
+    function renderIncomeAllocBreakdown(data) {
+        var allocs = data.allocations || [];
+        if (allocs.length === 0) return '<div class="ew-alloc-inline-summary">No allocations.</div>';
+
+        var h = '<table class="ew-alloc-lots-table" style="margin-top:8px"><thead><tr>'
+            + '<th>Customer</th>'
+            + '<th style="text-align:right">Share-Days</th>'
+            + '<th style="text-align:right">Pct</th>'
+            + '<th style="text-align:right">Amount</th>'
+            + '</tr></thead><tbody>';
+
+        for (var i = 0; i < allocs.length; i++) {
+            var a = allocs[i];
+            var pct = parseFloat(a.allocationPct) || 0;
+            h += '<tr>'
+                + '<td>' + esc(a.customerName || a.customerId) + '</td>'
+                + '<td style="text-align:right;font-family:monospace">' + fmtAmt(a.shareDays) + '</td>'
+                + '<td style="text-align:right">' + (pct * 100).toFixed(2) + '%</td>'
+                + '<td style="text-align:right;font-family:monospace">' + fmtAmt(a.allocatedAmount) + '</td>'
+                + '</tr>';
+        }
+
+        h += '</tbody></table>';
+        return h;
+    }
+
+    // ── Allocation breakdown (async) ──────────────────────────────────────
+
+    /** Cache to avoid re-fetching on re-open. */
+    if (!EW.state._allocCache) EW.state._allocCache = {};
+
+    /** Load allocation progress + breakdown into placeholder divs. */
+    function loadAllocationData(enrichmentId) {
+        var progressEl = document.getElementById('ew-alloc-progress');
+        var breakdownEl = document.getElementById('ew-alloc-breakdown');
+        if (!progressEl && !breakdownEl) return;
+
+        // Check cache first
+        var cached = EW.state._allocCache[enrichmentId];
+        if (cached && cached.summary) {
+            if (progressEl) progressEl.innerHTML = renderProgressBar(cached.summary, cached.secuTrx);
+            if (breakdownEl) breakdownEl.innerHTML = renderAllocationBreakdown(cached.summary, cached.secuTrx);
+            return;
+        }
+
+        if (!EW.api.getAllocationSummary) return;
+
+        // Fetch both in parallel
+        var promises = [EW.api.getAllocationSummary(enrichmentId)];
+        if (EW.api.getSecuTransaction) {
+            promises.push(EW.api.getSecuTransaction(enrichmentId));
+        } else {
+            promises.push(Promise.resolve(null));
+        }
+
+        Promise.all(promises)
+            .then(function(results) {
+                var summary = results[0];
+                var secuTrx = results[1];
+                EW.state._allocCache[enrichmentId] = { summary: summary, secuTrx: secuTrx };
+                // Re-check elements still exist (panel might have closed)
+                var pTarget = document.getElementById('ew-alloc-progress');
+                if (pTarget) pTarget.innerHTML = renderProgressBar(summary, secuTrx);
+                var bTarget = document.getElementById('ew-alloc-breakdown');
+                if (bTarget) bTarget.innerHTML = renderAllocationBreakdown(summary, secuTrx);
+            })
+            .catch(function() {
+                var pTarget = document.getElementById('ew-alloc-progress');
+                if (pTarget) pTarget.innerHTML = '';
+                var bTarget = document.getElementById('ew-alloc-breakdown');
+                if (bTarget) bTarget.innerHTML = '<div class="ew-alloc-inline-summary" style="color:#94a3b8;font-style:italic">Could not load allocation details.</div>';
+            });
+    }
+
+    /** Render progress bar showing allocation completion. */
+    function renderProgressBar(summary, secuTrx) {
+        var lots = summary.lots || [];
+        var allocQty = parseFloat(summary.allocatedQty) || 0;
+        var lotCount = summary.lotCount || lots.length;
+        var totalQty = secuTrx ? (parseFloat(secuTrx.quantity) || 0) : 0;
+
+        if (lotCount === 0 && totalQty === 0) return '';
+
+        var pct = totalQty > 0 ? Math.min((allocQty / totalQty) * 100, 100) : 0;
+        var pctCls = pct === 0 ? 'empty' : pct >= 99.9999 ? 'full' : 'partial';
+
+        var custCount = 0;
+        var seen = {};
+        for (var i = 0; i < lots.length; i++) {
+            var cid = lots[i].customerId || lots[i].customerName;
+            if (cid && !seen[cid]) { seen[cid] = true; custCount++; }
+        }
+
+        var text = fmtAmt(allocQty) + ' / ' + fmtAmt(totalQty) + ' units allocated'
+            + ' \u00B7 ' + lotCount + ' lot' + (lotCount !== 1 ? 's' : '')
+            + ' \u00B7 ' + custCount + ' customer' + (custCount !== 1 ? 's' : '');
+
+        return '<div class="ew-alloc-progress-row">'
+            + '<div class="ew-alloc-progress-bar"><div class="ew-alloc-progress-fill ' + pctCls + '" style="width:' + pct.toFixed(1) + '%"></div></div>'
+            + '<span>' + text + '</span>'
+            + '</div>';
+    }
+
+    /** Render allocation breakdown as lot cards. */
+    function renderAllocationBreakdown(summary, secuTrx) {
+        var lots = summary.lots || [];
+        var allocQty = parseFloat(summary.allocatedQty) || 0;
+        var lotCount = summary.lotCount || lots.length;
+
+        if (lotCount === 0) {
+            return '<div class="ew-alloc-inline-summary" style="color:#94a3b8;font-style:italic">No allocations yet.</div>';
+        }
+
+        var totalQty = secuTrx ? (parseFloat(secuTrx.quantity) || 0) : 0;
+        var price = secuTrx ? (parseFloat(secuTrx.price) || 0) : 0;
+        var totalFee = secuTrx ? (parseFloat(secuTrx.fee) || 0) : 0;
+        var currency = secuTrx ? (secuTrx.currency || '') : '';
+
+        var h = '';
+        var sumAmount = 0, sumFee = 0, sumCost = 0, sumEur = 0;
+        var hasEur = false;
+
+        for (var i = 0; i < lots.length; i++) {
+            var lot = lots[i];
+            var qty = parseFloat(lot.quantity) || 0;
+            // Use API values if available, else compute client-side
+            var lotAmount = lot.totalAmount != null ? parseFloat(lot.totalAmount) : (qty * price);
+            var lotFee = lot.feeAmount != null ? parseFloat(lot.feeAmount) : (totalQty > 0 ? (qty / totalQty) * totalFee : 0);
+            var lotCost = lot.totalCostWithFees != null ? parseFloat(lot.totalCostWithFees) : (lotAmount + lotFee);
+            var lotEur = lot.totalAmountEur != null ? parseFloat(lot.totalAmountEur) : null;
+
+            sumAmount += lotAmount;
+            sumFee += lotFee;
+            sumCost += lotCost;
+            if (lotEur !== null) { sumEur += lotEur; hasEur = true; }
+
+            var dir = lot.direction || '\u2014';
+            var dirCls = dir === 'BUY' ? 'badge-buy' : dir === 'SELL' ? 'badge-sell' : '';
+
+            h += '<div class="ew-lot-card">';
+            // Row 1: customer, direction badge, quantity
+            h += '<div class="ew-lot-row1">';
+            h += '<span class="ew-lot-customer">' + esc(lot.customerName || lot.customerId || '\u2014') + '</span>';
+            if (dirCls) h += '<span class="' + dirCls + '">' + esc(dir) + '</span>';
+            h += '<span class="ew-lot-qty">' + fmtAmt(qty) + '</span>';
+            h += '</div>';
+            // Row 2: amount, fee, cost, currency
+            h += '<div class="ew-lot-row2">';
+            h += '<span>Amount <span class="val">' + fmtAmt(lotAmount) + '</span></span>';
+            h += '<span>Fee <span class="val">' + fmtAmt(lotFee) + '</span></span>';
+            h += '<span>Cost <span class="val" style="font-weight:700">' + fmtAmt(lotCost) + '</span></span>';
+            if (currency) h += '<span>' + esc(currency) + '</span>';
+            h += '</div>';
+            // Row 3: lot ID, date (if available), EUR amount (if available)
+            var metaParts = [];
+            if (lot.lotId || lot.id) metaParts.push(esc(lot.lotId || lot.id));
+            if (lot.allocationDate) metaParts.push(esc(lot.allocationDate));
+            if (lotEur !== null) metaParts.push('EUR ' + fmtAmt(lotEur));
+            if (metaParts.length > 0) {
+                h += '<div class="ew-lot-meta">';
+                for (var m = 0; m < metaParts.length; m++) {
+                    h += '<span>' + metaParts[m] + '</span>';
+                }
+                h += '</div>';
+            }
+            h += '</div>';
+        }
+
+        // Summary footer
+        h += '<div class="ew-alloc-summary-footer">';
+        h += 'Total: <strong>' + fmtAmt(sumAmount) + (currency ? ' ' + esc(currency) : '') + '</strong>';
+        h += ' \u00B7 Fee: <strong>' + fmtAmt(sumFee) + (currency ? ' ' + esc(currency) : '') + '</strong>';
+        h += ' \u00B7 Cost: <strong>' + fmtAmt(sumCost) + (currency ? ' ' + esc(currency) : '') + '</strong>';
+        if (hasEur) {
+            h += '<br>EUR equivalent: <strong>' + fmtAmt(sumEur) + ' EUR</strong>';
+        }
+        h += '</div>';
+
+        return h;
+    }
+
+    // ── Allocation History ──────────────────────────────────────────────
+
+    /** Render allocation history from processing_notes. */
+    function renderAllocationHistory(notes) {
+        if (!notes) {
+            return '<div class="ew-alloc-history" style="color:#94a3b8;font-style:italic">No allocation history available.</div>';
+        }
+
+        var lines = String(notes).split('\n');
+        var entries = [];
+        for (var i = 0; i < lines.length; i++) {
+            var line = lines[i].trim();
+            if (line.indexOf('Allocated ') === 0) {
+                entries.push(line);
+            }
+        }
+
+        if (entries.length === 0) {
+            return '<div class="ew-alloc-history" style="color:#94a3b8;font-style:italic">No allocation history available.</div>';
+        }
+
+        var h = '<div class="ew-alloc-history">';
+        for (var j = 0; j < entries.length; j++) {
+            h += '<div class="ew-alloc-history-entry">'
+                + '<i class="fas fa-chart-pie"></i> ' + esc(entries[j])
+                + '</div>';
+        }
+        h += '</div>';
+        return h;
+    }
+
+    // ── Panel rendering ──────────────────────────────────────────────────
+
     function renderPanel(record) {
         var r = record;
         var edit = isEditable(r.status);
@@ -220,14 +623,21 @@
             + '<button class="ew-slide-close" onclick="EW.detail.close()">\u00D7</button>'
             + '</div></div>';
 
+        // Context ribbons
+        h += renderRibbons(r);
+
+        // Operation button bar
+        h += renderOpBar(r);
+
         // Body
         var body = '';
 
-        // Section 1: Traceability — always read-only, hide if superseded or confirmed
+        // §1 Traceability — always read-only, hide if superseded or confirmed
         var showTraceability = r.status !== 'superseded' && r.status !== 'confirmed';
         if (showTraceability) {
             body += renderSection('Traceability', 1,
                 '<div class="ew-f-row">'
+                + renderField('Transaction ID', r.id)
                 + renderField('Source Type', r.source_tp)
                 + renderField('Source Trx ID', r.source_trx_id, { muted: true })
                 + renderField('Statement', r.statement_id, { muted: true })
@@ -235,7 +645,7 @@
                 true);
         }
 
-        // Section 2: Lineage — show if origin != pipeline
+        // §2 Lineage — show if origin != pipeline
         var showLineage = r.origin && r.origin !== 'pipeline';
         if (showLineage) {
             body += renderSection('Lineage', 2,
@@ -251,7 +661,7 @@
                 false);
         }
 
-        // Section 3: Transaction Core — always visible, expanded
+        // §3 Transaction Core — always visible, expanded
         body += renderSection('Transaction Core', 3,
             '<div class="ew-f-row">'
             + renderFieldAuto('transaction_date', r.transaction_date, edit)
@@ -271,7 +681,7 @@
             + '</div>',
             true);
 
-        // Section 4: Classification — always visible, expanded
+        // §4 Classification — always visible, expanded
         body += renderSection('Classification', 4,
             '<div class="ew-f-row">'
             + renderFieldAuto('internal_type', r.internal_type, edit)
@@ -280,7 +690,7 @@
             + '</div>',
             true);
 
-        // Section 5: Currency & FX — always visible, collapsed
+        // §5 Currency & FX — always visible, collapsed
         body += renderSection('Currency & FX', 5,
             '<div class="ew-f-row">'
             + renderFieldAuto('validated_currency', r.validated_currency, edit)
@@ -294,7 +704,7 @@
             + '</div>',
             false);
 
-        // Section 6: Resolved Entities — always visible, collapsed
+        // §6 Resolved Entities — always visible, collapsed
         body += renderSection('Resolved Entities', 6,
             '<div class="ew-f-row">'
             + renderFieldAuto('resolved_customer_id', r.resolved_customer_id, edit)
@@ -313,10 +723,30 @@
             + '</div>',
             false);
 
-        // Section 7: Fee & Pairing — show if has_fee=Y or status=paired
-        var showFee = r.has_fee === 'Y' || r.status === 'paired';
+        // §7 Loan Contract — show when loan_id populated
+        if (r.loan_id) {
+            body += renderSection('Loan Contract', 7, renderLoanSection(r), true);
+        }
+
+        // §8 Trade/Fund Allocation — show for fund/sec transactions
+        if (isFundTrx(r)) {
+            var sec8Title = isAllocType(r) ? 'Trade Allocation'
+                : isIncomeAllocType(r) ? 'Income Allocation'
+                : 'Fund Allocation';
+            var sec8Expand = r.fund_allocation_status === 'partially_allocated' || r.fund_allocation_status === 'allocated';
+            body += renderSection(sec8Title, 8, renderFundSection(r), sec8Expand);
+        }
+
+        // §9 Allocation History — show for allocated/partially allocated fund transactions
+        if (isFundTrx(r) && (r.fund_allocation_status === 'partially_allocated' || r.fund_allocation_status === 'allocated')) {
+            body += renderSection('Allocation History', 9, renderAllocationHistory(r.processing_notes), false);
+        }
+
+        // Fee & Pairing — show if has_fee=yes or status=paired (conditional)
+        var showFee = r.has_fee === 'yes' || r.has_fee === 'Y' || r.status === 'paired';
         if (showFee) {
-            body += renderSection('Fee & Pairing', 7,
+            var feeNum = 10;
+            body += renderSection('Fee & Pairing', feeNum,
                 '<div class="ew-f-row">'
                 + renderFieldAuto('has_fee', r.has_fee, edit)
                 + renderField('Fee Trx ID', r.fee_trx_id, { muted: true })
@@ -325,23 +755,22 @@
                 false);
         }
 
-        // Section 8: Status & Notes — always visible, expanded
-        // processing_notes is always editable (alwaysEditable flag)
+        // Status & Notes — always visible, expanded
         var notesEditable = edit || (FIELDS.processing_notes && FIELDS.processing_notes.alwaysEditable);
-        var s8 = '<div class="ew-f-row">'
+        var sn = '<div class="ew-f-row">'
             + renderField('Status', r.status, { badge: true })
             + renderField('Enrichment Time', r.enrichment_timestamp, { muted: true })
             + renderField('Version', r.version, { muted: true })
             + '</div>';
         if (r.status === 'error' && r.error_message) {
-            s8 += '<div class="ew-f-row">'
+            sn += '<div class="ew-f-row">'
                 + renderField('Error Message', r.error_message, { wide: true, err: true })
                 + '</div>';
         }
-        s8 += '<div class="ew-f-row">'
+        sn += '<div class="ew-f-row">'
             + renderFieldAuto('processing_notes', r.processing_notes, notesEditable, null, true)
             + '</div>';
-        body += renderSection('Status & Notes', 8, s8, true);
+        body += renderSection('Status & Notes', 11, sn, true);
 
         h += '<div class="ew-slide-body">' + body + '</div>';
 
@@ -416,6 +845,15 @@
                 + '<div class="ew-slide-panel">'
                 + renderPanel(record)
                 + '</div></div>';
+            // Async-load allocation breakdown if placeholder was rendered
+            var allocStatus = record.fund_allocation_status || 'pending';
+            if (allocStatus !== 'pending' && isFundTrx(record)) {
+                loadAllocationData(record.id);
+            }
+            // Income allocation async load
+            if (isIncomeAllocType(record) && allocStatus !== 'pending') {
+                loadIncomeAllocationData(record.id);
+            }
             return;
         }
 
@@ -434,6 +872,15 @@
                     + '<div class="ew-slide-panel">'
                     + renderPanel(rec)
                     + '</div></div>';
+                // Async-load allocation breakdown if placeholder was rendered
+                var allocStatus = rec.fund_allocation_status || 'pending';
+                if (allocStatus !== 'pending' && isFundTrx(rec)) {
+                    loadAllocationData(rec.id);
+                }
+                // Income allocation async load
+                if (isIncomeAllocType(rec) && allocStatus !== 'pending') {
+                    loadIncomeAllocationData(rec.id);
+                }
             })
             .catch(function(e) {
                 currentRecord = null;

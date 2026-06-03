@@ -16,7 +16,7 @@ import org.joget.plugin.base.PluginManager;
  */
 public class EnrichmentWorkspaceMenu extends UserviewMenu {
 
-    private static final String VERSION = "0.7.0";
+    private static final String VERSION = "2.0.12";
 
     // ── Plugin identity ────────────────────────────────────────────────────
 

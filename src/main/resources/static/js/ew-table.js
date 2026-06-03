@@ -31,11 +31,45 @@
         return n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
-    /** Source type label. */
+    /** Source type badge. */
     function srcLabel(s) {
-        if (s === 'bank') return '<b>B</b>';
-        if (s === 'secu') return '<b>S</b>';
+        if (s === 'bank') return '<span class="ew-src-badge src-bank">Bank</span>';
+        if (s === 'secu') return '<span class="ew-src-badge src-secu">Secu</span>';
         return esc(s || '');
+    }
+
+    /** Type badge with category color. Uses TY_CAT from dashboard module. */
+    function typeBadge(ty, r) {
+        if (!ty) return '';
+        var TY = EW.dashboard && EW.dashboard.TY_CAT;
+        var cat = TY ? (TY[ty] || '') : '';
+        var cls = cat ? ' ty-' + cat : '';
+        var badge = '<span class="ty-badge' + cls + '">' + esc(ty) + '</span>';
+        // Inline icons: link icon if loan_id populated, chart icon if fund + not paired
+        if (r && r.loan_id) badge += ' <i class="fas fa-link ew-inline-icon" title="Linked to loan ' + esc(r.loan_id) + '"></i>';
+        if (r && EW.dashboard && EW.dashboard.isFundTrx && EW.dashboard.isFundTrx(r) && r.status !== 'paired') {
+            badge += ' <i class="fas fa-chart-pie ew-inline-icon" title="Fund transaction"></i>';
+        }
+        return badge;
+    }
+
+    /** Customer display with styling. */
+    function custDisplay(code) {
+        if (!code) return '<span class="ew-cust-empty">\u2014</span>';
+        if (code === 'UNK') return '<span class="ew-cust-unk">UNK</span>';
+        if (code === '12345678') return '<span class="ew-cust-fund">' + esc(code) + '</span>';
+        return esc(code);
+    }
+
+    /** Amount with negative styling. */
+    function fmtAmtStyled(v, dc) {
+        if (v === null || v === undefined || v === '') return '';
+        var n = parseFloat(v);
+        if (isNaN(n)) return esc(String(v));
+        var isNeg = n < 0 || dc === 'D';
+        var formatted = Math.abs(n).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        if (isNeg) return '<span class="ew-amount-neg">' + formatted + '</span>';
+        return formatted;
     }
 
     /** Confidence badge. */
@@ -65,23 +99,33 @@
             case '_check':
                 return '<input type="checkbox" class="ew-row-check" value="' + esc(r.id) + '" />';
             case 'status':
-                return '<span class="st-' + esc(v) + '">' + esc(v) + '</span>';
+                var stHtml = '<span class="st-' + esc(v) + '">' + esc(v) + '</span>';
+                if (r.fund_allocation_status === 'allocated') {
+                    stHtml += ' <i class="fas fa-check-circle ew-alloc-icon ew-alloc-full" title="Fully allocated"></i>';
+                } else if (r.fund_allocation_status === 'partially_allocated') {
+                    stHtml += ' <i class="fas fa-chart-pie ew-alloc-icon ew-alloc-partial" title="Partially allocated"></i>';
+                }
+                return stHtml;
             case 'source_tp':
                 return srcLabel(v);
+            case 'internal_type':
+                return typeBadge(v, r);
             case 'description':
                 return '<span class="ew-desc" title="' + esc(v || '') + '">' + esc(trunc(v, 60)) + '</span>';
             case 'debit_credit':
                 return dcBadge(v);
             case 'original_amount':
-                return '<span class="ew-amount">' + fmtAmt(v) + '</span>';
+                return '<span class="ew-amount">' + fmtAmtStyled(v, r.debit_credit) + '</span>';
             case 'fee_amount':
                 return '<span class="ew-amount">' + fmtAmt(v) + '</span>';
             case 'total_amount':
-                return '<span class="ew-amount-total">' + fmtAmt(v) + '</span>';
+                return '<span class="ew-amount-total">' + fmtAmtStyled(v, r.debit_credit) + '</span>';
             case 'type_confidence':
                 return confBadge(v);
             case 'origin':
                 return originBadge(v);
+            case 'customer_code':
+                return custDisplay(v);
             case 'count':
                 return '<span class="ew-amount">' + esc(v != null ? String(v) : '') + '</span>';
             default:
@@ -107,7 +151,7 @@
         var thead = document.getElementById('ew-thead');
         if (!thead) return;
 
-        var tab = EW.tabs.current();
+        var tab = EW.nav.current();
         var cols = tab.columns;
         var h = '<tr>';
 
@@ -138,28 +182,19 @@
 
     EW.table.load = function() {
         var st = EW.state;
-        var tab = EW.tabs.current();
-        var colCount = tab.columns.length;
+        var tab = EW.nav.current();
 
-        var filterStatus = document.getElementById('ew-filter-status');
-        var filterSource = document.getElementById('ew-filter-source');
-        var filterCustomer = document.getElementById('ew-filter-customer');
+        // Placeholder views have no columns
+        if (!tab.columns) return;
+        var colCount = tab.columns.length;
 
         setStatus('Loading...');
 
-        // Summary tab: placeholder until Phase 9
-        if (tab.isSummary) {
-            var tbody = document.getElementById('ew-tbody');
-            if (tbody) {
-                tbody.innerHTML = '<tr><td colspan="' + colCount + '" class="ew-empty">'
-                    + '<i class="fas fa-chart-bar"></i> Statement Summary will be available in a future release.'
-                    + '</td></tr>';
-            }
-            setStatus('');
-            setCount(0);
-            document.getElementById('ew-pagination').innerHTML = '';
-            return;
-        }
+        // Hide recon panel
+        hideReconPanel();
+
+        // Collect filters from filter bar
+        var filters = (EW.filters && EW.filters.collect) ? EW.filters.collect() : {};
 
         var params = {
             page: st.page,
@@ -167,13 +202,22 @@
             sort: st.sort,
             order: st.order,
             statementId: EW.statementId,
-            status: filterStatus ? filterStatus.value : '',
-            sourceType: filterSource ? filterSource.value : '',
-            customerId: filterCustomer ? filterCustomer.value : ''
+            status: filters.status || '',
+            allocationStatus: filters.allocationStatus || '',
+            sourceType: filters.sourceType || '',
+            customerId: filters.customerId || '',
+            internalType: filters.internalType || '',
+            descriptionSearch: filters.descriptionSearch || '',
+            dateFrom: filters.dateFrom || '',
+            dateTo: filters.dateTo || '',
+            fundOnly: filters.fundOnly || false,
+            loanOnly: filters.loanOnly || false
         };
 
-        // Apply tab-specific filter overrides
-        params = tab.buildFilters(params);
+        // Apply view-specific filter overrides
+        if (tab.buildFilters) {
+            params = tab.buildFilters(params);
+        }
 
         EW.api.fetchRecords(params)
             .then(function(data) {
@@ -218,7 +262,7 @@
             // Row CSS class based on status (or forced by tab)
             var rowClass = forceRowClass || '';
             if (!forceRowClass && r.status) {
-                if (r.status === 'error' || r.status === 'manual_review' || r.status === 'ready') {
+                if (r.status === 'error' || r.status === 'manual_review' || r.status === 'ready' || r.status === 'paired') {
                     rowClass = 'ew-row-' + r.status;
                 }
             }
@@ -254,11 +298,14 @@
         setStatus('Loaded in ' + (data.ms || '?') + 'ms');
         setCount(st.total);
         renderPagination();
+
+        // Refresh dashboard KPI cards with updated data
+        if (EW.dashboard && EW.dashboard.render) EW.dashboard.render();
     }
 
     function renderSummary(data) {
         var st = EW.state;
-        var tab = EW.tabs.current();
+        var tab = EW.nav.current();
         var colCount = tab.columns.length;
         var cols = tab.columns;
         var records = data.records || data.summary || [];
@@ -279,7 +326,8 @@
         var rows = '';
         for (var i = 0; i < records.length; i++) {
             var r = records[i];
-            rows += '<tr>';
+            var statusAttr = r.status ? ' data-status="' + esc(r.status) + '"' : '';
+            rows += '<tr class="ew-summary-row"' + statusAttr + ' style="cursor:pointer">';
             for (var j = 0; j < cols.length; j++) {
                 rows += '<td>' + renderCell(cols[j], r) + '</td>';
             }
@@ -289,6 +337,21 @@
         setStatus('');
         setCount(records.length);
         renderPagination();
+    }
+
+    /** Bind click handler on summary rows to switch to workspace with status filter. */
+    function bindSummaryRowClick() {
+        var rows = document.querySelectorAll('.ew-summary-row[data-status]');
+        for (var i = 0; i < rows.length; i++) {
+            rows[i].addEventListener('click', function() {
+                var status = this.getAttribute('data-status');
+                if (!status) return;
+                // Set the status filter and switch to workspace tab
+                var filterStatus = document.getElementById('ew-filter-status');
+                if (filterStatus) filterStatus.value = status;
+                EW.nav.switchTo('workspace');
+            });
+        }
     }
 
     function renderError(msg, colCount) {
@@ -327,6 +390,43 @@
         }
     }
 
+    // ── Reconciliation panel (summary tab) ─────────────────────────────────
+
+    function hideReconPanel() {
+        var panel = document.getElementById('ew-recon-panel');
+        if (panel) { panel.style.display = 'none'; panel.innerHTML = ''; }
+    }
+
+    function loadReconciliationPanel() {
+        var panel = document.getElementById('ew-recon-panel');
+        if (!panel) return;
+
+        if (!EW.statementId || !EW.api.fetchReconciliation) {
+            panel.style.display = 'none';
+            return;
+        }
+
+        panel.style.display = 'block';
+        panel.innerHTML = '<div class="ew-recon-section">'
+            + '<h3 class="ew-recon-heading"><i class="fas fa-balance-scale"></i> Reconciliation</h3>'
+            + '<div class="ew-recon-loading"><i class="fas fa-spinner fa-spin"></i> Loading reconciliation\u2026</div>'
+            + '</div>';
+
+        EW.api.fetchReconciliation(EW.statementId)
+            .then(function(recon) {
+                if (!document.getElementById('ew-recon-panel')) return;
+                panel.innerHTML = '<div class="ew-recon-section">'
+                    + '<h3 class="ew-recon-heading"><i class="fas fa-balance-scale"></i> Reconciliation</h3>'
+                    + EW.actions.buildReconTable(recon)
+                    + '</div>';
+            })
+            .catch(function() {
+                // Graceful degradation: hide panel if endpoint fails
+                panel.style.display = 'none';
+                panel.innerHTML = '';
+            });
+    }
+
     // ── Pagination ──────────────────────────────────────────────────────────
 
     function renderPagination() {
@@ -334,26 +434,53 @@
         if (!el) return;
         var st = EW.state;
 
-        if (st.totalPages <= 1) {
-            el.innerHTML = '';
-            return;
-        }
-
         var h = '';
-        h += '<button ' + (st.page <= 1 ? 'disabled' : '') + ' onclick="EW_goto(1)">&laquo;</button>';
-        h += '<button ' + (st.page <= 1 ? 'disabled' : '') + ' onclick="EW_goto(' + (st.page - 1) + ')">&lsaquo;</button>';
 
-        var start = Math.max(1, st.page - 2);
-        var end = Math.min(st.totalPages, start + 4);
-        start = Math.max(1, end - 4);
+        // Page navigation buttons — only when multiple pages
+        if (st.totalPages > 1) {
+            h += '<button ' + (st.page <= 1 ? 'disabled' : '') + ' onclick="EW_goto(1)">&laquo;</button>';
+            h += '<button ' + (st.page <= 1 ? 'disabled' : '') + ' onclick="EW_goto(' + (st.page - 1) + ')">&lsaquo;</button>';
 
-        for (var p = start; p <= end; p++) {
-            h += '<button class="' + (p === st.page ? 'ew-page-current' : '') + '" onclick="EW_goto(' + p + ')">' + p + '</button>';
+            var start = Math.max(1, st.page - 2);
+            var end = Math.min(st.totalPages, start + 4);
+            start = Math.max(1, end - 4);
+
+            for (var p = start; p <= end; p++) {
+                h += '<button class="' + (p === st.page ? 'ew-page-current' : '') + '" onclick="EW_goto(' + p + ')">' + p + '</button>';
+            }
+
+            h += '<button ' + (st.page >= st.totalPages ? 'disabled' : '') + ' onclick="EW_goto(' + (st.page + 1) + ')">&rsaquo;</button>';
+            h += '<button ' + (st.page >= st.totalPages ? 'disabled' : '') + ' onclick="EW_goto(' + st.totalPages + ')">&raquo;</button>';
+            h += '<span class="ew-page-info">Page ' + st.page + ' of ' + st.totalPages + '</span>';
         }
 
-        h += '<button ' + (st.page >= st.totalPages ? 'disabled' : '') + ' onclick="EW_goto(' + (st.page + 1) + ')">&rsaquo;</button>';
-        h += '<button ' + (st.page >= st.totalPages ? 'disabled' : '') + ' onclick="EW_goto(' + st.totalPages + ')">&raquo;</button>';
-        h += '<span class="ew-page-info">Page ' + st.page + ' of ' + st.totalPages + '</span>';
+        // Record count summary
+        var tab = EW.nav.current();
+        if (!tab.isSummary && st.total > 0) {
+            h += '<span class="ew-page-summary">' + st.total + ' records found';
+            if (st.totalPages > 1) {
+                var rStart = (st.page - 1) * st.pageSize + 1;
+                var rEnd = Math.min(st.page * st.pageSize, st.total);
+                h += ', displaying ' + rStart + '\u2013' + rEnd;
+            }
+            h += '</span>';
+        }
+
+        // Page-size selector — always visible (except summary tab)
+        if (!tab.isSummary) {
+            h += '<span class="ew-page-size-group">';
+            h += '<select class="ew-page-size-select" onchange="EW_changePageSize(this.value)">';
+            (EW.state.pageSizes || [10, 20, 50, 100]).forEach(function(n) {
+                h += '<option value="' + n + '"' + (n === st.pageSize ? ' selected' : '') + '>' + n + '</option>';
+            });
+            h += '</select>';
+            h += '<span class="ew-page-info">per page</span>';
+            h += '</span>';
+        }
+
+        // Export CSV link — always visible
+        h += '<a href="#" class="ew-export-link" onclick="EW_exportCSV(); return false;">'
+            + '<i class="fas fa-download"></i> Export CSV</a>';
 
         el.innerHTML = h;
     }
@@ -406,6 +533,13 @@
 
     window.EW_goto = function(p) {
         EW.state.page = p;
+        EW.table.load();
+    };
+
+    window.EW_changePageSize = function(val) {
+        EW.state.pageSize = parseInt(val, 10);
+        EW.state.page = 1;
+        localStorage.setItem('ew-pageSize', EW.state.pageSize);
         EW.table.load();
     };
 

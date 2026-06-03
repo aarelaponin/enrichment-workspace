@@ -69,6 +69,71 @@
     color: #475569;
 }
 
+/* Context ribbons */
+.ew-ctx-ribbon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    font-size: .82em;
+    font-weight: 500;
+    border-bottom: 1px solid #e2e8f0;
+}
+.ew-ctx-ribbon.amber {
+    background: #fffbeb;
+    color: #92400e;
+    border-bottom-color: #fde68a;
+}
+.ew-ctx-ribbon.blue {
+    background: #eff6ff;
+    color: #1e40af;
+    border-bottom-color: #bfdbfe;
+}
+.ew-ctx-ribbon span { flex: 1; }
+.ew-ctx-btn {
+    padding: 3px 10px;
+    font-size: .88em;
+    font-weight: 600;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.ew-ctx-btn:hover { opacity: .8; }
+
+/* Operation button bar */
+.ew-op-bar {
+    display: flex;
+    gap: 6px;
+    padding: 8px 20px;
+    border-bottom: 1px solid #e2e8f0;
+    background: #f8fafc;
+    flex-wrap: wrap;
+}
+.ew-op-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    font-size: .78em;
+    font-weight: 600;
+    color: #475569;
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background .12s;
+}
+.ew-op-btn:hover { background: #f1f5f9; }
+.ew-op-btn.highlight {
+    color: #1e40af;
+    border-color: #93c5fd;
+    background: #eff6ff;
+}
+.ew-op-btn.highlight:hover { background: #dbeafe; }
+
 /* Body */
 .ew-slide-body {
     padding: 0 20px 18px;
@@ -182,6 +247,54 @@
     color: #94a3b8;
     padding: 48px 20px;
     font-size: .9em;
+}
+
+/* Loan contract card */
+.ew-contract-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+.ew-cc-hdr {
+    padding: 8px 12px;
+    background: #f8fafc;
+    font-size: .84em;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.ew-cc-hdr i { color: #64748b; }
+.ew-cc-grid {
+    display: flex;
+    gap: 12px;
+    padding: 10px 12px;
+    flex-wrap: wrap;
+}
+.ew-cc-field {
+    flex: 1 1 40%;
+    min-width: 100px;
+}
+.ew-cc-field label {
+    display: block;
+    font-size: .68em;
+    color: #64748b;
+    font-weight: 600;
+    margin-bottom: 1px;
+}
+.ew-cc-field div {
+    font-size: .84em;
+    color: #334155;
+}
+.ew-cc-note {
+    padding: 6px 12px;
+    font-size: .78em;
+    color: #94a3b8;
+    font-style: italic;
+    border-top: 1px solid #f1f5f9;
 }
 
 /* ── Edit mode inputs ─────────────────────────────────────────────────── */
@@ -315,3 +428,658 @@
     padding: 0 2px;
 }
 .ew-toast-close:hover { opacity: 1; }
+
+/* ── Confirmation dialog (modal overlay) ─────────────────────────────── */
+
+.ew-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    background: rgba(15, 23, 42, .4);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: ew-fade-in .15s ease;
+}
+@keyframes ew-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.ew-dialog {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .18);
+    width: 100%;
+    max-width: 520px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    animation: ew-dialog-in .2s ease;
+}
+@keyframes ew-dialog-in {
+    from { transform: scale(.95) translateY(8px); opacity: 0; }
+    to   { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.ew-dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+.ew-dialog-header h3 {
+    margin: 0;
+    font-size: .95em;
+    font-weight: 700;
+    color: #1e293b;
+}
+.ew-dialog-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 0 2px;
+    line-height: 1;
+}
+.ew-dialog-close:hover {
+    color: #475569;
+}
+
+.ew-dialog-body {
+    padding: 16px 20px;
+    overflow-y: auto;
+    flex: 1;
+    font-size: .88em;
+    color: #334155;
+}
+.ew-dialog-body p {
+    margin: 0 0 12px;
+}
+
+.ew-dialog-footer {
+    padding: 12px 20px;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    background: #f8fafc;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Summary table inside confirm dialog */
+.ew-confirm-summary {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .92em;
+    margin-bottom: 10px;
+}
+.ew-confirm-summary th {
+    text-align: left;
+    font-weight: 600;
+    color: #64748b;
+    font-size: .82em;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    padding: 6px 8px;
+    border-bottom: 2px solid #e2e8f0;
+}
+.ew-confirm-summary td {
+    padding: 6px 8px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+}
+
+/* Danger button (delete) */
+.ew-btn-danger {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 18px;
+    font-size: .84em;
+    font-weight: 600;
+    color: #fff;
+    background: #dc2626;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background .15s;
+}
+.ew-btn-danger:hover {
+    background: #b91c1c;
+}
+.ew-btn-danger:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+/* Wide dialog for split/merge/manual forms */
+.ew-dialog-wide {
+    max-width: 640px;
+}
+
+/* Source record info box (split dialog) */
+.ew-split-source {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    font-size: .88em;
+    color: #334155;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.ew-split-source strong {
+    color: #1e293b;
+}
+
+/* Section divider labels */
+.ew-split-divider {
+    font-size: .78em;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin: 12px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Split allocation row */
+.ew-split-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+.ew-split-row-num {
+    font-size: .78em;
+    font-weight: 700;
+    color: #94a3b8;
+    min-width: 22px;
+    text-align: center;
+}
+.ew-split-row .ew-edit-input {
+    flex: 1;
+}
+.ew-split-remove {
+    background: none;
+    border: none;
+    color: #dc2626;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px 6px;
+    border-radius: 3px;
+    opacity: .6;
+}
+.ew-split-remove:hover {
+    opacity: 1;
+    background: #fef2f2;
+}
+
+/* Controls row (Add Row + total) */
+.ew-split-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #f1f5f9;
+}
+
+/* Running total display */
+.ew-split-total {
+    font-size: .84em;
+    color: #334155;
+    font-weight: 600;
+}
+
+/* Balance indicator */
+.ew-split-diff {
+    font-size: .78em;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 8px;
+}
+.ew-split-balanced {
+    color: #065f46;
+    background: #ecfdf5;
+}
+.ew-split-unbalanced {
+    color: #991b1b;
+    background: #fef2f2;
+}
+
+/* Merge preview table */
+.ew-merge-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .88em;
+    margin-bottom: 10px;
+}
+.ew-merge-table th {
+    text-align: left;
+    font-weight: 600;
+    color: #64748b;
+    font-size: .82em;
+    padding: 6px 8px;
+    border-bottom: 2px solid #e2e8f0;
+}
+.ew-merge-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+}
+
+/* Merge warning note */
+.ew-merge-warning {
+    color: #92400e;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: .84em;
+    margin-top: 8px;
+}
+.ew-merge-warning i {
+    margin-right: 4px;
+}
+
+/* ── Reconciliation table ─────────────────────────────────────────────── */
+
+.ew-recon-section {
+    margin-top: 12px;
+}
+.ew-recon-heading {
+    margin: 0 0 10px;
+    font-size: .92em;
+    font-weight: 700;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.ew-recon-heading i {
+    color: #64748b;
+}
+.ew-recon-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .92em;
+    margin-bottom: 8px;
+}
+.ew-recon-table th {
+    text-align: left;
+    font-weight: 600;
+    color: #64748b;
+    font-size: .82em;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    padding: 6px 8px;
+    border-bottom: 2px solid #e2e8f0;
+}
+.ew-recon-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+}
+.ew-recon-ok {
+    color: #065f46;
+    font-weight: 600;
+}
+.ew-recon-warn {
+    color: #991b1b;
+    font-weight: 600;
+}
+.ew-recon-note {
+    font-size: .84em;
+    font-style: italic;
+    color: #64748b;
+    margin-top: 6px;
+}
+.ew-recon-final {
+    color: #065f46;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: .88em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.ew-recon-final i {
+    margin-right: 4px;
+}
+.ew-recon-loading {
+    color: #94a3b8;
+    font-size: .88em;
+    padding: 12px 0;
+}
+
+/* Note about skipped records */
+.ew-confirm-note {
+    color: #92400e;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: .88em;
+    margin-top: 8px;
+}
+.ew-confirm-note i {
+    margin-right: 4px;
+}
+
+/* ── Trade Allocation dialog ─────────────────────────────────────────── */
+
+/* Trade summary card */
+.ew-alloc-summary {
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+.ew-alloc-summary-hdr {
+    padding: 8px 12px;
+    background: #f8fafc;
+    font-size: .82em;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.ew-alloc-summary-hdr i { color: #64748b; }
+.ew-alloc-summary-grid {
+    display: flex;
+    gap: 10px;
+    padding: 10px 12px;
+    flex-wrap: wrap;
+}
+.ew-alloc-field {
+    flex: 1 1 30%;
+    min-width: 90px;
+}
+.ew-alloc-field label {
+    display: block;
+    font-size: .66em;
+    color: #64748b;
+    font-weight: 600;
+    margin-bottom: 1px;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+}
+.ew-alloc-field div {
+    font-size: .84em;
+    color: #334155;
+}
+.ew-alloc-field div.mono {
+    font-family: monospace;
+}
+
+/* Progress bar */
+.ew-alloc-progress-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: .82em;
+    color: #475569;
+}
+.ew-alloc-progress-bar {
+    flex: 1;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.ew-alloc-progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width .3s ease;
+}
+.ew-alloc-progress-fill.empty { width: 0; background: #94a3b8; }
+.ew-alloc-progress-fill.partial { background: #f59e0b; }
+.ew-alloc-progress-fill.full { background: #16a34a; }
+
+/* Existing lots table */
+.ew-alloc-lots-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .84em;
+    margin-bottom: 10px;
+}
+.ew-alloc-lots-table th {
+    text-align: left;
+    font-weight: 600;
+    color: #64748b;
+    font-size: .82em;
+    padding: 5px 8px;
+    border-bottom: 2px solid #e2e8f0;
+}
+.ew-alloc-lots-table td {
+    padding: 5px 8px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+}
+
+/* Fill remaining button */
+.ew-alloc-fill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    font-size: .78em;
+    font-weight: 600;
+    color: #1e40af;
+    background: #eff6ff;
+    border: 1px solid #93c5fd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background .12s;
+}
+.ew-alloc-fill-btn:hover { background: #dbeafe; }
+
+/* Preview box */
+.ew-alloc-preview {
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 12px;
+}
+.ew-alloc-preview-hdr {
+    padding: 6px 12px;
+    background: #f8fafc;
+    font-size: .78em;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    border-bottom: 1px solid #e2e8f0;
+}
+.ew-alloc-preview-body {
+    padding: 8px 12px;
+}
+.ew-alloc-preview-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: .84em;
+    padding: 3px 0;
+    color: #475569;
+}
+.ew-alloc-preview-row.total {
+    font-weight: 700;
+    color: #1e293b;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 4px;
+    padding-top: 6px;
+}
+.ew-alloc-preview-row.over {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+/* Indigo ribbon variant (securities allocation) */
+.ew-ctx-ribbon.indigo {
+    background: #eef2ff;
+    color: #3730a3;
+    border-bottom-color: #c7d2fe;
+}
+
+/* Green ribbon variant (fully allocated) */
+.ew-ctx-ribbon.green {
+    background: #ecfdf5;
+    color: #065f46;
+    border-bottom-color: #a7f3d0;
+}
+
+/* ── Allocation breakdown (inline in detail panel) ────────────────────── */
+
+.ew-alloc-inline {
+    margin-top: 8px;
+}
+.ew-alloc-inline-loading {
+    font-size: .82em;
+    color: #94a3b8;
+    padding: 6px 0;
+}
+.ew-alloc-inline-summary {
+    font-size: .84em;
+    color: #475569;
+    margin-bottom: 6px;
+}
+.ew-alloc-inline-summary strong {
+    font-family: monospace;
+}
+/* ── Lot card layout (allocation breakdown) ───────────────────────────── */
+
+.ew-lot-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+}
+.ew-lot-row1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+.ew-lot-customer {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e293b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
+}
+.ew-lot-qty {
+    font-family: monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-left: 8px;
+    white-space: nowrap;
+}
+.badge-buy {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin: 0 6px;
+    text-transform: uppercase;
+}
+.badge-sell {
+    display: inline-block;
+    background: #fce7f3;
+    color: #be185d;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin: 0 6px;
+    text-transform: uppercase;
+}
+.ew-lot-row2 {
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+    color: #64748b;
+}
+.ew-lot-row2 .val {
+    font-family: monospace;
+    color: #334155;
+}
+.ew-lot-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 10px;
+    color: #94a3b8;
+    border-top: 1px dashed #e2e8f0;
+    margin-top: 4px;
+    padding-top: 4px;
+}
+.ew-alloc-summary-footer {
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    padding: 10px 14px;
+    font-size: 11px;
+    color: #64748b;
+    border-radius: 0 0 8px 8px;
+    margin-top: 4px;
+}
+.ew-alloc-summary-footer strong {
+    font-family: monospace;
+    color: #334155;
+}
+
+/* ── Allocation history ───────────────────────────────────────────────── */
+
+.ew-alloc-history {
+    padding: 4px 0;
+}
+.ew-alloc-history-entry {
+    font-size: .82em;
+    color: #475569;
+    padding: 4px 0;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    gap: 6px;
+    align-items: baseline;
+}
+.ew-alloc-history-entry i {
+    color: #94a3b8;
+    font-size: .78em;
+}
+
+/* ── Inline toast (allocation dialog) ─────────────────────────────────── */
+
+.ew-alloc-inline-toast {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: .84em;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: ew-fade-in .15s ease;
+    transition: opacity .3s;
+}
+
+/* ── Income allocation ────────────────────────────────────────────────── */
+#ew-income-alloc-detail { margin-top: 8px; }
+.ew-alloc-lots-table tr.ew-alloc-lots-total td { border-top: 2px solid #e2e8f0; padding-top: 6px; }

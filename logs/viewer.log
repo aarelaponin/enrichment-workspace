@@ -1,0 +1,1032 @@
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-8CE458 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-8CE458 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-8CE458 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 9c10e586-f942-4b93-a39c-9c9c77ce7bfb processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 9c10e586-f942-4b93-a39c-9c9c77ce7bfb as TRX-8CE458
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-CC3DC8 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-CC3DC8 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-CC3DC8 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX d3dad728-947d-4ccf-9f79-4e87bae3a5da processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction d3dad728-947d-4ccf-9f79-4e87bae3a5da as TRX-CC3DC8
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-7D6DBC null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-7D6DBC new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-7D6DBC processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 901724c4-347b-4dc3-9fc1-76bf90837824 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 901724c4-347b-4dc3-9fc1-76bf90837824 as TRX-7D6DBC
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4BD4DB null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4BD4DB new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4BD4DB processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 17f1fe83-b68b-4525-a826-4732e8836c2c processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 17f1fe83-b68b-4525-a826-4732e8836c2c as TRX-4BD4DB
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C46B64 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C46B64 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C46B64 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 52ab668e-84a3-4682-bac9-4f7fd5fc4f8e processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 52ab668e-84a3-4682-bac9-4f7fd5fc4f8e as TRX-C46B64
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3735ED null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3735ED new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3735ED processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 81a6cc74-1bf9-4dba-95fe-6dca895a2eb1 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 81a6cc74-1bf9-4dba-95fe-6dca895a2eb1 as TRX-3735ED
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-7133AB null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-7133AB new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-7133AB processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 994cfa4a-5ed4-4430-a2ec-6208d0c5bf16 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 994cfa4a-5ed4-4430-a2ec-6208d0c5bf16 as TRX-7133AB
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-25FD69 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-25FD69 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-25FD69 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX e86b5ef2-b44c-4afd-ba58-370b06473896 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction e86b5ef2-b44c-4afd-ba58-370b06473896 as TRX-25FD69
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-437A23 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-437A23 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-437A23 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 144511bc-8589-45a3-9f8b-8246e0d42be8 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 144511bc-8589-45a3-9f8b-8246e0d42be8 as TRX-437A23
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-473840 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-473840 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-473840 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX afea69df-5e50-4217-8ea2-761d48eb3a3b processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction afea69df-5e50-4217-8ea2-761d48eb3a3b as TRX-473840
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D0CFA6 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D0CFA6 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D0CFA6 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 0721dbda-9cf9-4888-b15f-5e7645dd9416 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 0721dbda-9cf9-4888-b15f-5e7645dd9416 as TRX-D0CFA6
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-50A744 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-50A744 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-50A744 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 1c94349c-95be-47dc-87db-b544e3469d0f processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 1c94349c-95be-47dc-87db-b544e3469d0f as TRX-50A744
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-65D27D null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-65D27D new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-65D27D processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 42d115ab-b252-46a4-bc3d-8be72c62edb0 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 42d115ab-b252-46a4-bc3d-8be72c62edb0 as TRX-65D27D
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-695F09 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-695F09 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-695F09 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 690535cd-d674-4c05-85f8-ed8810054cbc processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 690535cd-d674-4c05-85f8-ed8810054cbc as TRX-695F09
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-88C0BA null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-88C0BA new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-88C0BA processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 7495f9fe-3692-4583-80af-43aa452b7dca processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 7495f9fe-3692-4583-80af-43aa452b7dca as TRX-88C0BA
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-B0BC74 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-B0BC74 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-B0BC74 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 74e1a496-7329-4595-91b8-7cdd16a61676 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 74e1a496-7329-4595-91b8-7cdd16a61676 as TRX-B0BC74
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4BFC1B null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4BFC1B new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4BFC1B processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 9217c431-3f02-42db-9b2b-13617e89fe8d processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 9217c431-3f02-42db-9b2b-13617e89fe8d as TRX-4BFC1B
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-39BBD5 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-39BBD5 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-39BBD5 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX d805d30e-1e97-44ad-876b-98245b7f1e17 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction d805d30e-1e97-44ad-876b-98245b7f1e17 as TRX-39BBD5
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-6B6BBB null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-6B6BBB new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-6B6BBB processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX d9d2a011-86c7-479b-9d27-d31b31960f81 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction d9d2a011-86c7-479b-9d27-d31b31960f81 as TRX-6B6BBB
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-EE2507 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-EE2507 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-EE2507 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 13a4dffb-7d7f-4ac5-bf25-c7743d1822e3 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 13a4dffb-7d7f-4ac5-bf25-c7743d1822e3 as TRX-EE2507
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D073D1 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D073D1 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D073D1 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 16268701-11d9-46c6-a314-6ca3f888a813 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 16268701-11d9-46c6-a314-6ca3f888a813 as TRX-D073D1
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-28C0F5 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-28C0F5 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-28C0F5 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 3ff3a8a0-468c-49a3-9c96-8cb69aeb5290 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 3ff3a8a0-468c-49a3-9c96-8cb69aeb5290 as TRX-28C0F5
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-232444 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-232444 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-232444 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 4386b007-696f-4004-bf73-28db9cfbd32d processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 4386b007-696f-4004-bf73-28db9cfbd32d as TRX-232444
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-AF1C42 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-AF1C42 new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-AF1C42 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 95896b3a-dd7d-4b29-9c75-d5c270439227 processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 95896b3a-dd7d-4b29-9c75-d5c270439227 as TRX-AF1C42
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3F54AA null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3F54AA new → processing
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3F54AA processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 7a86c458-689d-4e43-b0f5-1ddd304ae49d processing → enriched
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 7a86c458-689d-4e43-b0f5-1ddd304ae49d as TRX-3F54AA
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-92B7D6 null → new
+INFO    14 Mar 2026 19:56:20 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-92B7D6 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-92B7D6 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX c0e48e02-ec4a-4a60-baa2-a1a8503f6828 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction c0e48e02-ec4a-4a60-baa2-a1a8503f6828 as TRX-92B7D6
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-80FB26 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-80FB26 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-80FB26 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX fc082ac0-d67a-47ef-af21-97cc7b3efdac processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction fc082ac0-d67a-47ef-af21-97cc7b3efdac as TRX-80FB26
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-14CADF null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-14CADF new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-14CADF processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 76ec3ce4-06b3-41f7-8e99-edfbdee91afc processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 76ec3ce4-06b3-41f7-8e99-edfbdee91afc as TRX-14CADF
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-571C2E null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-571C2E new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-571C2E processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 658a60b8-84c9-4d4f-8bf8-b46163dc6447 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 658a60b8-84c9-4d4f-8bf8-b46163dc6447 as TRX-571C2E
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2D426A null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2D426A new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2D426A processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX d72f686d-d683-4f7f-aa07-51b298d932ce processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction d72f686d-d683-4f7f-aa07-51b298d932ce as TRX-2D426A
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-0BF05F null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-0BF05F new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-0BF05F processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 82af2b27-1434-424e-b291-e3802b5cfcf0 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 82af2b27-1434-424e-b291-e3802b5cfcf0 as TRX-0BF05F
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-5C9B54 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-5C9B54 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-5C9B54 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 193b4353-403a-472c-a69a-11178116dfc1 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 193b4353-403a-472c-a69a-11178116dfc1 as TRX-5C9B54
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-B089F9 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-B089F9 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-B089F9 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 6bf3ff54-0c8a-4d50-a14a-d6526df09cc3 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 6bf3ff54-0c8a-4d50-a14a-d6526df09cc3 as TRX-B089F9
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4BB497 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4BB497 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4BB497 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX cf6399fb-5a19-4be3-96b4-19046db1684c processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction cf6399fb-5a19-4be3-96b4-19046db1684c as TRX-4BB497
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-809179 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-809179 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-809179 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX a73c0afd-5cd3-4ec8-8e3a-ba5ef682b866 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction a73c0afd-5cd3-4ec8-8e3a-ba5ef682b866 as TRX-809179
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-1D5DAB null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-1D5DAB new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-1D5DAB processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 4ab7d4e3-73d1-497b-b18a-c97b67dcf14c processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 4ab7d4e3-73d1-497b-b18a-c97b67dcf14c as TRX-1D5DAB
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2892A1 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2892A1 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2892A1 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 949e3676-8b58-4363-ab0a-61b305f1c128 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 949e3676-8b58-4363-ab0a-61b305f1c128 as TRX-2892A1
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A8A17D null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A8A17D new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A8A17D processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX e142d801-7c89-4111-8e13-3f9878b7fd8f processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction e142d801-7c89-4111-8e13-3f9878b7fd8f as TRX-A8A17D
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A5E739 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A5E739 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A5E739 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX f2926d05-52d9-45f8-b283-6324bcdb88e5 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction f2926d05-52d9-45f8-b283-6324bcdb88e5 as TRX-A5E739
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-8A334C null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-8A334C new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-8A334C processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 34c62057-d4f9-4805-8e24-cdf4c364195c processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 34c62057-d4f9-4805-8e24-cdf4c364195c as TRX-8A334C
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4D3C52 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4D3C52 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4D3C52 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 5e06e009-afdc-4056-a3aa-30e533806ba1 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 5e06e009-afdc-4056-a3aa-30e533806ba1 as TRX-4D3C52
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C9E83B null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C9E83B new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C9E83B processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 6faa2f40-f0f7-49da-a067-5397efe477fb processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 6faa2f40-f0f7-49da-a067-5397efe477fb as TRX-C9E83B
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A0936D null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A0936D new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A0936D processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX ac22c8a4-0c5c-44fe-bcb9-93c0d671d9bb processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction ac22c8a4-0c5c-44fe-bcb9-93c0d671d9bb as TRX-A0936D
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-93606E null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-93606E new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-93606E processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX c4b404a4-8864-41d6-a44f-1a6a31a4746b processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction c4b404a4-8864-41d6-a44f-1a6a31a4746b as TRX-93606E
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-B3309A null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-B3309A new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-B3309A processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX d0149a34-35d2-4cd6-b694-524456fc464a processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction d0149a34-35d2-4cd6-b694-524456fc464a as TRX-B3309A
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-95BAD8 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-95BAD8 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-95BAD8 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX f3e91f19-3508-44a7-9155-394cbd7b4e61 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction f3e91f19-3508-44a7-9155-394cbd7b4e61 as TRX-95BAD8
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-0250A9 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-0250A9 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-0250A9 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 1db578e8-104a-4d53-9720-7f20167972d7 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 1db578e8-104a-4d53-9720-7f20167972d7 as TRX-0250A9
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D1FD02 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D1FD02 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D1FD02 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 201b4fb6-e141-4a3f-8953-e641189cad4d processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 201b4fb6-e141-4a3f-8953-e641189cad4d as TRX-D1FD02
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-DB0E46 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-DB0E46 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-DB0E46 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 479cf5ef-8e21-455a-8645-f5369f175d4a processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 479cf5ef-8e21-455a-8645-f5369f175d4a as TRX-DB0E46
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C7B175 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C7B175 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C7B175 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 5338a00e-0b20-4702-9754-08f895d52bcb processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 5338a00e-0b20-4702-9754-08f895d52bcb as TRX-C7B175
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-211A49 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-211A49 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-211A49 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 73b2de37-70a7-4ae3-a99b-2bad9867ee2a processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 73b2de37-70a7-4ae3-a99b-2bad9867ee2a as TRX-211A49
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-1FCCE8 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-1FCCE8 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-1FCCE8 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 7bdd80f4-a80b-4efb-93e6-99fc2ef18a2f processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 7bdd80f4-a80b-4efb-93e6-99fc2ef18a2f as TRX-1FCCE8
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-CB8F7F null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-CB8F7F new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-CB8F7F processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 06313a28-cee2-4ee7-8409-3ffdfd003263 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 06313a28-cee2-4ee7-8409-3ffdfd003263 as TRX-CB8F7F
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A967D7 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A967D7 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A967D7 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 20cb6d92-f9f2-407c-bd6c-523e23f72987 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 20cb6d92-f9f2-407c-bd6c-523e23f72987 as TRX-A967D7
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-AAF0C9 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-AAF0C9 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-AAF0C9 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 24446690-db48-4ba6-be37-7820f68c28bc processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 24446690-db48-4ba6-be37-7820f68c28bc as TRX-AAF0C9
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A0EDF4 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A0EDF4 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A0EDF4 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 38ab7a61-29b7-498f-84a8-29aef38935f1 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 38ab7a61-29b7-498f-84a8-29aef38935f1 as TRX-A0EDF4
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-844253 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-844253 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-844253 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 59686aa0-0e2f-4794-9752-88d6e7b89437 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 59686aa0-0e2f-4794-9752-88d6e7b89437 as TRX-844253
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-56CC44 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-56CC44 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-56CC44 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 7938dfab-9b3a-4525-a675-b7a95784f87f processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 7938dfab-9b3a-4525-a675-b7a95784f87f as TRX-56CC44
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2450F1 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2450F1 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2450F1 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 4c57fe23-1ba0-46ae-a468-0018b99d58d4 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 4c57fe23-1ba0-46ae-a468-0018b99d58d4 as TRX-2450F1
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-8A6246 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-8A6246 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-8A6246 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX eac5acf7-8765-4e3e-a61c-f93a9b07a192 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction eac5acf7-8765-4e3e-a61c-f93a9b07a192 as TRX-8A6246
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2C7164 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2C7164 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2C7164 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 118c302a-44b3-4054-a297-76408d9eb508 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 118c302a-44b3-4054-a297-76408d9eb508 as TRX-2C7164
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2C5626 null → new
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2C5626 new → processing
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2C5626 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 1d616677-0e37-460e-9100-3d052a26e9e1 processing → enriched
+INFO    14 Mar 2026 19:56:21 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 1d616677-0e37-460e-9100-3d052a26e9e1 as TRX-2C5626
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-34D3DA null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-34D3DA new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-34D3DA processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 2a55bfb2-0fc6-430c-83fc-a481820df446 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 2a55bfb2-0fc6-430c-83fc-a481820df446 as TRX-34D3DA
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-5D58DA null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-5D58DA new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-5D58DA processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 927842a6-6992-4485-ae47-0e903ff5929b processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 927842a6-6992-4485-ae47-0e903ff5929b as TRX-5D58DA
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-0AA280 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-0AA280 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-0AA280 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX af580f37-da39-4450-8936-3a21565303c2 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction af580f37-da39-4450-8936-3a21565303c2 as TRX-0AA280
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-E0C324 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-E0C324 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-E0C324 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX ba7210e5-a036-4df5-a09d-09cef07eb86b processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction ba7210e5-a036-4df5-a09d-09cef07eb86b as TRX-E0C324
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-EEB7CD null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-EEB7CD new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-EEB7CD processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX de9a9d3e-dcba-4b16-bade-e3ecf9abdb25 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction de9a9d3e-dcba-4b16-bade-e3ecf9abdb25 as TRX-EEB7CD
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C1C12F null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C1C12F new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C1C12F processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 45c9fc0a-9301-41c1-a980-3f858e17eab9 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 45c9fc0a-9301-41c1-a980-3f858e17eab9 as TRX-C1C12F
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-050E96 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-050E96 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-050E96 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 7f4c129a-74c4-4bbd-90f3-fbc1afdf1d4f processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 7f4c129a-74c4-4bbd-90f3-fbc1afdf1d4f as TRX-050E96
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-97AD4A null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-97AD4A new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-97AD4A processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX c019cd37-ff2f-48b5-892f-970d801caac2 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction c019cd37-ff2f-48b5-892f-970d801caac2 as TRX-97AD4A
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-565D40 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-565D40 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-565D40 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 1dd674d7-8978-44c8-a7ac-1d8ccbde0864 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 1dd674d7-8978-44c8-a7ac-1d8ccbde0864 as TRX-565D40
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-CA373C null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-CA373C new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-CA373C processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 5e57ddaf-eac3-4e75-9969-af8f7f9368f0 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 5e57ddaf-eac3-4e75-9969-af8f7f9368f0 as TRX-CA373C
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-691523 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-691523 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-691523 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX db40f7ab-5e68-4564-b60f-867de78340b0 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction db40f7ab-5e68-4564-b60f-867de78340b0 as TRX-691523
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-641A07 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-641A07 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-641A07 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX a36a7bf1-d43e-4048-b29b-6630b0c264b8 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction a36a7bf1-d43e-4048-b29b-6630b0c264b8 as TRX-641A07
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-AEDAAD null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-AEDAAD new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-AEDAAD processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX c2013e6c-28d1-47c4-bc65-1650241cb1fe processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction c2013e6c-28d1-47c4-bc65-1650241cb1fe as TRX-AEDAAD
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4B7EEF null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4B7EEF new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4B7EEF processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 139ed56b-7720-4a35-a7d5-6a5b662ac27a processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 139ed56b-7720-4a35-a7d5-6a5b662ac27a as TRX-4B7EEF
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-894D3F null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-894D3F new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-894D3F processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 4190eba1-30f1-450f-b6a5-d47520f8e8fb processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 4190eba1-30f1-450f-b6a5-d47520f8e8fb as TRX-894D3F
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D5AC48 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D5AC48 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D5AC48 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX 60b525ce-cf73-49ae-8bb9-43e53903a527 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 60b525ce-cf73-49ae-8bb9-43e53903a527 as TRX-D5AC48
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-8E9CE4 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-8E9CE4 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-8E9CE4 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: BANK_TRX c436e088-9c6c-4d6e-ba49-33cd6dfbfe5d processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction c436e088-9c6c-4d6e-ba49-33cd6dfbfe5d as TRX-8E9CE4
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: STATEMENT b28f2eac-7e13-4753-a879-2754ab1b8ada consolidated → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Updated statement b28f2eac-7e13-4753-a879-2754ab1b8ada metadata
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Statement b28f2eac-7e13-4753-a879-2754ab1b8ada processing complete: 120 success, 0 failures
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Processing statement ae9943fb-32c8-4413-918b-bba8df42df9f with 22 transactions
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: ost
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-59DB2F null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-59DB2F new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-59DB2F processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX 07a06c6a-21b8-4645-a996-cb0ec664ebc4 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 07a06c6a-21b8-4645-a996-cb0ec664ebc4 as TRX-59DB2F
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: ost
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-1F9396 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-1F9396 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-1F9396 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX 7027b488-e2ff-403a-acab-318f85a2915e processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 7027b488-e2ff-403a-acab-318f85a2915e as TRX-1F9396
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: ost
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-12251C null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-12251C new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-12251C processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX 8f77d162-5a42-4544-9387-ba6e65f17882 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 8f77d162-5a42-4544-9387-ba6e65f17882 as TRX-12251C
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: split+
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-E959C3 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-E959C3 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-E959C3 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX 3255bc05-5a2e-4d6c-af73-507d4b0dde15 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 3255bc05-5a2e-4d6c-af73-507d4b0dde15 as TRX-E959C3
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: split-
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-079B71 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-079B71 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-079B71 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX 7cee3500-7194-4ded-94a1-9f5856154204 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 7cee3500-7194-4ded-94a1-9f5856154204 as TRX-079B71
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: ost
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-34669B null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-34669B new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-34669B processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX 47f8d3f7-b96c-485f-a870-32c4c1ba2788 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 47f8d3f7-b96c-485f-a870-32c4c1ba2788 as TRX-34669B
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: ost
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-060C52 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-060C52 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-060C52 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX 32af9171-9bcb-45cf-a97d-6d292c2ebe58 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 32af9171-9bcb-45cf-a97d-6d292c2ebe58 as TRX-060C52
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: müük
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3A9072 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3A9072 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3A9072 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX da4f4203-10e4-40f8-a28f-e62dcb2f5579 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction da4f4203-10e4-40f8-a28f-e62dcb2f5579 as TRX-3A9072
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: ost
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3633FB null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3633FB new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3633FB processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX 2f77893e-e7fb-4a59-8901-0b91c97ef623 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 2f77893e-e7fb-4a59-8901-0b91c97ef623 as TRX-3633FB
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: ost
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-56E1F3 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-56E1F3 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-56E1F3 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX 5fc571d6-e6f3-4b0e-87b3-0e353e2dfd23 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 5fc571d6-e6f3-4b0e-87b3-0e353e2dfd23 as TRX-56E1F3
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: ost
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D2BCD0 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D2BCD0 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D2BCD0 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX a8ab0ba4-815a-4969-9b53-884f50eb2f55 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction a8ab0ba4-815a-4969-9b53-884f50eb2f55 as TRX-D2BCD0
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: müük
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-19D264 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-19D264 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-19D264 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX 357c9253-7f5e-47e7-813c-64c4a08c06a4 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 357c9253-7f5e-47e7-813c-64c4a08c06a4 as TRX-19D264
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: müük
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-FB1044 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-FB1044 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-FB1044 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX 707713dd-ab8e-41a9-893e-6d14180c8ad7 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 707713dd-ab8e-41a9-893e-6d14180c8ad7 as TRX-FB1044
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: ost
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C180B4 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C180B4 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C180B4 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX 7183b787-2c56-41e4-979c-db9b08087562 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 7183b787-2c56-41e4-979c-db9b08087562 as TRX-C180B4
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: müük
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-798463 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-798463 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-798463 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX 12eccf4a-ae1d-46dc-9553-b76f9745bafd processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 12eccf4a-ae1d-46dc-9553-b76f9745bafd as TRX-798463
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: müük
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-6D15EE null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-6D15EE new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-6D15EE processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX 59c94b53-a1dc-4211-a914-0e83a824bbee processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 59c94b53-a1dc-4211-a914-0e83a824bbee as TRX-6D15EE
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: müük
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-BBC537 null → new
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-BBC537 new → processing
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-BBC537 processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX e0fdfe99-b6c5-4f80-b33c-acfffead117c processing → enriched
+INFO    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction e0fdfe99-b6c5-4f80-b33c-acfffead117c as TRX-BBC537
+WARN    14 Mar 2026 19:56:22 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: ost
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4BA044 null → new
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4BA044 new → processing
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4BA044 processing → enriched
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX 963807cb-b78d-44dd-9114-0a008070d53d processing → enriched
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction 963807cb-b78d-44dd-9114-0a008070d53d as TRX-4BA044
+WARN    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: ost
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-24F226 null → new
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-24F226 new → processing
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-24F226 processing → enriched
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX a5d5386a-74ff-411b-be2a-8f4225042da6 processing → enriched
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction a5d5386a-74ff-411b-be2a-8f4225042da6 as TRX-24F226
+WARN    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: ost
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-F760C7 null → new
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-F760C7 new → processing
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-F760C7 processing → enriched
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX e6081d3a-f3fc-46fa-979d-c7279039a879 processing → enriched
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction e6081d3a-f3fc-46fa-979d-c7279039a879 as TRX-F760C7
+WARN    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: ost
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D5C8CC null → new
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D5C8CC new → processing
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D5C8CC processing → enriched
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX d8d2669a-9a14-4fa7-83f9-19667c68fc43 processing → enriched
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction d8d2669a-9a14-4fa7-83f9-19667c68fc43 as TRX-D5C8CC
+WARN    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Using hardcoded D/C fallback for securities type: ost
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-576A3C null → new
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-576A3C new → processing
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-576A3C processing → enriched
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: SECU_TRX e3bf77f5-cb05-46aa-90d4-41591fea877f processing → enriched
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Successfully persisted transaction e3bf77f5-cb05-46aa-90d4-41591fea877f as TRX-576A3C
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: STATEMENT ae9943fb-32c8-4413-918b-bba8df42df9f consolidated → enriched
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Updated statement ae9943fb-32c8-4413-918b-bba8df42df9f metadata
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - Statement ae9943fb-32c8-4413-918b-bba8df42df9f processing complete: 22 success, 0 failures
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - ========================================
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - BATCH PERSISTENCE COMPLETE
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister -   Total records: 142
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister -   Successful: 142
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister -   Failed: 0
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister -   Statements processed: 0
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister -   Statements with errors: 0
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.persister.EnrichmentDataPersister - ========================================
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.lib.RowsEnricher - Created 22 PORTFOLIO_ALLOCATION_REQUIRED exceptions for secu ENRICHED records
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Pairing candidates: 20 secu records, 120 bank records
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Bank combo index built with 13 distinct date keys
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Bank fee index built: 17 COMM_FEE records across 13 distinct date keys
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-060C52 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3EA4AE enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-14F87C enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-060C52 with bank=TRX-3EA4AE (amount=-7257.25, date=2024-06-20, fee=TRX-14F87C, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-12251C enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-B9A8F4 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-46C322 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-12251C with bank=TRX-B9A8F4 (amount=-2123.70, date=2024-06-07, fee=TRX-46C322, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-19D264 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C9E83B enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-93606E enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-19D264 with bank=TRX-C9E83B (amount=12550.56, date=2024-07-19, fee=TRX-93606E, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-1F9396 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-85EDBB enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-1F9396 with bank=TRX-85EDBB (amount=-8050.00, date=2024-06-07, fee=none, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-24F226 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-641A07 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-AEDAAD enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-24F226 with bank=TRX-641A07 (amount=-9169.65, date=2024-07-31, fee=TRX-AEDAAD, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-34669B enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-190DBB enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-71AB2F enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-34669B with bank=TRX-190DBB (amount=-10167.80, date=2024-06-19, fee=TRX-71AB2F, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3633FB enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-B1783B enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-A43488 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-3633FB with bank=TRX-B1783B (amount=-14200.00, date=2024-06-28, fee=TRX-A43488, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3A9072 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-3AEC9E enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-0B530A enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-3A9072 with bank=TRX-3AEC9E (amount=12250.00, date=2024-06-26, fee=TRX-0B530A, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4BA044 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-691523 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-CA373C enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-4BA044 with bank=TRX-691523 (amount=-4122.50, date=2024-07-30, fee=TRX-CA373C, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-56E1F3 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-5C9B54 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4BB497 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-56E1F3 with bank=TRX-5C9B54 (amount=-11318.00, date=2024-07-12, fee=TRX-4BB497, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-59DB2F enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-878E70 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C42C0D enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-59DB2F with bank=TRX-878E70 (amount=-3429.00, date=2024-06-07, fee=TRX-C42C0D, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-6D15EE enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2C5626 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-E0C324 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-6D15EE with bank=TRX-2C5626 (amount=11198.91, date=2024-07-26, fee=TRX-E0C324, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-798463 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-2C7164 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-0AA280 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-798463 with bank=TRX-2C7164 (amount=21425.04, date=2024-07-26, fee=TRX-0AA280, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-BBC537 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-5D58DA enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-34D3DA enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-BBC537 with bank=TRX-5D58DA (amount=9397.80, date=2024-07-26, fee=TRX-34D3DA, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C180B4 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D1FD02 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-C7B175 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-C180B4 with bank=TRX-D1FD02 (amount=-1872.42, date=2024-07-19, fee=TRX-C7B175, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-D2BCD0 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-8A334C enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-4D3C52 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-D2BCD0 with bank=TRX-8A334C (amount=-20635.56, date=2024-07-18, fee=TRX-4D3C52, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-FB1044 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-B3309A enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.framework.status.StatusManager - Status transition: ENRICHMENT TRX-95BAD8 enriched → paired
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Paired: secu=TRX-FB1044 with bank=TRX-B3309A (amount=2510.00, date=2024-07-19, fee=TRX-95BAD8, status=AUTO_ACCEPTED)
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.steps.TransactionPairingStep - Pairing complete: 17 pairs created
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.lib.RowsEnricher - Cross-statement pairing: 17 pairs created
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.lib.RowsEnricher - ========================================
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.lib.RowsEnricher - PERSISTENCE PHASE COMPLETE
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.lib.RowsEnricher -   Records persisted: 142
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.lib.RowsEnricher -   Records failed: 0
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.lib.RowsEnricher -   Statements processed: 0
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.lib.RowsEnricher -   Statements with errors: 0
+INFO    14 Mar 2026 19:56:23 com.fiscaladmin.gam.enrichrows.lib.RowsEnricher - ========================================
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - resolveCustomerCodes: 100 records, 33 resolved_customer_id values to look up
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: resolving 33 values, first=400caed8-5799-4654-a8dc-8e37122e9432
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=400caed8-5799-4654-a8dc-8e37122e9432 → found by PK, code=12066010
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=22334455 → found by customerId field, code=22334455
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=868d43b4-ea08-457d-b23c-ec279fa7b4f4 → found by PK, code=16765288
+WARN    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=12587301 → not found by PK or customerId; using raw value as customer_code
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=ce733a67-492a-42d3-b3bf-42f4af41f20f → found by PK, code=37612110236
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=1a23f778-aeef-4ad1-bece-f849c1f0e511 → found by PK, code=80212743
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=40a6ffde-93e8-40ce-a669-c0be0617b45f → found by PK, code=11663703
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=59b64494-f256-472f-b216-e236e316939d → found by PK, code=12345678
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=0205a19f-a671-44e1-88af-c5592c8947e3 → found by PK, code=38605080281
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=3b0a7e00-8289-406a-bc4e-e36271d7f62c → found by PK, code=14002051
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=46fedf97-7c71-409c-bf18-4fc1ce8c1c6a → found by PK, code=10452393
+WARN    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=80064081 → not found by PK or customerId; using raw value as customer_code
+WARN    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=14109030 → not found by PK or customerId; using raw value as customer_code
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=37612110236 → found by customerId field, code=37612110236
+WARN    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=16104298 → not found by PK or customerId; using raw value as customer_code
+WARN    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=16201455 → not found by PK or customerId; using raw value as customer_code
+WARN    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=DEF20188 → not found by PK or customerId; using raw value as customer_code
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=c5743a32-ec47-4737-97d8-3ff405cef25b → found by PK, code=10242081
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=87654321 → found by customerId field, code=87654321
+WARN    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=14701192 → not found by PK or customerId; using raw value as customer_code
+WARN    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=14823917 → not found by PK or customerId; using raw value as customer_code
+WARN    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=80255990 → not found by PK or customerId; using raw value as customer_code
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=5779a61a-fa82-4d91-96ec-d90e4c033bdb → found by PK, code=80212957
+WARN    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=16330081 → not found by PK or customerId; using raw value as customer_code
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=e3d1eda7-c440-4f40-af64-e2bfdf4cce00 → found by PK, code=80207034
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=9bedc522-6a94-4baa-beb3-11856e990505 → found by PK, code=80205779
+WARN    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=CHE10233 → not found by PK or customerId; using raw value as customer_code
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=13e2408b-4180-429d-8ce0-a78531fa9fa8 → found by PK, code=11929756
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=197a7577-238b-4f4b-b167-e430d87b0273 → found by PK, code=39902140821
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=14002051 → found by customerId field, code=14002051
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=11223344 → found by customerId field, code=11223344
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=98765432 → found by customerId field, code=98765432
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=056895df-d730-4df3-9f85-4c3371276ea8 → found by PK, code=12011397
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: resolved 33/33
+INFO    14 Mar 2026 19:56:34 org.joget.gam.enrichment.api.EnrichmentApiPlugin - resolveCustomerCodes: applied 56 codes
+INFO    14 Mar 2026 19:56:43 org.joget.gam.enrichment.api.EnrichmentApiPlugin - resolveCustomerCodes: 22 records, 0 resolved_customer_id values to look up
+INFO    14 Mar 2026 19:56:49 org.joget.gam.enrichment.api.EnrichmentApiPlugin - ValidationConfig parsed (hash=0)
+INFO    14 Mar 2026 19:56:49 org.joget.gam.enrichment.api.EnrichmentApiPlugin - ValidationConfig parsed (hash=0)
+INFO    14 Mar 2026 19:57:00 org.joget.gam.enrichment.api.EnrichmentApiPlugin - ValidationConfig parsed (hash=0)
+INFO    14 Mar 2026 19:57:00 org.joget.gam.enrichment.api.EnrichmentApiPlugin - ValidationConfig parsed (hash=0)
+INFO    14 Mar 2026 19:57:00 org.joget.gam.enrichment.api.EnrichmentApiPlugin - ValidationConfig parsed (hash=0)
+INFO    14 Mar 2026 19:57:17 org.joget.gam.enrichment.api.EnrichmentApiPlugin - ValidationConfig parsed (hash=0)
+ERROR   14 Mar 2026 19:57:17 org.joget.gam.enrichment.api.EnrichmentApiPlugin - allocateTrade failed
+java.sql.SQLException: Allocation failed: ID generation failed for format 'LOT-??????' (env var: allocationLotCounter): jdk.proxy3.$Proxy143.getIncrementedValue(java.lang.String)
+	at org.joget.gam.enrichment.service.EnrichmentService.allocateTrade(EnrichmentService.java:1453) ~[enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at org.joget.gam.enrichment.api.EnrichmentApiPlugin.handleAllocateTrade(EnrichmentApiPlugin.java:1487) [enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at org.joget.gam.enrichment.api.EnrichmentApiPlugin.dispatchSaveParam(EnrichmentApiPlugin.java:994) [enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at org.joget.gam.enrichment.api.EnrichmentApiPlugin.records(EnrichmentApiPlugin.java:249) [enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.joget.api.service.ApiBuilder.runOperation(ApiBuilder.java:1418) [apibuilder_plugins-7.0.4.jar:?]
+	at org.joget.api.service.ApiBuilder.runOperation(ApiBuilder.java:1259) [apibuilder_plugins-7.0.4.jar:?]
+	at org.joget.api.service.ApiBuilder.serveApi(ApiBuilder.java:734) [apibuilder_plugins-7.0.4.jar:?]
+	at org.joget.api.service.ApiBuilder.getBuilderResult(ApiBuilder.java:252) [apibuilder_plugins-7.0.4.jar:?]
+	at org.joget.apps.app.web.ApiServlet.service(ApiServlet.java:42) [classes/:?]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) [servlet-api.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) [tomcat-websocket.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.springframework.web.multipart.support.MultipartFilter.doFilterInternal(MultipartFilter.java:125) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:352) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:117) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:83) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.joget.apps.workflow.security.WorkflowHttpAuthProcessingFilter.doFilter(WorkflowHttpAuthProcessingFilter.java:88) [classes/:?]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:168) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:117) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:225) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:190) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) [spring-web-5.3.39.jar:5.3.39]
+	at org.joget.commons.spring.web.CustomDelegatingFilterProxy.doFilter(CustomDelegatingFilterProxy.java:31) [classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.joget.apps.app.web.ExpireFilter.doFilter(ExpireFilter.java:48) [classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.3.39.jar:5.3.39]
+	at org.joget.apps.app.web.CustomCharacterEncodingFilter.doFilterInternal(CustomCharacterEncodingFilter.java:50) [classes/:?]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) [catalina.jar:9.0.90]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) [catalina.jar:9.0.90]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [catalina.jar:9.0.90]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346) [catalina.jar:9.0.90]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:388) [tomcat-coyote.jar:9.0.90]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) [tomcat-coyote.jar:9.0.90]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:936) [tomcat-coyote.jar:9.0.90]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) [tomcat-coyote.jar:9.0.90]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) [tomcat-coyote.jar:9.0.90]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) [tomcat-util.jar:9.0.90]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-util.jar:9.0.90]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) [tomcat-util.jar:9.0.90]
+	at java.base/java.lang.Thread.run(Thread.java:842) [?:?]
+Caused by: java.lang.RuntimeException: ID generation failed for format 'LOT-??????' (env var: allocationLotCounter): jdk.proxy3.$Proxy143.getIncrementedValue(java.lang.String)
+	at org.joget.gam.enrichment.service.EnrichmentService.generateId(EnrichmentService.java:1484) ~[enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at org.joget.gam.enrichment.service.EnrichmentService.allocateTrade(EnrichmentService.java:1237) ~[enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	... 93 more
+Caused by: java.lang.NoSuchMethodException: jdk.proxy3.$Proxy143.getIncrementedValue(java.lang.String)
+	at java.base/java.lang.Class.getMethod(Class.java:2227) ~[?:?]
+	at org.joget.gam.enrichment.service.EnrichmentService.generateId(EnrichmentService.java:1468) ~[enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at org.joget.gam.enrichment.service.EnrichmentService.allocateTrade(EnrichmentService.java:1237) ~[enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	... 93 more
+INFO    14 Mar 2026 19:57:25 org.joget.gam.enrichment.api.EnrichmentApiPlugin - resolveCustomerCodes: 22 records, 0 resolved_customer_id values to look up
+INFO    14 Mar 2026 19:57:44 org.joget.gam.enrichment.api.EnrichmentApiPlugin - ValidationConfig parsed (hash=0)
+INFO    14 Mar 2026 19:57:44 org.joget.gam.enrichment.api.EnrichmentApiPlugin - ValidationConfig parsed (hash=0)
+INFO    14 Mar 2026 19:57:45 org.joget.gam.enrichment.api.EnrichmentApiPlugin - ValidationConfig parsed (hash=0)
+INFO    14 Mar 2026 19:57:55 org.joget.gam.enrichment.api.EnrichmentApiPlugin - ValidationConfig parsed (hash=0)
+ERROR   14 Mar 2026 19:57:55 org.joget.gam.enrichment.api.EnrichmentApiPlugin - allocateTrade failed
+java.sql.SQLException: Allocation failed: ID generation failed for format 'LOT-??????' (env var: allocationLotCounter): jdk.proxy3.$Proxy143.getIncrementedValue(java.lang.String)
+	at org.joget.gam.enrichment.service.EnrichmentService.allocateTrade(EnrichmentService.java:1453) ~[enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at org.joget.gam.enrichment.api.EnrichmentApiPlugin.handleAllocateTrade(EnrichmentApiPlugin.java:1487) [enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at org.joget.gam.enrichment.api.EnrichmentApiPlugin.dispatchSaveParam(EnrichmentApiPlugin.java:994) [enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at org.joget.gam.enrichment.api.EnrichmentApiPlugin.records(EnrichmentApiPlugin.java:249) [enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.joget.api.service.ApiBuilder.runOperation(ApiBuilder.java:1418) [apibuilder_plugins-7.0.4.jar:?]
+	at org.joget.api.service.ApiBuilder.runOperation(ApiBuilder.java:1259) [apibuilder_plugins-7.0.4.jar:?]
+	at org.joget.api.service.ApiBuilder.serveApi(ApiBuilder.java:734) [apibuilder_plugins-7.0.4.jar:?]
+	at org.joget.api.service.ApiBuilder.getBuilderResult(ApiBuilder.java:252) [apibuilder_plugins-7.0.4.jar:?]
+	at org.joget.apps.app.web.ApiServlet.service(ApiServlet.java:42) [classes/:?]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) [servlet-api.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) [tomcat-websocket.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.springframework.web.multipart.support.MultipartFilter.doFilterInternal(MultipartFilter.java:125) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:352) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:117) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:83) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.joget.apps.workflow.security.WorkflowHttpAuthProcessingFilter.doFilter(WorkflowHttpAuthProcessingFilter.java:88) [classes/:?]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:168) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:117) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:225) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:190) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) [spring-web-5.3.39.jar:5.3.39]
+	at org.joget.commons.spring.web.CustomDelegatingFilterProxy.doFilter(CustomDelegatingFilterProxy.java:31) [classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.joget.apps.app.web.ExpireFilter.doFilter(ExpireFilter.java:48) [classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.3.39.jar:5.3.39]
+	at org.joget.apps.app.web.CustomCharacterEncodingFilter.doFilterInternal(CustomCharacterEncodingFilter.java:50) [classes/:?]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) [catalina.jar:9.0.90]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) [catalina.jar:9.0.90]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [catalina.jar:9.0.90]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346) [catalina.jar:9.0.90]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:388) [tomcat-coyote.jar:9.0.90]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) [tomcat-coyote.jar:9.0.90]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:936) [tomcat-coyote.jar:9.0.90]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) [tomcat-coyote.jar:9.0.90]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) [tomcat-coyote.jar:9.0.90]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) [tomcat-util.jar:9.0.90]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-util.jar:9.0.90]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) [tomcat-util.jar:9.0.90]
+	at java.base/java.lang.Thread.run(Thread.java:842) [?:?]
+Caused by: java.lang.RuntimeException: ID generation failed for format 'LOT-??????' (env var: allocationLotCounter): jdk.proxy3.$Proxy143.getIncrementedValue(java.lang.String)
+	at org.joget.gam.enrichment.service.EnrichmentService.generateId(EnrichmentService.java:1484) ~[enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at org.joget.gam.enrichment.service.EnrichmentService.allocateTrade(EnrichmentService.java:1237) ~[enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	... 93 more
+Caused by: java.lang.NoSuchMethodException: jdk.proxy3.$Proxy143.getIncrementedValue(java.lang.String)
+	at java.base/java.lang.Class.getMethod(Class.java:2227) ~[?:?]
+	at org.joget.gam.enrichment.service.EnrichmentService.generateId(EnrichmentService.java:1468) ~[enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at org.joget.gam.enrichment.service.EnrichmentService.allocateTrade(EnrichmentService.java:1237) ~[enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	... 93 more
+INFO    14 Mar 2026 20:16:36 org.joget.plugin.base.PluginManager - Bundle org.joget.gam.enrichment-api started
+INFO    14 Mar 2026 20:16:36 org.joget.plugin.base.PluginManager - admin installed plugin (enrichment-api-8.1.0-SNAPSHOT.jar).
+INFO    14 Mar 2026 20:16:55 org.joget.plugin.base.PluginManager - Bundle org.joget.gam.enrichment-workspace started
+INFO    14 Mar 2026 20:16:55 org.joget.plugin.base.PluginManager - admin installed plugin (enrichment-workspace-8.1.0-SNAPSHOT.jar).
+INFO    14 Mar 2026 20:17:09 org.joget.gam.enrichment.api.EnrichmentApiPlugin - resolveCustomerCodes: 22 records, 0 resolved_customer_id values to look up
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - resolveCustomerCodes: 100 records, 33 resolved_customer_id values to look up
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: resolving 33 values, first=400caed8-5799-4654-a8dc-8e37122e9432
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=400caed8-5799-4654-a8dc-8e37122e9432 → found by PK, code=12066010
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=22334455 → found by customerId field, code=22334455
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=868d43b4-ea08-457d-b23c-ec279fa7b4f4 → found by PK, code=16765288
+WARN    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=12587301 → not found by PK or customerId; using raw value as customer_code
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=ce733a67-492a-42d3-b3bf-42f4af41f20f → found by PK, code=37612110236
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=1a23f778-aeef-4ad1-bece-f849c1f0e511 → found by PK, code=80212743
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=40a6ffde-93e8-40ce-a669-c0be0617b45f → found by PK, code=11663703
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=59b64494-f256-472f-b216-e236e316939d → found by PK, code=12345678
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=0205a19f-a671-44e1-88af-c5592c8947e3 → found by PK, code=38605080281
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=3b0a7e00-8289-406a-bc4e-e36271d7f62c → found by PK, code=14002051
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=46fedf97-7c71-409c-bf18-4fc1ce8c1c6a → found by PK, code=10452393
+WARN    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=80064081 → not found by PK or customerId; using raw value as customer_code
+WARN    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=14109030 → not found by PK or customerId; using raw value as customer_code
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=37612110236 → found by customerId field, code=37612110236
+WARN    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=16104298 → not found by PK or customerId; using raw value as customer_code
+WARN    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=16201455 → not found by PK or customerId; using raw value as customer_code
+WARN    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=DEF20188 → not found by PK or customerId; using raw value as customer_code
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=c5743a32-ec47-4737-97d8-3ff405cef25b → found by PK, code=10242081
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=87654321 → found by customerId field, code=87654321
+WARN    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=14701192 → not found by PK or customerId; using raw value as customer_code
+WARN    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=14823917 → not found by PK or customerId; using raw value as customer_code
+WARN    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=80255990 → not found by PK or customerId; using raw value as customer_code
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=5779a61a-fa82-4d91-96ec-d90e4c033bdb → found by PK, code=80212957
+WARN    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=16330081 → not found by PK or customerId; using raw value as customer_code
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=e3d1eda7-c440-4f40-af64-e2bfdf4cce00 → found by PK, code=80207034
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=9bedc522-6a94-4baa-beb3-11856e990505 → found by PK, code=80205779
+WARN    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=CHE10233 → not found by PK or customerId; using raw value as customer_code
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=13e2408b-4180-429d-8ce0-a78531fa9fa8 → found by PK, code=11929756
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=197a7577-238b-4f4b-b167-e430d87b0273 → found by PK, code=39902140821
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=14002051 → found by customerId field, code=14002051
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=11223344 → found by customerId field, code=11223344
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=98765432 → found by customerId field, code=98765432
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: id=056895df-d730-4df3-9f85-4c3371276ea8 → found by PK, code=12011397
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - lookupCustomerCodes: resolved 33/33
+INFO    14 Mar 2026 20:17:12 org.joget.gam.enrichment.api.EnrichmentApiPlugin - resolveCustomerCodes: applied 56 codes
+INFO    14 Mar 2026 20:17:19 org.joget.gam.enrichment.api.EnrichmentApiPlugin - resolveCustomerCodes: 22 records, 0 resolved_customer_id values to look up
+INFO    14 Mar 2026 20:17:25 org.joget.gam.enrichment.api.EnrichmentApiPlugin - ValidationConfig parsed (hash=0)
+INFO    14 Mar 2026 20:17:25 org.joget.gam.enrichment.api.EnrichmentApiPlugin - ValidationConfig parsed (hash=0)
+INFO    14 Mar 2026 20:17:25 org.joget.gam.enrichment.api.EnrichmentApiPlugin - ValidationConfig parsed (hash=0)
+INFO    14 Mar 2026 20:17:36 org.joget.gam.enrichment.api.EnrichmentApiPlugin - ValidationConfig parsed (hash=0)
+ERROR   14 Mar 2026 20:17:36 org.joget.gam.enrichment.api.EnrichmentApiPlugin - allocateTrade failed
+java.sql.SQLException: Allocation failed: ID generation failed for format 'LOT-??????' (env var: allocationLotCounter): getIncrementedValue(String) not found on jdk.proxy3.$Proxy143
+	at org.joget.gam.enrichment.service.EnrichmentService.allocateTrade(EnrichmentService.java:1453) ~[enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at org.joget.gam.enrichment.api.EnrichmentApiPlugin.handleAllocateTrade(EnrichmentApiPlugin.java:1487) [enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at org.joget.gam.enrichment.api.EnrichmentApiPlugin.dispatchSaveParam(EnrichmentApiPlugin.java:994) [enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at org.joget.gam.enrichment.api.EnrichmentApiPlugin.records(EnrichmentApiPlugin.java:249) [enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.joget.api.service.ApiBuilder.runOperation(ApiBuilder.java:1418) [apibuilder_plugins-7.0.4.jar:?]
+	at org.joget.api.service.ApiBuilder.runOperation(ApiBuilder.java:1259) [apibuilder_plugins-7.0.4.jar:?]
+	at org.joget.api.service.ApiBuilder.serveApi(ApiBuilder.java:734) [apibuilder_plugins-7.0.4.jar:?]
+	at org.joget.api.service.ApiBuilder.getBuilderResult(ApiBuilder.java:252) [apibuilder_plugins-7.0.4.jar:?]
+	at org.joget.apps.app.web.ApiServlet.service(ApiServlet.java:42) [classes/:?]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) [servlet-api.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) [tomcat-websocket.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.springframework.web.multipart.support.MultipartFilter.doFilterInternal(MultipartFilter.java:125) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:352) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:117) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:83) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.joget.apps.workflow.security.WorkflowHttpAuthProcessingFilter.doFilter(WorkflowHttpAuthProcessingFilter.java:88) [classes/:?]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:168) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:117) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:87) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:361) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:225) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:190) [spring-security-web-5.8.12.jar:5.8.12]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) [spring-web-5.3.39.jar:5.3.39]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) [spring-web-5.3.39.jar:5.3.39]
+	at org.joget.commons.spring.web.CustomDelegatingFilterProxy.doFilter(CustomDelegatingFilterProxy.java:31) [classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.joget.apps.app.web.ExpireFilter.doFilter(ExpireFilter.java:48) [classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.3.39.jar:5.3.39]
+	at org.joget.apps.app.web.CustomCharacterEncodingFilter.doFilterInternal(CustomCharacterEncodingFilter.java:50) [classes/:?]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.39.jar:5.3.39]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) [catalina.jar:9.0.90]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) [catalina.jar:9.0.90]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) [catalina.jar:9.0.90]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [catalina.jar:9.0.90]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346) [catalina.jar:9.0.90]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:388) [tomcat-coyote.jar:9.0.90]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) [tomcat-coyote.jar:9.0.90]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:936) [tomcat-coyote.jar:9.0.90]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) [tomcat-coyote.jar:9.0.90]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) [tomcat-coyote.jar:9.0.90]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) [tomcat-util.jar:9.0.90]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-util.jar:9.0.90]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) [tomcat-util.jar:9.0.90]
+	at java.base/java.lang.Thread.run(Thread.java:842) [?:?]
+Caused by: java.lang.RuntimeException: ID generation failed for format 'LOT-??????' (env var: allocationLotCounter): getIncrementedValue(String) not found on jdk.proxy3.$Proxy143
+	at org.joget.gam.enrichment.service.EnrichmentService.generateId(EnrichmentService.java:1498) ~[enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at org.joget.gam.enrichment.service.EnrichmentService.allocateTrade(EnrichmentService.java:1237) ~[enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	... 93 more
+Caused by: java.lang.NoSuchMethodException: getIncrementedValue(String) not found on jdk.proxy3.$Proxy143
+	at org.joget.gam.enrichment.service.EnrichmentService.generateId(EnrichmentService.java:1481) ~[enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	at org.joget.gam.enrichment.service.EnrichmentService.allocateTrade(EnrichmentService.java:1237) ~[enrichment-api-8.1.0-SNAPSHOT.jar:?]
+	... 93 more
