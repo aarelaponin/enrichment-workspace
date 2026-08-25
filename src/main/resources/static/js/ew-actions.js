@@ -79,7 +79,6 @@
                 { id: 'flipDC', icon: 'fas fa-exchange-alt', label: 'Flip D/C' },
                 { type: 'separator' },
                 { id: 'fxOverride', icon: 'fas fa-euro-sign', label: 'FX Override' },
-                { id: 'glOverride', icon: 'fas fa-book', label: 'GL Override' },
                 { type: 'separator' },
                 { id: 'linkLoan', icon: 'fas fa-link', label: 'Link Loan Contract', needsLoan: true },
                 { id: 'allocFund', icon: 'fas fa-chart-pie', label: 'Allocate to Investors', needsFund: true },
