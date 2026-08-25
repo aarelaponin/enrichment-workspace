@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EW JS Unit Tests</title>
+<style>
+body{font-family:'Segoe UI',system-ui,sans-serif;padding:24px;background:#f8fafc}
+h1{font-size:1.2em;margin:0 0 16px}
+.pass{color:#16a34a;font-weight:600}.fail{color:#dc2626;font-weight:600}
+.result{padding:6px 12px;border-bottom:1px solid #e2e8f0;font-size:.9em}
+.result .err{font-size:.8em;color:#dc2626;margin-top:2px}
+.summary{padding:12px;margin-top:16px;border-radius:6px;font-weight:700}
+.summary.ok{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+.summary.bad{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+</style>
+</head>
+<body>
+<h1>Enrichment Workspace — JS Unit Tests</h1>
+<div id="results"></div>
+<div id="summary"></div>
+
+<!-- Load modules under test (same order as production) -->
+<script>
+// Minimal EW_CONFIG stub
+window.EW_CONFIG = { apiBase: '/test', apiId: 'test', apiKey: 'test', statementId: '', pageSize: 20, version: '2.0.2' };
+</script>
+<script src="../../main/resources/static/js/ew-config.js"></script>
+
+<script>
+// ─── Test framework ──────────────────────────────────────────────────────
+var results = [];
+
+function test(name, fn) {
+    try {
+        fn();
+        results.push({ pass: true, name: name, error: null });
+    } catch (e) {
+        results.push({ pass: false, name: name, error: e.message || String(e) });
+    }
+}
+
+function assertEqual(actual, expected, msg) {
+    if (actual !== expected) {
+        throw new Error((msg || '') + ' Expected: ' + JSON.stringify(expected) + ', got: ' + JSON.stringify(actual));
+    }
+}
+
+function assertTrue(val, msg) {
+    if (!val) throw new Error(msg || 'Expected truthy value, got: ' + val);
+}
+
+function assertFalse(val, msg) {
+    if (val) throw new Error(msg || 'Expected falsy value, got: ' + val);
+}
+
+function assertContains(arr, item, msg) {
+    if (arr.indexOf(item) === -1) throw new Error(msg || 'Array does not contain: ' + item);
+}
+
+// ─── Type badge category mapping (TY_CAT) ──────────────────────────────
+var TY_CAT = {
+    LOAN_PAYMENT: 'loan', LOAN_DISBURSEMENT: 'loan', INT_INCOME: 'loan', INT_EXPENSE: 'loan',
+    SEC_BUY: 'sec', SEC_SELL: 'sec', EQ_BUY: 'sec', EQ_SELL: 'sec',
+    BOND_BUY: 'sec', BOND_INT: 'sec', SPLIT_IN: 'sec', SPLIT_OUT: 'sec',
+    DIV_INCOME: 'fund', DIV_TAX: 'fund', ASSET_RETURN: 'fund', INV_INCOME: 'fund',
+    FX_EXCHANGE: 'fx',
+    COMM_FEE: 'fee', MGMT_FEE: 'fee', ADMIN_FEE: 'fee', LEGAL_FEE: 'fee', TAX: 'fee'
+};
+
+test('TY_CAT: LOAN_PAYMENT → loan', function() {
+    assertEqual(TY_CAT['LOAN_PAYMENT'], 'loan');
+});
+test('TY_CAT: SEC_BUY → sec', function() {
+    assertEqual(TY_CAT['SEC_BUY'], 'sec');
+});
+test('TY_CAT: DIV_INCOME → fund', function() {
+    assertEqual(TY_CAT['DIV_INCOME'], 'fund');
+});
+test('TY_CAT: FX_EXCHANGE → fx', function() {
+    assertEqual(TY_CAT['FX_EXCHANGE'], 'fx');
+});
+test('TY_CAT: COMM_FEE → fee', function() {
+    assertEqual(TY_CAT['COMM_FEE'], 'fee');
+});
+test('TY_CAT: unknown type → undefined', function() {
+    assertEqual(TY_CAT['UNKNOWN_TYPE'], undefined);
+});
+
+// ─── Status editability ─────────────────────────────────────────────────
+var EDITABLE_STATUSES = {
+    enriched: true, error: true, manual_review: true, in_review: true,
+    adjusted: true, ready: true, paired: true, processing: true
+};
+function isEditable(st) { return EDITABLE_STATUSES[st] === true; }
+
+test('isEditable: enriched → true', function() { assertTrue(isEditable('enriched')); });
+test('isEditable: ready → true', function() { assertTrue(isEditable('ready')); });
+test('isEditable: confirmed → false', function() { assertFalse(isEditable('confirmed')); });
+test('isEditable: superseded → false', function() { assertFalse(isEditable('superseded')); });
+test('isEditable: new → false', function() { assertFalse(isEditable('new')); });
+
+// ─── Amount formatting ──────────────────────────────────────────────────
+function fmtAmt(v) {
+    if (v === null || v === undefined || v === '') return '';
+    var n = parseFloat(v);
+    if (isNaN(n)) return String(v);
+    return n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+test('fmtAmt: null → empty', function() { assertEqual(fmtAmt(null), ''); });
+test('fmtAmt: empty string → empty', function() { assertEqual(fmtAmt(''), ''); });
+test('fmtAmt: NaN string → passthrough', function() { assertEqual(fmtAmt('abc'), 'abc'); });
+test('fmtAmt: 1234.5 → formatted', function() {
+    var r = fmtAmt(1234.5);
+    assertTrue(r.indexOf('234') >= 0, 'Should contain 234: ' + r);
+    assertTrue(r.indexOf('.50') >= 0 || r.indexOf(',50') >= 0, 'Should have 2 decimals: ' + r);
+});
+
+// ─── isLoanType / isFundTrx helpers ─────────────────────────────────────
+function isLoanType(ty) {
+    return ['LOAN_PAYMENT', 'LOAN_DISBURSEMENT', 'INT_INCOME', 'INT_EXPENSE'].indexOf(ty) >= 0;
+}
+function isFundTrx(r) {
+    return r.fund === true || r.customer_code === '12345678';
+}
+
+test('isLoanType: LOAN_PAYMENT → true', function() { assertTrue(isLoanType('LOAN_PAYMENT')); });
+test('isLoanType: INT_INCOME → true', function() { assertTrue(isLoanType('INT_INCOME')); });
+test('isLoanType: SEC_BUY → false', function() { assertFalse(isLoanType('SEC_BUY')); });
+test('isFundTrx: fund=true → true', function() { assertTrue(isFundTrx({ fund: true })); });
+test('isFundTrx: customer=12345678 → true', function() { assertTrue(isFundTrx({ customer_code: '12345678' })); });
+test('isFundTrx: other customer → false', function() { assertFalse(isFundTrx({ customer_code: '99999', fund: false })); });
+
+// ─── Income allocation helpers ──────────────────────────────────────────
+
+var INCOME_ALLOC_TYPES = ['DIV_INCOME', 'DIV_TAX', 'BOND_INT'];
+function isIncomeAllocType(r) { return INCOME_ALLOC_TYPES.indexOf(r.internal_type) >= 0; }
+
+// INCOME_ALLOC_TYPES constant
+test('INCOME_ALLOC_TYPES: contains DIV_INCOME', function() { assertContains(INCOME_ALLOC_TYPES, 'DIV_INCOME'); });
+test('INCOME_ALLOC_TYPES: contains DIV_TAX', function() { assertContains(INCOME_ALLOC_TYPES, 'DIV_TAX'); });
+test('INCOME_ALLOC_TYPES: contains BOND_INT', function() { assertContains(INCOME_ALLOC_TYPES, 'BOND_INT'); });
+test('INCOME_ALLOC_TYPES: does not contain EQ_BUY', function() {
+    assertEqual(INCOME_ALLOC_TYPES.indexOf('EQ_BUY'), -1);
+});
+test('INCOME_ALLOC_TYPES: length is 3', function() { assertEqual(INCOME_ALLOC_TYPES.length, 3); });
+
+// isIncomeAllocType helper
+test('isIncomeAllocType: DIV_INCOME → true', function() { assertTrue(isIncomeAllocType({ internal_type: 'DIV_INCOME' })); });
+test('isIncomeAllocType: DIV_TAX → true', function() { assertTrue(isIncomeAllocType({ internal_type: 'DIV_TAX' })); });
+test('isIncomeAllocType: BOND_INT → true', function() { assertTrue(isIncomeAllocType({ internal_type: 'BOND_INT' })); });
+test('isIncomeAllocType: EQ_BUY → false', function() { assertFalse(isIncomeAllocType({ internal_type: 'EQ_BUY' })); });
+test('isIncomeAllocType: EQ_SELL → false', function() { assertFalse(isIncomeAllocType({ internal_type: 'EQ_SELL' })); });
+test('isIncomeAllocType: FX_EXCHANGE → false', function() { assertFalse(isIncomeAllocType({ internal_type: 'FX_EXCHANGE' })); });
+test('isIncomeAllocType: null type → false', function() { assertFalse(isIncomeAllocType({ internal_type: null })); });
+test('isIncomeAllocType: undefined type → false', function() { assertFalse(isIncomeAllocType({})); });
+
+// Date defaults logic
+function computeDefaultDates(transactionDate) {
+    if (!transactionDate) return { start: '', end: '' };
+    var end = transactionDate;
+    var d = new Date(end);
+    d.setDate(d.getDate() - 90);
+    var start = d.toISOString().substring(0, 10);
+    return { start: start, end: end };
+}
+
+test('computeDefaultDates: end = transaction_date', function() {
+    assertEqual(computeDefaultDates('2024-07-24').end, '2024-07-24');
+});
+test('computeDefaultDates: start = 90 days before end', function() {
+    assertEqual(computeDefaultDates('2024-07-24').start, '2024-04-25');
+});
+test('computeDefaultDates: empty when no transaction_date', function() {
+    var r = computeDefaultDates('');
+    assertEqual(r.start, '');
+    assertEqual(r.end, '');
+});
+test('computeDefaultDates: 90-day cross month boundary (2024-04-01 → 2024-01-02)', function() {
+    assertEqual(computeDefaultDates('2024-04-01').start, '2024-01-02');
+});
+
+// Client-side validation
+function validateIncomeAllocDates(start, end) {
+    if (!start) return { error: 'Enter the accrual period start date.' };
+    if (!end) return { error: 'Enter the accrual period end date.' };
+    if (end < start) return { error: 'End date must be after start date.' };
+    var d1 = new Date(start), d2 = new Date(end);
+    var days = Math.round((d2 - d1) / 86400000);
+    if (days > 366) return { warning: 'Accrual period seems too long (>1 year). Please check dates.' };
+    return null;
+}
+
+test('validateIncomeAllocDates: empty start → error', function() {
+    var r = validateIncomeAllocDates('', '2024-07-24');
+    assertEqual(r.error, 'Enter the accrual period start date.');
+});
+test('validateIncomeAllocDates: empty end → error', function() {
+    var r = validateIncomeAllocDates('2024-04-25', '');
+    assertEqual(r.error, 'Enter the accrual period end date.');
+});
+test('validateIncomeAllocDates: end < start → error', function() {
+    var r = validateIncomeAllocDates('2024-07-24', '2024-04-25');
+    assertEqual(r.error, 'End date must be after start date.');
+});
+test('validateIncomeAllocDates: valid range → null', function() {
+    assertEqual(validateIncomeAllocDates('2024-04-25', '2024-07-24'), null);
+});
+test('validateIncomeAllocDates: period > 366 days → warning', function() {
+    var r = validateIncomeAllocDates('2023-01-01', '2024-07-24');
+    assertTrue(r && r.warning && r.warning.indexOf('>1 year') >= 0);
+});
+
+// Router logic
+var ALLOC_TYPES = ['EQ_BUY','EQ_SELL','BOND_BUY','BOND_SELL','SEC_BUY','SEC_SELL'];
+function getAllocRoute(rec) {
+    if (INCOME_ALLOC_TYPES.indexOf(rec.internal_type) >= 0) return 'income';
+    if (ALLOC_TYPES.indexOf(rec.internal_type) >= 0) return 'trade';
+    return 'none';
+}
+
+test('getAllocRoute: DIV_INCOME → income', function() { assertEqual(getAllocRoute({ internal_type: 'DIV_INCOME' }), 'income'); });
+test('getAllocRoute: EQ_BUY → trade', function() { assertEqual(getAllocRoute({ internal_type: 'EQ_BUY' }), 'trade'); });
+test('getAllocRoute: FX_EXCHANGE → none', function() { assertEqual(getAllocRoute({ internal_type: 'FX_EXCHANGE' }), 'none'); });
+
+// ─── Pagination math ────────────────────────────────────────────────────
+function totalPages(count, pageSize) {
+    if (!count || count <= 0) return 0;
+    return Math.ceil(count / pageSize);
+}
+
+test('totalPages: 0 records → 0 pages', function() { assertEqual(totalPages(0, 20), 0); });
+test('totalPages: 20 records, size 20 → 1 page', function() { assertEqual(totalPages(20, 20), 1); });
+test('totalPages: 21 records, size 20 → 2 pages', function() { assertEqual(totalPages(21, 20), 2); });
+test('totalPages: 100 records, size 50 → 2 pages', function() { assertEqual(totalPages(100, 50), 2); });
+test('totalPages: 142 records, size 20 → 8 pages', function() { assertEqual(totalPages(142, 20), 8); });
+
+// ─── EW namespace initialized ───────────────────────────────────────────
+test('EW namespace exists', function() { assertTrue(typeof window.EW === 'object'); });
+test('EW.state exists', function() { assertTrue(typeof window.EW.state === 'object'); });
+test('EW.version matches config', function() { assertEqual(window.EW.version, '2.0.2'); });
+
+// ─── Render results ─────────────────────────────────────────────────────
+var container = document.getElementById('results');
+var passed = 0, failed = 0;
+results.forEach(function(r) {
+    var div = document.createElement('div');
+    div.className = 'result';
+    div.innerHTML = '<span class="' + (r.pass ? 'pass' : 'fail') + '">'
+        + (r.pass ? '✓ PASS' : '✗ FAIL') + '</span> ' + r.name
+        + (r.error ? '<div class="err">' + r.error + '</div>' : '');
+    container.appendChild(div);
+    if (r.pass) passed++; else failed++;
+});
+
+var sumEl = document.getElementById('summary');
+sumEl.className = 'summary ' + (failed === 0 ? 'ok' : 'bad');
+sumEl.textContent = passed + ' passed, ' + failed + ' failed, ' + results.length + ' total';
+</script>
+</body>
+</html>

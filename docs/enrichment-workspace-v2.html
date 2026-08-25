@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1400">
+<title>GAM – Enrichment Workspace v2</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;font-size:14px;color:#1e293b;background:#f1f5f9;overflow:hidden;height:100vh}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px}
+@keyframes fi{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes si{from{transform:translateX(30px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+.app{display:flex;height:100vh}
+
+/* Sidebar */
+.sb{width:232px;background:#1a365d;color:#fff;display:flex;flex-direction:column;flex-shrink:0}
+.sb-hdr{padding:16px 18px 12px;border-bottom:1px solid rgba(255,255,255,.1)}
+.sb-hdr h2{font-size:1.02em;font-weight:700;letter-spacing:.03em;margin:0}
+.sb-hdr small{font-size:.7em;color:#94a3b8}
+.sb-nav{flex:1;overflow-y:auto;padding:10px 0}
+.sb-section{padding:10px 18px 5px;font-size:.66em;font-weight:700;color:#64748b;letter-spacing:.08em}
+.sb-item{display:flex;align-items:center;gap:9px;width:100%;padding:8px 18px;border:none;background:transparent;color:#cbd5e1;cursor:pointer;font-size:.84em;text-align:left;border-left:3px solid transparent;transition:all .15s;font-family:inherit}
+.sb-item:hover{background:rgba(255,255,255,.06)}
+.sb-item.active{background:rgba(255,255,255,.12);color:#fff;border-left-color:#6ee7b7}
+.sb-item .ic{width:18px;text-align:center}
+.sb-item .lb{flex:1}
+.sb-badge{background:rgba(255,255,255,.15);padding:1px 7px;border-radius:10px;font-size:.76em;font-weight:600}
+.sb-badge.alert{background:#dc2626;animation:pulse 2s infinite}
+.sb-footer{padding:10px 18px;border-top:1px solid rgba(255,255,255,.1);font-size:.73em;color:#64748b}
+
+/* Main area */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.top-bar{padding:10px 22px;background:#fff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between}
+.top-bar h1{font-size:1.05em;font-weight:700;margin:0;display:flex;align-items:center;gap:10px}
+.version{font-size:.7em;color:#94a3b8;font-weight:400;background:#f1f5f9;padding:2px 8px;border-radius:10px}
+.top-bar .meta{font-size:.76em;color:#94a3b8}
+.stm-filter{font-size:.78em;color:#64748b}
+.stm-filter a{color:#3b82f6;cursor:pointer;text-decoration:underline;border:none;background:none;font-size:inherit;font-family:inherit}
+.content{flex:1;overflow:auto}
+
+/* Tabs */
+.tabs{display:flex;gap:0;background:#fff;border-bottom:1px solid #e2e8f0;padding:0 22px}
+.tab{padding:10px 18px;font-size:.84em;font-weight:600;color:#64748b;border-bottom:2px solid transparent;cursor:pointer;transition:all .12s;display:flex;align-items:center;gap:7px}
+.tab:hover{color:#1a365d}
+.tab.active{color:#1a365d;border-bottom-color:#1a365d}
+.tab .tab-count{font-size:.78em;background:#f1f5f9;padding:1px 7px;border-radius:8px;font-weight:400}
+.tab.active .tab-count{background:#e0e7ff;color:#1a365d}
+
+/* Summary panel */
+.summary{background:#fff;border-bottom:1px solid #e2e8f0;padding:0}
+.summary-inner{padding:14px 22px;transition:max-height .25s ease,opacity .2s ease,padding .25s ease;overflow:hidden}
+.summary-inner.collapsed{max-height:0 !important;opacity:0;padding-top:0;padding-bottom:0}
+.summary-toggle{display:flex;align-items:center;gap:8px;padding:7px 22px;cursor:pointer;user-select:none;border:none;background:none;width:100%;text-align:left;font-family:inherit}
+.summary-toggle:hover{background:#fafbfc}
+.summary-toggle .st-label{font-size:.76em;font-weight:700;color:#64748b;letter-spacing:.04em;text-transform:uppercase;flex:1}
+.summary-toggle .st-arrow{font-size:.8em;color:#94a3b8;transition:transform .2s}
+.summary-toggle .st-arrow.up{transform:rotate(180deg)}
+.summary-toggle .st-mini{display:flex;gap:14px;font-size:.74em;color:#94a3b8}
+.summary-toggle .st-mini span{display:flex;align-items:center;gap:4px}
+.summary-toggle .st-mini .dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+.summary-title{font-size:.78em;font-weight:700;color:#64748b;margin-bottom:8px;letter-spacing:.04em;text-transform:uppercase}
+.summary-hint{margin-top:6px;font-size:.74em;color:#94a3b8;font-style:italic}
+.summary-cards{display:flex;gap:12px;margin-bottom:12px}
+.s-card{flex:1;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px 16px}
+.s-card .s-label{font-size:.68em;color:#64748b;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.s-card .s-val{font-size:1.4em;font-weight:700;color:#1a365d;margin:4px 0 0}
+.s-card .s-sub{font-size:.72em;color:#94a3b8}
+.s-card.green .s-val{color:#16a34a}
+.s-card.amber .s-val{color:#d97706}
+.s-card.red .s-val{color:#dc2626}
+
+/* Toolbar */
+.toolbar{padding:9px 22px;background:#fff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.toolbar .sep{width:1px;height:22px;background:#e2e8f0}
+.toolbar .spacer{flex:1}
+.sel-info{font-size:.76em;color:#64748b;padding:3px 9px;background:#f1f5f9;border-radius:4px}
+.tb-group{display:flex;align-items:center;gap:4px;position:relative}
+.tb-dropdown{position:absolute;top:100%;left:0;background:#fff;border:1px solid #e2e8f0;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:100;min-width:220px;padding:4px 0;margin-top:4px}
+.tb-dropdown .dd-item{padding:8px 14px;font-size:.82em;cursor:pointer;display:flex;align-items:center;gap:8px;color:#334155}
+.tb-dropdown .dd-item:hover{background:#f1f5f9}
+.tb-dropdown .dd-item .dd-ic{width:18px;text-align:center;color:#64748b}
+.tb-dropdown .dd-sep{height:1px;background:#e2e8f0;margin:4px 0}
+
+/* Filters */
+.filters{padding:7px 22px;background:#fafbfc;border-bottom:1px solid #f1f5f9;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.filters label{font-size:.73em;color:#94a3b8;font-weight:600}
+.filters select,.filters input{font-size:.8em;padding:3px 7px;border:1px solid #e2e8f0;border-radius:4px;font-family:inherit}
+.filters input{width:130px}
+.filter-active{border-color:#3b82f6 !important;background:#eff6ff !important}
+
+/* Tables */
+table{width:100%;border-collapse:collapse}
+th{padding:7px 9px;font-size:.72em;color:#64748b;border-bottom:2px solid #e2e8f0;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;position:sticky;top:0;background:#f8fafc;z-index:1}
+td{padding:6px 9px;font-size:.85em;border-bottom:1px solid #f1f5f9}
+.r{text-align:right}
+.c{text-align:center}
+tr.clickable{cursor:pointer}
+tr.clickable:hover{background:#fafbfc}
+tr.selected{background:#eff6ff !important}
+
+/* Badges */
+.st-badge{padding:2px 10px;border-radius:12px;font-size:.79em;font-weight:500;white-space:nowrap;display:inline-block}
+.st-badge.bold{font-weight:700}
+.st-badge.strike{text-decoration:line-through}
+.conf-badge{padding:2px 8px;border-radius:8px;font-size:.75em;font-weight:500;white-space:nowrap;display:inline-block}
+.origin-badge{padding:2px 8px;border-radius:8px;font-size:.75em;font-weight:600;display:inline-block}
+.src-badge{font-weight:600;font-size:.8em;padding:1px 6px;border-radius:3px;display:inline-block}
+.type-badge{font-weight:600;font-size:.78em;padding:2px 8px;border-radius:4px;display:inline-block;background:#f1f5f9;color:#334155}
+.type-badge.loan{background:#fef3c7;color:#92400e}
+.type-badge.fund{background:#dbeafe;color:#1e40af}
+.type-badge.sec{background:#e0e7ff;color:#3730a3}
+.type-badge.fee{background:#fce7f3;color:#9d174d}
+.type-badge.fx{background:#d1fae5;color:#065f46}
+.dc-d{color:#C62828;font-weight:700;font-family:monospace;font-size:.87em}
+.dc-c{color:#2E7D32;font-weight:700;font-family:monospace;font-size:.87em}
+.dc-n{color:#64748b;font-weight:700;font-family:monospace;font-size:.87em}
+.amt{font-family:monospace;font-size:.85em}
+.amt.bold{font-weight:700}
+.amt.neg{color:#C62828}
+.missing{color:#dc2626}
+.link-cell{color:#1a365d;text-decoration:underline;text-decoration-color:#cbd5e1;cursor:pointer}
+.err-row td{font-size:.78em;color:#C62828;font-style:italic;border-bottom:1px solid #fecaca;padding:3px 9px 7px}
+.muted{color:#94a3b8}
+.mono{font-family:monospace}
+.warn-row td{font-size:.78em;color:#d97706;font-style:italic;padding:3px 9px 7px}
+
+/* Row tinting */
+.row-error{background:#FFF5F5}
+.row-manual_review{background:#FFFDE7}
+.row-ready{background:#F1F8E9}
+.row-paired{background:#f5f5ff}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:5px;padding:8px 16px;border-radius:5px;border:1px solid #cbd5e1;background:#fff;color:#334155;font-weight:600;font-size:.83em;cursor:pointer;white-space:nowrap;font-family:inherit;transition:all .12s}
+.btn:hover:not(:disabled){filter:brightness(.97)}
+.btn:disabled{background:#e2e8f0;color:#94a3b8;cursor:not-allowed;border-color:#e2e8f0}
+.btn.primary{background:#1a365d;color:#fff;border:none}
+.btn.success{background:#16a34a;color:#fff;border:none}
+.btn.danger{background:#dc2626;color:#fff;border:none}
+.btn.warn{background:#d97706;color:#fff;border:none}
+.btn.sm{padding:5px 11px;font-size:.77em}
+.btn.xs{padding:3px 8px;font-size:.73em}
+.btn .ic{font-size:1.05em}
+.btn-ghost{background:none;border:none;color:#3b82f6;font-weight:600;font-size:.82em;cursor:pointer;padding:4px 8px;border-radius:4px;font-family:inherit}
+.btn-ghost:hover{background:#eff6ff}
+
+/* Pagination */
+.pagination{padding:8px 22px;background:#fff;border-top:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;font-size:.8em;color:#64748b}
+.pagination select{font-size:.88em;padding:1px 5px;border:1px solid #e2e8f0;border-radius:3px}
+.pg-btn{border:1px solid #e2e8f0;background:#fff;border-radius:3px;padding:1px 7px;color:#94a3b8;cursor:pointer}
+
+/* Card wrapper */
+.card{background:#fff;border-radius:8px;border:1px solid #e2e8f0;overflow:hidden;margin:0}
+.card-bar{padding:9px 14px;border-bottom:1px solid #e2e8f0;display:flex;gap:7px;align-items:center}
+.card-info{padding:9px 14px;border-bottom:1px solid #e2e8f0;font-size:.8em;color:#64748b;font-style:italic}
+.card-body{overflow:auto}
+
+/* Overlay / dialogs */
+.overlay{position:fixed;inset:0;background:rgba(15,23,42,.48);backdrop-filter:blur(3px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px}
+.dialog{background:#fff;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.18);max-width:760px;width:100%;max-height:84vh;overflow:auto}
+.dialog.wide{max-width:920px}
+.dlg-hdr{padding:14px 20px;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center}
+.dlg-hdr h3{margin:0;font-size:.98em;font-weight:600;display:flex;align-items:center;gap:8px}
+.dlg-close{background:none;border:none;font-size:17px;color:#94a3b8;cursor:pointer}
+.dlg-body{padding:20px}
+.dlg-actions{display:flex;gap:9px;justify-content:flex-end;margin-top:16px}
+.info-box{background:#f8fafc;border-radius:6px;padding:12px;margin-bottom:14px;font-size:.86em}
+.info-box.warn{background:#fffbeb;border:1px solid #fde68a}
+.info-box.success{background:#f0fdf4;border:1px solid #bbf7d0}
+.info-box.info{background:#eff6ff;border:1px solid #bfdbfe}
+.info-row{display:flex;gap:16px;flex-wrap:wrap}
+.info-row span.lbl{color:#64748b}
+
+/* Slide-over form panel */
+.slide-over{position:fixed;inset:0;z-index:900;display:flex}
+.slide-bg{flex:1;background:rgba(15,23,42,.3);backdrop-filter:blur(2px);cursor:pointer}
+.slide-panel{width:620px;background:#fff;box-shadow:-6px 0 36px rgba(0,0,0,.1);overflow:auto;animation:si .2s ease;display:flex;flex-direction:column}
+.slide-hdr{padding:14px 20px;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;background:#f8fafc;position:sticky;top:0;z-index:2}
+.slide-hdr .meta{font-size:.74em;color:#64748b}
+.slide-hdr h2{margin:1px 0 0;font-size:.96em;font-weight:700}
+.slide-body{flex:1;padding:0 20px 18px;overflow:auto}
+.slide-footer{padding:12px 20px;border-top:1px solid #e2e8f0;display:flex;gap:7px;justify-content:space-between;background:#f8fafc;position:sticky;bottom:0;z-index:2}
+
+/* Operation actions in slide panel */
+.op-bar{display:flex;gap:6px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid #e2e8f0;margin-bottom:4px}
+.op-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:.78em;font-weight:500;cursor:pointer;color:#334155;font-family:inherit;transition:all .12s}
+.op-btn:hover{background:#f1f5f9;border-color:#cbd5e1}
+.op-btn .op-ic{font-size:1.1em}
+.op-btn.highlight{border-color:#3b82f6;background:#eff6ff;color:#1a365d}
+
+/* Form sections */
+.f-section{margin-top:14px}
+.f-section-hdr{display:flex;align-items:center;gap:7px;width:100%;background:none;border:none;border-bottom:2px solid #e2e8f0;padding:7px 0 5px;cursor:pointer;text-align:left;font-family:inherit}
+.f-section-hdr .num{font-size:.68em;color:#94a3b8;font-weight:700;background:#f1f5f9;padding:1px 5px;border-radius:3px}
+.f-section-hdr .title{font-size:.86em;font-weight:700;color:#1e293b;flex:1}
+.f-section-hdr .toggle{color:#94a3b8;font-size:.8em}
+.f-section-body{padding:8px 0 2px}
+.f-row{display:flex;gap:12px;margin-bottom:7px;flex-wrap:wrap}
+.f-field{flex:1 1 28%;min-width:110px}
+.f-field.wide{flex:1 1 100%;min-width:200px}
+.f-field label{display:block;font-size:.68em;color:#64748b;font-weight:600;margin-bottom:2px}
+.f-field .val{font-size:.86em;padding:4px 0}
+.f-field .val.muted{color:#94a3b8}
+.f-field input[type=text],.f-field select,.f-field textarea{width:100%;font-size:.86em;padding:4px 7px;border:1px solid #e2e8f0;border-radius:4px;font-family:inherit}
+.f-field input.highlight{border:2px solid #f59e0b;background:#FFFDE7}
+.f-field .err-val{font-size:.83em;color:#C62828;padding:5px 8px;background:#FFF5F5;border-radius:4px;border:1px solid #fecaca}
+
+/* Toast */
+.toast{position:fixed;top:16px;right:16px;background:#1a365d;color:#fff;padding:10px 20px;border-radius:8px;box-shadow:0 8px 28px rgba(0,0,0,.22);z-index:9999;font-size:.86em;display:flex;align-items:center;gap:9px;animation:fi .25s ease}
+.toast .check{color:#6ee7b7}
+.toast button{background:none;border:none;color:#94a3b8;cursor:pointer;font-size:14px;margin-left:8px}
+
+.placeholder{padding:36px;text-align:center;color:#94a3b8}
+.placeholder .big-icon{font-size:42px;margin-bottom:10px}
+.hidden{display:none}
+
+/* Grid for dialog forms */
+.dlg-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;margin-bottom:16px}
+.dlg-grid .span2{grid-column:span 2}
+.dlg-grid .span3{grid-column:span 3}
+.dlg-grid label{display:block;font-size:.72em;color:#64748b;font-weight:600;margin-bottom:2px}
+.dlg-grid input,.dlg-grid select,.dlg-grid textarea{width:100%;font-size:.86em;padding:4px 7px;border:1px solid #e2e8f0;border-radius:4px;font-family:inherit}
+.dlg-grid textarea{height:70px;resize:vertical}
+
+.recon-note{font-size:.8em;color:#64748b;margin-bottom:18px;font-style:italic}
+.green{color:#16a34a;font-weight:600}
+.red{color:#dc2626;font-weight:600}
+.amber{color:#d97706;font-weight:600}
+.split-sum{display:flex;justify-content:space-between;align-items:center;padding:7px 9px;background:#f8fafc;border-radius:6px;font-size:.82em;margin-bottom:14px}
+.add-row-btn{font-size:.8em;color:#3b82f6;background:none;border:none;cursor:pointer;margin-bottom:14px;font-family:inherit}
+
+/* Variance indicator */
+.var-ind{display:inline-flex;align-items:center;gap:4px;font-size:.78em;font-weight:600;padding:3px 8px;border-radius:4px}
+.var-ind.ok{background:#f0fdf4;color:#16a34a}
+.var-ind.warn{background:#fffbeb;color:#d97706}
+.var-ind.err{background:#fef2f2;color:#dc2626}
+
+/* Loan contract card */
+.contract-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:14px;margin:10px 0}
+.contract-card .cc-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.contract-card .cc-title{font-weight:700;font-size:.88em;color:#1a365d}
+.contract-card .cc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px 14px}
+.contract-card .cc-field{font-size:.78em}
+.contract-card .cc-field .cc-lbl{color:#64748b;font-size:.88em}
+.contract-card .cc-field .cc-val{font-weight:600;color:#1e293b}
+
+/* Fund allocation table */
+.alloc-table{width:100%;border-collapse:collapse;margin:10px 0}
+.alloc-table th{font-size:.7em;padding:6px 8px;background:#f1f5f9}
+.alloc-table td{font-size:.82em;padding:5px 8px;border-bottom:1px solid #f1f5f9}
+.alloc-table .total-row{border-top:2px solid #e2e8f0;font-weight:700}
+
+/* Quick action chips */
+.action-chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border:1px solid #e2e8f0;border-radius:16px;font-size:.74em;color:#475569;cursor:pointer;font-family:inherit;background:#fff}
+.action-chip:hover{background:#f1f5f9}
+.action-chip.active{background:#1a365d;color:#fff;border-color:#1a365d}
+
+input[type=checkbox]{width:15px;height:15px;accent-color:#1a365d;cursor:pointer}
+
+/* Context-aware action ribbon */
+.ctx-ribbon{background:#fffbeb;border:1px solid #fde68a;border-radius:6px;padding:8px 14px;margin:8px 0;display:flex;align-items:center;gap:10px;font-size:.82em}
+.ctx-ribbon .ctx-ic{font-size:1.2em}
+.ctx-ribbon .ctx-msg{flex:1;color:#92400e}
+.ctx-ribbon .ctx-actions{display:flex;gap:6px}
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+  <div class="sb">
+    <div class="sb-hdr"><h2>GAM</h2><small>Genesis Asset Management</small></div>
+    <div class="sb-nav">
+      <div class="sb-section">ENRICHMENT</div>
+      <button class="sb-item active" data-menu="workspace"><span class="ic">📋</span><span class="lb">Enrichment Workspace</span><span class="sb-badge" id="ws-count">108</span></button>
+      <button class="sb-item" data-menu="ready"><span class="ic">✓</span><span class="lb">Ready for Posting</span><span class="sb-badge" id="rdy-count">0</span></button>
+      <button class="sb-item" data-menu="queue"><span class="ic">📤</span><span class="lb">Posting Queue</span><span class="sb-badge">0</span></button>
+      <button class="sb-item" data-menu="posted"><span class="ic">📗</span><span class="lb">Posted Operations</span><span class="sb-badge">0</span></button>
+      <button class="sb-item" data-menu="history"><span class="ic">🔀</span><span class="lb">Split/Merge History</span><span class="sb-badge">0</span></button>
+      <div class="sb-section">FUND MANAGEMENT</div>
+      <button class="sb-item" data-menu="fund"><span class="ic">📊</span><span class="lb">Fund Allocation</span></button>
+      <button class="sb-item" data-menu="nav"><span class="ic">📈</span><span class="lb">NAV Calculation</span></button>
+      <button class="sb-item" data-menu="investors"><span class="ic">👥</span><span class="lb">Investor Positions</span></button>
+      <div class="sb-section">OTHER</div>
+      <button class="sb-item" data-menu="stm"><span class="ic">📁</span><span class="lb">Statements</span></button>
+      <button class="sb-item" data-menu="loans"><span class="ic">🏦</span><span class="lb">Loan Contracts</span></button>
+      <button class="sb-item" data-menu="mdm"><span class="ic">⚙</span><span class="lb">Master Data</span></button>
+    </div>
+    <div class="sb-footer">👤 anna.tamm<br>Joget DX 8.1</div>
+  </div>
+
+  <div class="main">
+    <div class="top-bar">
+      <div><h1 id="page-title">Enrichment Workspace <span class="version">v2.0</span></h1><div class="stm-filter hidden" id="stm-filter">Filtered: <span id="stm-filter-val"></span> <a id="stm-clear">Clear</a></div></div>
+      <div class="meta">Period: Jun–Aug 2024 &nbsp;·&nbsp; <span id="rec-count">142 records</span> &nbsp;·&nbsp; Loaded in 5ms</div>
+    </div>
+    <div class="content" id="content"></div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+<div id="overlay-container"></div>
+<div id="slide-container"></div>
+
+<script>
+// ─── DATA (realistic from 142-transaction set) ──────────────────────────────
+const STMTS=[
+  {id:"STM-2024-06",ref:"LHV Jun 2024",src:"bank",total:48,enriched:38,paired:0,ready:0,conf:0,err:0,mr:0},
+  {id:"STM-2024-07",ref:"LHV Jul 2024",src:"bank",total:72,enriched:62,paired:0,ready:0,conf:0,err:0,mr:0},
+  {id:"STM-SECU-Q2",ref:"SWD Securities Q2",src:"secu",total:22,enriched:0,paired:22,ready:0,conf:0,err:0,mr:0},
+];
+
+// Representative subset of the 142 actual transactions
+const WS=[
+  {id:"ENR-001",s:"S",dt:"2024-07-10",ty:"EQ_BUY",de:"description: Illumina Inc | reference: 928011626 | ticker: ILMN",dc:"N",am:-11318.00,fe:-15.85,to:-11333.85,cy:"USD",cu:"12345678",as:"AST000297",cp:"",or:"auto",co:"rule_match",st:"paired",lo:null,fund:true},
+  {id:"ENR-002",s:"B",dt:"2024-06-05",ty:"INT_INCOME",de:"payment_description: Account interest EE117700771003603322, ...",dc:"C",am:0.31,fe:0,to:0.31,cy:"EUR",cu:"UNK",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:null,fund:false},
+  {id:"ENR-003",s:"B",dt:"2024-07-19",ty:"LOAN_PAYMENT",de:"payment_description: laenu osaline tagastus | other_side_nam...",dc:"C",am:2482.83,fe:0,to:2482.83,cy:"EUR",cu:"",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:"LC-2024-001",fund:false},
+  {id:"ENR-004",s:"B",dt:"2024-07-03",ty:"INT_EXPENSE",de:"payment_description: Intressid 2Q24 | other_side_name: IMG N...",dc:"D",am:-2642.74,fe:0,to:-2642.74,cy:"EUR",cu:"UNK",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:"LC-2024-003",fund:false},
+  {id:"ENR-005",s:"S",dt:"2024-07-24",ty:"EQ_SELL",de:"description: Meta Platforms Inc | reference: 936528224 | tic...",dc:"N",am:9397.80,fe:-13.16,to:9384.64,cy:"USD",cu:"12345678",as:"AST000300",cp:"",or:"auto",co:"rule_match",st:"paired",lo:null,fund:true},
+  {id:"ENR-006",s:"B",dt:"2024-06-12",ty:"LOAN_PAYMENT",de:"payment_description: Laenulepingu 1315-2020 osamakse | other...",dc:"C",am:150.44,fe:0,to:150.44,cy:"EUR",cu:"",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:"LC-2024-002",fund:false},
+  {id:"ENR-007",s:"B",dt:"2024-07-03",ty:"INT_EXPENSE",de:"payment_description: Intressimakse 2Q24 | other_side_name: E...",dc:"D",am:-822.74,fe:0,to:-822.74,cy:"EUR",cu:"UNK",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:null,fund:false},
+  {id:"ENR-008",s:"S",dt:"2024-06-10",ty:"SPLIT_OUT",de:"description: NVIDIA Corporation | reference: 907202454 | tic...",dc:"N",am:0.00,fe:0.00,to:0.00,cy:"USD",cu:"12345678",as:"AST000293",cp:"",or:"auto",co:"rule_match",st:"paired",lo:null,fund:true},
+  {id:"ENR-009",s:"B",dt:"2024-07-18",ty:"COMM_FEE",de:"payment_description: Securities commission fee (HYLN)",dc:"D",am:-9.84,fe:0,to:-9.84,cy:"USD",cu:"",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:null,fund:true},
+  {id:"ENR-010",s:"B",dt:"2024-07-19",ty:"SEC_BUY",de:"payment_description: Securities buy (INBB055031A)",dc:"D",am:-1872.42,fe:0,to:-1872.42,cy:"EUR",cu:"",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"paired",lo:null,fund:true},
+  {id:"ENR-011",s:"B",dt:"2024-07-10",ty:"LOAN_PAYMENT",de:"payment_description: Loan | other_side_name: PR & M INVESTME...",dc:"C",am:45000.00,fe:0,to:45000.00,cy:"EUR",cu:"",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:"LC-2024-004",fund:false},
+  {id:"ENR-012",s:"B",dt:"2024-07-23",ty:"INT_INCOME",de:"payment_description: Laenuintressid kuni 30.06.2024 | other_...",dc:"C",am:5123.43,fe:0,to:5123.43,cy:"EUR",cu:"",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:"LC-2024-001",fund:false},
+  {id:"ENR-013",s:"B",dt:"2024-06-27",ty:"DIV_INCOME",de:"payment_description: Dividends (META)",dc:"C",am:10.00,fe:0,to:10.00,cy:"USD",cu:"12345678",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:null,fund:true},
+  {id:"ENR-014",s:"B",dt:"2024-07-04",ty:"INT_INCOME",de:"payment_description: Intressid leping 110403 | other_side_na...",dc:"C",am:141.78,fe:0,to:141.78,cy:"EUR",cu:"",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:"LC-2024-005",fund:false},
+  {id:"ENR-015",s:"B",dt:"2024-06-30",ty:"LOAN_PAYMENT",de:"payment_description: 107-2017 | other_side_name: ANTSLA EKB ...",dc:"C",am:500.00,fe:0,to:500.00,cy:"EUR",cu:"",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:"LC-2024-006",fund:false},
+  {id:"ENR-016",s:"B",dt:"2024-07-19",ty:"LOAN_PAYMENT",de:"payment_description: Laenu tagastus, leping 123003 Lisa 2 | ...",dc:"C",am:5000.00,fe:0,to:5000.00,cy:"EUR",cu:"",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:"LC-2024-007",fund:false},
+  {id:"ENR-017",s:"B",dt:"2024-07-30",ty:"COMM_FEE",de:"payment_description: Securities commission fee (CRWD)",dc:"D",am:-12.84,fe:0,to:-12.84,cy:"USD",cu:"",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:null,fund:true},
+  {id:"ENR-018",s:"B",dt:"2024-07-15",ty:"MGMT_FEE",de:"payment_description: Portfolio safekeeping fee, 06-2024",dc:"D",am:-26.76,fe:0,to:-26.76,cy:"EUR",cu:"UNK",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:null,fund:true},
+  {id:"ENR-019",s:"S",dt:"2024-07-26",ty:"EQ_BUY",de:"description: Fluence Energy Inc | reference: 937700032,93770...",dc:"N",am:-4122.50,fe:-9.77,to:-4132.27,cy:"USD",cu:"12345678",as:"AST000292",cp:"",or:"auto",co:"rule_match",st:"paired",lo:null,fund:true},
+  {id:"ENR-020",s:"B",dt:"2024-07-22",ty:"INT_INCOME",de:"payment_description: Leping 1314/2020 laenuosa ja intress | ...",dc:"C",am:2035.86,fe:0,to:2035.86,cy:"EUR",cu:"",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:"LC-2024-008",fund:false},
+  {id:"ENR-021",s:"B",dt:"2024-07-25",ty:"SEC_SELL",de:"payment_description: Securities sell (MU)",dc:"C",am:11198.91,fe:0,to:11198.91,cy:"USD",cu:"",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"paired",lo:null,fund:true},
+  {id:"ENR-022",s:"B",dt:"2024-06-20",ty:"COMM_FEE",de:"payment_description: Securities commission fee (NEM)",dc:"D",am:-10.15,fe:0,to:-10.15,cy:"USD",cu:"",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:null,fund:true},
+  {id:"ENR-023",s:"B",dt:"2024-06-21",ty:"LOAN_DISBURSEMENT",de:"payment_description: IS leping 240619 | other_side_name: Fis...",dc:"D",am:-2300.00,fe:0,to:-2300.00,cy:"EUR",cu:"UNK",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:"LC-2024-009",fund:false},
+  {id:"ENR-024",s:"B",dt:"2024-07-11",ty:"SEC_BUY",de:"payment_description: Securities buy (ILMN)",dc:"D",am:-11318.00,fe:0,to:-11318.00,cy:"USD",cu:"",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"paired",lo:null,fund:true},
+  {id:"ENR-025",s:"B",dt:"2024-07-15",ty:"FX_EXCHANGE",de:"payment_description: FX exchange, exchange rate 1.068380",dc:"C",am:861.25,fe:0,to:861.25,cy:"EUR",cu:"12345678",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:null,fund:true},
+  {id:"ENR-026",s:"B",dt:"2024-07-15",ty:"FX_EXCHANGE",de:"payment_description: FX exchange, exchange rate 1.068380",dc:"D",am:-806.13,fe:0,to:-806.13,cy:"EUR",cu:"12345678",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:null,fund:true},
+  {id:"ENR-027",s:"B",dt:"2024-07-02",ty:"DIV_TAX",de:"payment_description: Income tax withheld (META)",dc:"D",am:-3.00,fe:0,to:-3.00,cy:"USD",cu:"12345678",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:null,fund:true},
+  {id:"ENR-028",s:"B",dt:"2024-06-28",ty:"BOND_INT",de:"payment_description: Bond interest INBB055031A",dc:"C",am:28.75,fe:0,to:28.75,cy:"EUR",cu:"12345678",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:null,fund:true},
+  {id:"ENR-029",s:"B",dt:"2024-06-15",ty:"ADMIN_FEE",de:"payment_description: Account service fee Q2-2024",dc:"D",am:-45.00,fe:0,to:-45.00,cy:"EUR",cu:"12345678",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:null,fund:false},
+  {id:"ENR-030",s:"B",dt:"2024-07-31",ty:"TAX",de:"payment_description: Corporate income tax advance Q3",dc:"D",am:-1250.00,fe:0,to:-1250.00,cy:"EUR",cu:"12345678",as:"",cp:"LHV-EE",or:"auto",co:"rule_match",st:"enriched",lo:null,fund:true},
+];
+
+const LOANS=[
+  {id:"LC-2024-001",type:"CORPORATE",customer:"OÜ Nordwood",rate:6.5,principal:85000,outstanding:72500,currency:"EUR",maturity:"2027-06-15",basis:"act_365",status:"active"},
+  {id:"LC-2024-002",type:"PERSONAL",customer:"Jaan Tamm",rate:5.2,principal:15000,outstanding:8200,currency:"EUR",maturity:"2025-12-01",basis:"act_365",status:"active"},
+  {id:"LC-2024-003",type:"CORPORATE",customer:"IMG Nordic OÜ",rate:7.0,principal:120000,outstanding:98000,currency:"EUR",maturity:"2028-03-20",basis:"act_360",status:"active"},
+  {id:"LC-2024-004",type:"CORPORATE",customer:"PR & M Investment",rate:5.8,principal:500000,outstanding:420000,currency:"EUR",maturity:"2029-09-01",basis:"act_365",status:"active"},
+  {id:"LC-2024-005",type:"PERSONAL",customer:"Maris Kask",rate:4.5,principal:25000,outstanding:18500,currency:"EUR",maturity:"2026-03-15",basis:"act_365",status:"active"},
+];
+
+const INVESTORS=[
+  {id:"INV-001",name:"Andrus Veerpalu",units:4250.000000,pct:42.5,initial:"2023-01-15",status:"active"},
+  {id:"INV-002",name:"Kristina Šmigun",units:3500.000000,pct:35.0,initial:"2023-02-01",status:"active"},
+  {id:"INV-003",name:"Erki Nool",units:2250.000000,pct:22.5,initial:"2023-06-10",status:"active"},
+];
+
+// ─── HELPERS ───────────────────────────────────────────────────────────────
+const SM_={new:{b:"#E3F2FD",f:"#1565C0"},processing:{b:"#FFF3E0",f:"#E65100"},enriched:{b:"#E8F5E9",f:"#2E7D32"},error:{b:"#FFEBEE",f:"#C62828"},manual_review:{b:"#FFF8E1",f:"#F57F17"},in_review:{b:"#F3E5F5",f:"#6A1B9A"},adjusted:{b:"#E0F2F1",f:"#00695C"},ready:{b:"#C8E6C9",f:"#1B5E20"},paired:{b:"#E8EAF6",f:"#283593"},superseded:{b:"#F5F5F5",f:"#9E9E9E"},confirmed:{b:"#E8F5E9",f:"#1B5E20"},pending:{b:"#E3F2FD",f:"#1565C0"},posted:{b:"#C8E6C9",f:"#1B5E20"}};
+const CM_={rule_match:{b:"#E8F5E9",f:"#2E7D32"},tentative:{b:"#FFF8E1",f:"#F57F17"},unclassified:{b:"#FFEBEE",f:"#C62828"},manual_override:{b:"#E0F2F1",f:"#00695C"}};
+const TY_CAT={LOAN_PAYMENT:"loan",LOAN_DISBURSEMENT:"loan",INT_INCOME:"loan",INT_EXPENSE:"loan",SEC_BUY:"sec",SEC_SELL:"sec",EQ_BUY:"sec",EQ_SELL:"sec",BOND_BUY:"sec",BOND_INT:"sec",SPLIT_IN:"sec",SPLIT_OUT:"sec",DIV_INCOME:"fund",DIV_TAX:"fund",FX_EXCHANGE:"fx",COMM_FEE:"fee",MGMT_FEE:"fee",ADMIN_FEE:"fee",LEGAL_FEE:"fee",TAX:"fee",ASSET_RETURN:"fund",INV_INCOME:"fund"};
+
+function fmt(v){return v!=null&&v!==0?Number(v).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}):""}
+function trc(s,n){n=n||56;return s&&s.length>n?s.slice(0,n)+"…":s}
+function stBadge(v){const c=SM_[v]||{b:"#f1f5f9",f:"#64748b"};const cl=(v==="error"||v==="ready"?" bold":"")+(v==="superseded"?" strike":"");return `<span class="st-badge${cl}" style="background:${c.b};color:${c.f}">${(v||"—").replace(/_/g," ")}</span>`;}
+function confBadge(v){const c=CM_[v]||{b:"#f1f5f9",f:"#64748b"};return `<span class="conf-badge" style="background:${c.b};color:${c.f}">${(v||"—").replace(/_/g," ")}</span>`;}
+function srcBadge(v){const c=v==="S"?{b:"#E3F2FD",f:"#1565C0"}:v==="B"?{b:"#F3E5F5",f:"#6A1B9A"}:{b:"#E0F2F1",f:"#00695C"};return `<span class="src-badge" style="background:${c.b};color:${c.f}">${v}</span>`;}
+function typeBadge(v){const cat=TY_CAT[v]||"";return `<span class="type-badge ${cat}">${v||'<span class="missing">—</span>'}</span>`;}
+function dcHtml(v){const cls=v==="D"?"dc-d":v==="C"?"dc-c":"dc-n";return `<span class="${cls}">${v}</span>`;}
+function amtHtml(v,bold){const neg=v<0;return `<span class="amt${bold?" bold":""}${neg?" neg":""}">${fmt(v)}</span>`;}
+function isEditable(st){return["enriched","in_review","adjusted","ready"].includes(st);}
+function isLoanType(ty){return["LOAN_PAYMENT","LOAN_DISBURSEMENT","INT_INCOME","INT_EXPENSE"].includes(ty);}
+function isFundTrx(r){return r.fund||r.cu==="12345678";}
+
+let currentMenu="workspace";
+let wsSel=new Set();
+let stmFilter=null;
+let activeDropdown=null;
+let summaryCollapsed=false;
+
+// ─── TOAST ─────────────────────────────────────────────────────────────────
+function showToast(msg){
+  const c=document.getElementById("toast-container");
+  c.innerHTML=`<div class="toast"><span class="check">✓</span>${msg}<button onclick="this.parentElement.remove()">×</button></div>`;
+  setTimeout(()=>c.innerHTML="",4500);
+}
+
+// ─── NAVIGATION ────────────────────────────────────────────────────────────
+document.querySelectorAll(".sb-item").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const m=btn.dataset.menu;if(!m)return;
+    currentMenu=m;wsSel=new Set();
+    closeSlide();closeOverlay();
+    document.querySelectorAll(".sb-item").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const titles={workspace:"Enrichment Workspace",ready:"Ready for Posting",queue:"Posting Queue",posted:"Posted Operations",history:"Split/Merge History",fund:"Fund Allocation",nav:"NAV Calculation",investors:"Investor Positions",stm:"Statements",loans:"Loan Contracts",mdm:"Master Data"};
+    document.getElementById("page-title").innerHTML=(titles[m]||"GAM")+' <span class="version">v2.0</span>';
+    render();
+  });
+});
+document.getElementById("stm-clear").addEventListener("click",()=>{stmFilter=null;render();});
+
+function render(){
+  const sf=document.getElementById("stm-filter");
+  if(stmFilter){sf.classList.remove("hidden");document.getElementById("stm-filter-val").textContent=stmFilter;}else{sf.classList.add("hidden");}
+  const c=document.getElementById("content");
+  if(currentMenu==="workspace")renderWorkspace(c);
+  else if(currentMenu==="ready")renderReady(c);
+  else if(currentMenu==="fund")renderFundAlloc(c);
+  else if(currentMenu==="nav")renderNAV(c);
+  else if(currentMenu==="investors")renderInvestors(c);
+  else if(currentMenu==="loans")renderLoans(c);
+  else if(currentMenu==="queue")c.innerHTML=`<div class="placeholder"><div class="big-icon">📤</div><p>No operations in posting queue</p></div>`;
+  else if(currentMenu==="posted")c.innerHTML=`<div class="placeholder"><div class="big-icon">📗</div><p>No posted operations yet — confirm transactions from the workspace first</p></div>`;
+  else if(currentMenu==="history")c.innerHTML=`<div class="placeholder"><div class="big-icon">🔀</div><p>Split/Merge history will appear here after operations are performed</p></div>`;
+  else if(currentMenu==="stm")c.innerHTML=`<div class="placeholder"><div class="big-icon">📁</div><p>Statements — links to Enrichment Workspace via filters</p></div>`;
+  else if(currentMenu==="mdm")c.innerHTML=`<div class="placeholder"><div class="big-icon">⚙</div><p>Master Data: Customers, Assets, Counterparties, FX Rates, Transaction Types</p></div>`;
+}
+
+// ─── WORKSPACE ─────────────────────────────────────────────────────────────
+function renderWorkspace(c){
+  const sr=WS.filter(r=>wsSel.has(r.id));
+  let h="";
+
+  // Summary cards
+  const enriched=WS.filter(r=>r.st==="enriched").length;
+  const paired=WS.filter(r=>r.st==="paired").length;
+  const loanTrx=WS.filter(r=>isLoanType(r.ty)).length;
+  const fundTrx=WS.filter(r=>isFundTrx(r)).length;
+  const needsAttn=WS.filter(r=>r.cu==="UNK"||!r.cu).length;
+
+  // Mini-summary shown when collapsed
+  const miniSummary=`<div class="st-mini">
+    <span><span class="dot" style="background:#1a365d"></span>${WS.length} records</span>
+    <span><span class="dot" style="background:#16a34a"></span>100% auto</span>
+    <span><span class="dot" style="background:#92400e"></span>${loanTrx} loan</span>
+    <span><span class="dot" style="background:#1e40af"></span>${fundTrx} fund</span>
+    ${needsAttn>0?`<span><span class="dot" style="background:#d97706"></span>${needsAttn} attention</span>`:""}
+  </div>`;
+
+  h+=`<div class="summary">
+    <button class="summary-toggle" onclick="summaryCollapsed=!summaryCollapsed;render()">
+      <span class="st-label">Overview</span>
+      ${summaryCollapsed?miniSummary:""}
+      <span class="st-arrow ${summaryCollapsed?"":"up"}">▾</span>
+    </button>
+    <div class="summary-inner${summaryCollapsed?" collapsed":""}">`;
+
+  h+=`<div class="summary-cards">
+    <div class="s-card"><div class="s-label">Total Records</div><div class="s-val">${WS.length}</div><div class="s-sub">${enriched} enriched · ${paired} paired</div></div>
+    <div class="s-card green"><div class="s-label">Automation Rate</div><div class="s-val">100%</div><div class="s-sub">142/142 auto-enriched</div></div>
+    <div class="s-card"><div class="s-label">Loan Transactions</div><div class="s-val">${loanTrx}</div><div class="s-sub">${WS.filter(r=>r.lo).length} linked to contracts</div></div>
+    <div class="s-card"><div class="s-label">Fund Transactions</div><div class="s-val">${fundTrx}</div><div class="s-sub">Customer 12345678 — needs allocation</div></div>
+    ${needsAttn>0?`<div class="s-card amber"><div class="s-label">Needs Attention</div><div class="s-val">${needsAttn}</div><div class="s-sub">Missing/unknown customer</div></div>`:""}
+  </div>`;
+
+  // Statement overview
+  if(!stmFilter){
+    h+=`<div class="summary-title">Statement Overview</div><table><thead><tr>
+    <th style="text-align:left">Statement</th><th class="c" style="width:50px">Source</th><th class="r">Records</th><th class="r">Enriched</th><th class="r">Paired</th><th class="r">Ready</th><th class="r">Confirmed</th><th class="r">Errors</th>
+    </tr></thead><tbody>`;
+    STMTS.forEach(s=>{h+=`<tr class="clickable" onclick="event.stopPropagation();stmFilter='${s.id}';render()">
+      <td><span style="color:#1a365d;font-weight:600">${s.ref}</span> <span class="muted" style="font-size:.76em">${s.id}</span></td>
+      <td class="c">${srcBadge(s.src==="bank"?"B":"S")}</td>
+      <td class="r" style="font-weight:600">${s.total}</td>
+      <td class="r"><span style="color:${s.enriched>0?"#2E7D32":"#94a3b8"}">${s.enriched}</span></td>
+      <td class="r"><span style="color:${s.paired>0?"#283593":"#94a3b8"}">${s.paired}</span></td>
+      <td class="r"><span style="color:${s.ready>0?"#1B5E20":"#94a3b8"};font-weight:${s.ready>0?600:400}">${s.ready}</span></td>
+      <td class="r"><span style="color:${s.conf>0?"#2E7D32":"#94a3b8"}">${s.conf}</span></td>
+      <td class="r"><span style="color:${s.err>0?"#C62828":"#94a3b8"};font-weight:${s.err>0?700:400}">${s.err>0?"⚠ "+s.err:s.err}</span></td>
+    </tr>`;});
+    h+=`</tbody></table><div class="summary-hint">Click a statement row to filter the workspace below</div>`;
+  }
+  h+=`</div></div>`;
+
+  // Toolbar with grouped operations
+  const canConf=sr.some(r=>r.st==="ready");
+  const canReady=sr.some(r=>["enriched","adjusted","in_review","paired"].includes(r.st));
+  const canSplit=sr.length===1&&isEditable(sr[0]?.st);
+  const canMerge=sr.length>=2&&sr.every(r=>["enriched","adjusted","in_review"].includes(r.st));
+  const canReproc=sr.some(r=>["error","manual_review"].includes(r.st));
+  const canDel=sr.some(r=>["error","manual_review"].includes(r.st));
+  const hasLoan=sr.length===1&&isLoanType(sr[0]?.ty);
+  const hasFund=sr.length===1&&isFundTrx(sr[0]);
+
+  h+=`<div class="toolbar">
+    <button class="btn primary sm" ${canConf?"":"disabled"} onclick="openConfirmDlg()"><span class="ic">✓</span> Confirm</button>
+    <button class="btn sm" ${canReady?"":"disabled"} onclick="showToast('${sr.length} records marked as ready');wsSel=new Set();render()"><span class="ic">→</span> Mark Ready</button>
+    <div class="sep"></div>
+    <div class="tb-group">
+      <button class="btn sm" ${canSplit?"":"disabled"} onclick="toggleDropdown('split-dd')"><span class="ic">⑂</span> Split ▾</button>
+      <div class="tb-dropdown hidden" id="split-dd">
+        <div class="dd-item" onclick="openSplitDlg();hideDropdowns()"><span class="dd-ic">⑂</span> Generic Split</div>
+        <div class="dd-item" onclick="openLoanSplitDlg();hideDropdowns()" style="${hasLoan?'':'opacity:.4;pointer-events:none'}"><span class="dd-ic">🏦</span> Loan Payment Split</div>
+        <div class="dd-sep"></div>
+        <div class="dd-item" onclick="hideDropdowns()" style="opacity:.4;pointer-events:none"><span class="dd-ic">📅</span> Multi-Period Accrual</div>
+        <div class="dd-item" onclick="hideDropdowns()" style="opacity:.4;pointer-events:none"><span class="dd-ic">💰</span> Fee Disaggregation</div>
+      </div>
+    </div>
+    <button class="btn sm" ${canMerge?"":"disabled"} onclick="openMergeDlg()"><span class="ic">⊕</span> Merge</button>
+    <div class="sep"></div>
+    <div class="tb-group">
+      <button class="btn sm" ${sr.length===1&&isEditable(sr[0]?.st)?"":"disabled"} onclick="toggleDropdown('ops-dd')"><span class="ic">⚡</span> Operations ▾</button>
+      <div class="tb-dropdown hidden" id="ops-dd">
+        <div class="dd-item" onclick="openReclassifyDlg();hideDropdowns()"><span class="dd-ic">🏷</span> Reclassify Type</div>
+        <div class="dd-item" onclick="openReassignDlg();hideDropdowns()"><span class="dd-ic">👤</span> Reassign Customer</div>
+        <div class="dd-item" onclick="hideDropdowns()"><span class="dd-ic">↕</span> Flip D/C</div>
+        <div class="dd-sep"></div>
+        <div class="dd-item" onclick="openFxOverrideDlg();hideDropdowns()"><span class="dd-ic">💱</span> Override FX Rate</div>
+        <div class="dd-item" onclick="hideDropdowns()"><span class="dd-ic">📒</span> Override GL Account</div>
+        <div class="dd-sep"></div>
+        <div class="dd-item" onclick="openLinkLoanDlg();hideDropdowns()" style="${hasLoan?'':'opacity:.5'}"><span class="dd-ic">🔗</span> Link to Loan Contract</div>
+        <div class="dd-item" onclick="openFundAllocDlg();hideDropdowns()" style="${hasFund?'':'opacity:.5'}"><span class="dd-ic">📊</span> Allocate to Investors</div>
+        <div class="dd-item" onclick="hideDropdowns()" style="${sr[0]?.ty==='FX_EXCHANGE'?'':'opacity:.5'}"><span class="dd-ic">🔄</span> Pair FX Legs</div>
+        <div class="dd-item" onclick="hideDropdowns()" style="${sr[0]?.ty==='COMM_FEE'?'':'opacity:.5'}"><span class="dd-ic">📎</span> Link Fee to Trade</div>
+        <div class="dd-item" onclick="hideDropdowns()" style="${sr[0]?.ty==='DIV_TAX'?'':'opacity:.5'}"><span class="dd-ic">📎</span> Link Tax to Dividend</div>
+      </div>
+    </div>
+    <div class="sep"></div>
+    <button class="btn sm" ${canReproc?"":"disabled"} onclick="showToast('Records reset');wsSel=new Set();render()"><span class="ic">↻</span> Reprocess</button>
+    <button class="btn danger sm" ${canDel?"":"disabled"} onclick="openDeleteDlg()"><span class="ic">×</span> Delete</button>
+    <div class="spacer"></div>
+    <button class="btn sm" onclick="openManualDlg()"><span class="ic">＋</span> New Entry</button>
+    <button class="btn sm" onclick="showToast('Export generated')"><span class="ic">📥</span> Export</button>
+    ${wsSel.size>0?`<span class="sel-info">${wsSel.size} selected</span>`:""}
+  </div>`;
+
+  // Filters
+  h+=`<div class="filters"><label>FILTERS</label>
+    <select><option>All Statuses</option>${["enriched","paired","adjusted","in_review","ready","manual_review","error"].map(s=>`<option>${s.replace(/_/g," ")}</option>`).join("")}</select>
+    <select><option>All Sources</option><option>Bank (B)</option><option>Securities (S)</option><option>Manual (M)</option></select>
+    <select><option>All Types</option>${["LOAN_PAYMENT","LOAN_DISBURSEMENT","INT_INCOME","INT_EXPENSE","SEC_BUY","SEC_SELL","EQ_BUY","EQ_SELL","DIV_INCOME","DIV_TAX","BOND_INT","COMM_FEE","MGMT_FEE","ADMIN_FEE","FX_EXCHANGE","TAX","SPLIT_OUT"].map(t=>`<option>${t}</option>`).join("")}</select>
+    <input placeholder="Customer ID...">
+    <input placeholder="Search description..." style="width:160px">
+    <label style="margin-left:6px"><input type="checkbox"> Fund only</label>
+    <label><input type="checkbox"> Loan only</label>
+  </div>`;
+
+  // Table
+  const allChecked=wsSel.size===WS.length&&WS.length>0;
+  h+=`<div style="flex:1;overflow:auto"><table style="min-width:1200px"><thead><tr>
+    <th style="width:34px"><input type="checkbox" ${allChecked?"checked":""} onchange="toggleAllWs()"></th>
+    <th style="width:82px">Status</th><th style="width:36px">Src</th><th style="width:78px">Date</th><th style="width:108px">Type</th><th>Description</th><th class="c" style="width:32px">D/C</th><th class="r" style="width:90px">Amount</th><th class="r" style="width:68px">Fee</th><th class="r" style="width:94px">Total</th><th style="width:36px">Ccy</th><th style="width:76px">Customer</th><th style="width:52px">Asset</th><th style="width:36px">CP</th><th style="width:48px">Origin</th><th style="width:66px">Conf.</th>
+  </tr></thead><tbody>`;
+
+  WS.forEach(r=>{
+    const bg=r.st==="error"?"row-error":r.st==="manual_review"?"row-manual_review":r.st==="ready"?"row-ready":r.st==="paired"?"row-paired":"";
+    const sel=wsSel.has(r.id)?" selected":"";
+    const custDisplay=r.cu==="12345678"?'<span style="color:#1a365d;font-weight:600" title="Genesis AM Fund">12345678</span>':r.cu==="UNK"?'<span class="missing" title="Unknown customer">UNK</span>':r.cu||'<span class="muted">—</span>';
+    const loanIcon=r.lo?'<span title="Linked: '+r.lo+'" style="cursor:help">🔗</span>':"";
+    const fundIcon=isFundTrx(r)&&r.st!=="paired"?'<span title="Fund transaction — needs allocation" style="cursor:help">📊</span>':"";
+    h+=`<tr class="${bg}${sel} clickable">
+      <td><input type="checkbox" ${wsSel.has(r.id)?"checked":""} onchange="toggleWsSel('${r.id}')"></td>
+      <td>${stBadge(r.st)}</td>
+      <td>${srcBadge(r.s)}</td>
+      <td style="font-size:.82em;color:#475569">${r.dt}</td>
+      <td>${typeBadge(r.ty)} ${loanIcon}${fundIcon}</td>
+      <td style="font-size:.82em"><span class="link-cell" onclick="openForm('${r.id}')">${trc(r.de)}</span></td>
+      <td class="c">${dcHtml(r.dc)}</td>
+      <td class="r">${amtHtml(r.am)}</td>
+      <td class="r">${amtHtml(r.fe)}</td>
+      <td class="r">${amtHtml(r.to,true)}</td>
+      <td style="font-size:.8em;font-weight:600">${r.cy}</td>
+      <td style="font-size:.8em">${custDisplay}</td>
+      <td style="font-size:.8em">${r.as||'<span class="muted">—</span>'}</td>
+      <td style="font-size:.8em">${r.cp||'<span class="muted">—</span>'}</td>
+      <td style="font-size:.76em">${r.or}</td>
+      <td>${confBadge(r.co)}</td>
+    </tr>`;
+  });
+  h+=`</tbody></table></div>`;
+
+  h+=`<div class="pagination"><div>Showing 1–${WS.length} of 142</div><div style="display:flex;align-items:center;gap:7px">Page size: <select><option>30</option><option>50</option><option>142</option></select> Page 1 of 5 <button class="pg-btn">‹</button><button class="pg-btn">›</button></div></div>`;
+
+  c.innerHTML=`<div style="display:flex;flex-direction:column;height:100%">${h}</div>`;
+}
+
+function toggleWsSel(id){if(wsSel.has(id))wsSel.delete(id);else wsSel.add(id);render();}
+function toggleAllWs(){if(wsSel.size===WS.length)wsSel=new Set();else wsSel=new Set(WS.map(r=>r.id));render();}
+function toggleDropdown(id){
+  const el=document.getElementById(id);
+  hideDropdowns();
+  el.classList.toggle("hidden");
+  event.stopPropagation();
+}
+function hideDropdowns(){document.querySelectorAll(".tb-dropdown").forEach(d=>d.classList.add("hidden"));}
+document.addEventListener("click",hideDropdowns);
+
+// ─── READY FOR POSTING ─────────────────────────────────────────────────────
+function renderReady(c){
+  c.innerHTML=`<div class="placeholder"><div class="big-icon">✓</div><p>No records marked as Ready yet — use the workspace to review and mark transactions ready for posting</p></div>`;
+}
+
+// ─── FUND ALLOCATION ───────────────────────────────────────────────────────
+function renderFundAlloc(c){
+  const fundTrx=WS.filter(r=>isFundTrx(r)&&r.st!=="paired");
+  let h=`<div style="padding:22px">
+    <div class="info-box info" style="margin-bottom:16px">
+      <strong>Fund Allocation Overview</strong> — ${fundTrx.length} fund-level transactions (customer 12345678) require proportional allocation to ${INVESTORS.length} investors before posting.
+    </div>
+    <div class="summary-cards" style="margin-bottom:16px">
+      <div class="s-card"><div class="s-label">Fund Transactions</div><div class="s-val">${fundTrx.length}</div><div class="s-sub">Pending allocation</div></div>
+      <div class="s-card"><div class="s-label">Active Investors</div><div class="s-val">${INVESTORS.length}</div><div class="s-sub">Total units: 10,000</div></div>
+      <div class="s-card"><div class="s-label">Last NAV</div><div class="s-val">€ 14.82</div><div class="s-sub">As of 2024-06-30</div></div>
+    </div>
+    <div class="card"><div class="card-bar"><strong style="font-size:.84em">Fund Transactions Pending Allocation</strong><div style="flex:1"></div><button class="btn primary sm" onclick="openBatchAllocDlg()">Allocate Selected</button></div>
+    <div class="card-body"><table><thead><tr>
+      <th style="width:34px"><input type="checkbox"></th><th>Date</th><th>Type</th><th>Description</th><th class="c">D/C</th><th class="r">Amount</th><th>Ccy</th><th>Allocation</th>
+    </tr></thead><tbody>`;
+  fundTrx.forEach(r=>{
+    h+=`<tr><td><input type="checkbox"></td><td style="font-size:.82em">${r.dt}</td><td>${typeBadge(r.ty)}</td><td style="font-size:.82em">${trc(r.de,48)}</td><td class="c">${dcHtml(r.dc)}</td><td class="r">${amtHtml(r.to,true)}</td><td style="font-size:.8em;font-weight:600">${r.cy}</td><td><span class="st-badge" style="background:#FFF8E1;color:#F57F17">pending</span></td></tr>`;
+  });
+  h+=`</tbody></table></div></div></div>`;
+  c.innerHTML=h;
+}
+
+function renderNAV(c){
+  c.innerHTML=`<div style="padding:22px">
+    <div class="card"><div class="card-bar"><strong style="font-size:.84em">NAV Calculation History</strong><div style="flex:1"></div><button class="btn primary sm" onclick="openNAVCalcDlg()">+ New NAV Calculation</button></div>
+    <div class="card-body"><table><thead><tr><th>Date</th><th class="r">Total Assets</th><th class="r">Total Liabilities</th><th class="r">NAV</th><th class="r">Units Outstanding</th><th class="r">NAV/Unit</th><th>Status</th><th>By</th></tr></thead>
+    <tbody><tr><td style="font-size:.84em">2024-06-30</td><td class="r">${amtHtml(148200)}</td><td class="r">${amtHtml(0)}</td><td class="r">${amtHtml(148200,true)}</td><td class="r">10,000</td><td class="r" style="font-weight:700">€ 14.82</td><td>${stBadge("confirmed")}</td><td style="font-size:.8em">anna.tamm</td></tr></tbody></table></div></div></div>`;
+}
+
+function renderInvestors(c){
+  let h=`<div style="padding:22px"><div class="card"><div class="card-bar"><strong style="font-size:.84em">Investor Positions</strong><div style="flex:1"></div><button class="btn sm">+ Add Investor</button></div>
+  <div class="card-body"><table><thead><tr><th>Investor</th><th class="r">Units</th><th class="r">Share %</th><th class="r">Value (at NAV)</th><th>Since</th><th>Status</th></tr></thead><tbody>`;
+  INVESTORS.forEach(inv=>{
+    h+=`<tr><td style="font-weight:600">${inv.name}</td><td class="r" style="font-family:monospace">${inv.units.toLocaleString("en",{minimumFractionDigits:2})}</td><td class="r" style="font-weight:600">${inv.pct}%</td><td class="r">${amtHtml(inv.units*14.82,true)}</td><td style="font-size:.82em">${inv.initial}</td><td>${stBadge(inv.status)}</td></tr>`;
+  });
+  h+=`<tr class="total-row" style="border-top:2px solid #e2e8f0"><td style="font-weight:700">Total</td><td class="r" style="font-family:monospace;font-weight:700">10,000.00</td><td class="r" style="font-weight:700">100%</td><td class="r">${amtHtml(148200,true)}</td><td></td><td></td></tr>`;
+  h+=`</tbody></table></div></div></div>`;
+  c.innerHTML=h;
+}
+
+function renderLoans(c){
+  let h=`<div style="padding:22px"><div class="card"><div class="card-bar"><strong style="font-size:.84em">Active Loan Contracts</strong></div>
+  <div class="card-body"><table><thead><tr><th>Contract ID</th><th>Type</th><th>Customer</th><th class="r">Principal</th><th class="r">Outstanding</th><th class="r">Rate %</th><th>Basis</th><th>Maturity</th><th>Status</th></tr></thead><tbody>`;
+  LOANS.forEach(l=>{
+    h+=`<tr class="clickable"><td style="font-family:monospace;font-weight:600;color:#1a365d">${l.id}</td><td style="font-size:.82em">${l.type}</td><td style="font-size:.84em;font-weight:600">${l.customer}</td><td class="r">${amtHtml(l.principal)}</td><td class="r">${amtHtml(l.outstanding,true)}</td><td class="r" style="font-weight:600">${l.rate}%</td><td style="font-size:.8em">${l.basis}</td><td style="font-size:.82em">${l.maturity}</td><td>${stBadge(l.status)}</td></tr>`;
+  });
+  h+=`</tbody></table></div></div></div>`;
+  c.innerHTML=h;
+}
+
+// ─── DIALOGS ───────────────────────────────────────────────────────────────
+function closeOverlay(){document.getElementById("overlay-container").innerHTML="";}
+function closeSlide(){document.getElementById("slide-container").innerHTML="";}
+function dlgWrap(title,icon,body,wide){return `<div class="overlay" onclick="closeOverlay()"><div class="dialog${wide?" wide":""}" onclick="event.stopPropagation()"><div class="dlg-hdr"><h3><span>${icon}</span> ${title}</h3><button class="dlg-close" onclick="closeOverlay()">×</button></div><div class="dlg-body">${body}</div></div></div>`;}
+
+function openConfirmDlg(){
+  const sr=WS.filter(r=>wsSel.has(r.id));
+  const cnt=sr.length;
+  const body=`
+    <div class="info-box info"><strong>Reconciliation Check</strong> — verifying totals before posting confirmation</div>
+    <table><thead><tr><th style="text-align:left">Currency</th><th class="r">Statement Total</th><th class="r">Batch Total</th><th class="r">Remaining</th><th class="r">Status</th></tr></thead>
+    <tbody><tr><td style="font-weight:600">EUR</td><td class="r">${amtHtml(52575)}</td><td class="r">${amtHtml(52575)}</td><td class="r">${amtHtml(0)}</td><td class="r"><span class="green">✓ Balanced</span></td></tr>
+    <tr><td style="font-weight:600">USD</td><td class="r">${amtHtml(-27381.75)}</td><td class="r">${amtHtml(-27381.75)}</td><td class="r">${amtHtml(0)}</td><td class="r"><span class="green">✓ Balanced</span></td></tr></tbody></table>
+    <div style="margin-top:14px"><strong style="font-size:.82em">Validation Gates:</strong></div>
+    <div style="font-size:.82em;margin:6px 0"><span class="green">✓</span> All transactions classified (no UNCLASSIFIED)<br><span class="green">✓</span> All bank transactions have customer ID<br><span class="amber">⚠</span> 3 fund transactions not yet allocated to investors<br><span class="green">✓</span> 8 loan transactions linked to contracts</div>
+    <div class="dlg-actions"><button class="btn primary" onclick="closeOverlay();showToast('${cnt} records confirmed for posting');wsSel=new Set();render()">Confirm (${cnt})</button><button class="btn" onclick="closeOverlay()">Cancel</button></div>`;
+  document.getElementById("overlay-container").innerHTML=dlgWrap("Confirm for Posting","✓",body);
+}
+
+function openSplitDlg(){
+  const r=WS.find(r=>wsSel.has(r.id));if(!r)return;
+  const a1=Math.abs(Math.round(r.to*.6*100)/100),a2=Math.abs(Math.round(r.to*.4*100)/100);
+  const body=`
+    <div class="info-box"><div class="info-row"><div><span class="lbl">Source:</span> <strong>${r.id}</strong></div><div><span class="lbl">Type:</span> ${typeBadge(r.ty)}</div><div><span class="lbl">Total:</span> <strong>${fmt(r.to)}</strong> ${r.cy}</div></div></div>
+    <div style="display:flex;gap:8px;margin-bottom:12px"><span class="action-chip active">Manual</span><span class="action-chip">Equal split</span><span class="action-chip">Percentage</span></div>
+    <table><thead><tr><th style="text-align:left;width:28px">#</th><th style="text-align:left">Type</th><th style="text-align:left">Customer</th><th class="r">Amount</th><th class="r">Total</th></tr></thead>
+    <tbody><tr><td>1</td><td><select style="width:100%;font-size:.86em;padding:3px;border:1px solid #e2e8f0;border-radius:4px"><option>${r.ty}</option></select></td><td><input value="${r.cu||""}" style="width:100%;font-size:.86em;padding:3px;border:1px solid #e2e8f0;border-radius:4px"></td><td class="r"><input value="${fmt(a1)}" style="width:90px;text-align:right;font-size:.86em;padding:3px;border:1px solid #e2e8f0;border-radius:4px;font-family:monospace"></td><td class="r amt bold">${fmt(a1)}</td></tr>
+    <tr><td>2</td><td><select style="width:100%;font-size:.86em;padding:3px;border:1px solid #e2e8f0;border-radius:4px"><option>${r.ty}</option></select></td><td><input value="" placeholder="Customer..." style="width:100%;font-size:.86em;padding:3px;border:1px solid #e2e8f0;border-radius:4px"></td><td class="r"><input value="${fmt(a2)}" style="width:90px;text-align:right;font-size:.86em;padding:3px;border:1px solid #e2e8f0;border-radius:4px;font-family:monospace"></td><td class="r amt bold">${fmt(a2)}</td></tr></tbody></table>
+    <div class="split-sum"><div>Sum: <strong>${fmt(Math.abs(r.to))}</strong></div><span class="green">Remaining: 0.00 ✓</span></div>
+    <button class="add-row-btn">+ Add Row</button>
+    <div class="dlg-actions"><button class="btn primary" onclick="closeOverlay();closeSlide();showToast('Split: 2 records created');wsSel=new Set();render()">Confirm Split</button><button class="btn" onclick="closeOverlay()">Cancel</button></div>`;
+  document.getElementById("overlay-container").innerHTML=dlgWrap("Split Transaction","⑂",body);
+}
+
+function openLoanSplitDlg(){
+  const r=WS.find(r=>wsSel.has(r.id));if(!r)return;
+  const loan=LOANS.find(l=>l.id===r.lo)||LOANS[0];
+  const principal=Math.abs(r.to)*0.85;
+  const interest=Math.abs(r.to)*0.15;
+  const expectedInt=loan.outstanding*loan.rate/100*90/365;
+  const variance=Math.abs(interest-expectedInt)/expectedInt*100;
+  const varClass=variance<1?"ok":variance<5?"warn":"err";
+
+  const body=`
+    <div class="info-box"><div class="info-row"><div><span class="lbl">Transaction:</span> <strong>${r.id}</strong></div><div><span class="lbl">Amount:</span> <strong>${fmt(r.to)} ${r.cy}</strong></div><div><span class="lbl">Date:</span> ${r.dt}</div></div></div>
+    <div class="contract-card">
+      <div class="cc-hdr"><div class="cc-title">🔗 ${loan.id} — ${loan.customer}</div><span class="st-badge" style="background:#E8F5E9;color:#2E7D32">active</span></div>
+      <div class="cc-grid">
+        <div class="cc-field"><div class="cc-lbl">Type</div><div class="cc-val">${loan.type}</div></div>
+        <div class="cc-field"><div class="cc-lbl">Principal</div><div class="cc-val">${fmt(loan.principal)} ${loan.currency}</div></div>
+        <div class="cc-field"><div class="cc-lbl">Outstanding</div><div class="cc-val">${fmt(loan.outstanding)} ${loan.currency}</div></div>
+        <div class="cc-field"><div class="cc-lbl">Interest Rate</div><div class="cc-val">${loan.rate}% p.a.</div></div>
+        <div class="cc-field"><div class="cc-lbl">Day Count</div><div class="cc-val">${loan.basis}</div></div>
+        <div class="cc-field"><div class="cc-lbl">Maturity</div><div class="cc-val">${loan.maturity}</div></div>
+      </div>
+    </div>
+    <div style="font-size:.82em;font-weight:700;margin:14px 0 8px">Payment Allocation</div>
+    <table><thead><tr><th style="text-align:left">Component</th><th style="text-align:left">Type</th><th class="r">Amount</th><th class="r">Expected</th><th>Variance</th></tr></thead>
+    <tbody>
+    <tr><td style="font-weight:600">Principal</td><td>${typeBadge("LOAN_PAYMENT")}</td><td class="r"><input value="${fmt(principal)}" style="width:100px;text-align:right;font-size:.86em;padding:3px;border:1px solid #e2e8f0;border-radius:4px;font-family:monospace"></td><td class="r muted">—</td><td>—</td></tr>
+    <tr><td style="font-weight:600">Interest</td><td>${typeBadge("INT_INCOME")}</td><td class="r"><input value="${fmt(interest)}" style="width:100px;text-align:right;font-size:.86em;padding:3px;border:1px solid #e2e8f0;border-radius:4px;font-family:monospace"></td><td class="r muted">${fmt(expectedInt)}</td><td><span class="var-ind ${varClass}">${variance.toFixed(1)}%</span></td></tr>
+    </tbody></table>
+    <div class="split-sum"><div>Sum: <strong>${fmt(Math.abs(r.to))}</strong></div><span class="green">Remaining: 0.00 ✓</span></div>
+    <div style="font-size:.78em;color:#64748b;margin-bottom:8px;font-style:italic">Expected interest = ${fmt(loan.outstanding)} × ${loan.rate}% × 90d / 365 = ${fmt(expectedInt)}</div>
+    <div class="dlg-actions"><button class="btn primary" onclick="closeOverlay();closeSlide();showToast('Loan split: principal + interest');wsSel=new Set();render()">Confirm Loan Split</button><button class="btn" onclick="closeOverlay()">Cancel</button></div>`;
+  document.getElementById("overlay-container").innerHTML=dlgWrap("Loan Payment Split","🏦",body,true);
+}
+
+function openReclassifyDlg(){
+  const r=WS.find(r=>wsSel.has(r.id));if(!r)return;
+  const body=`
+    <div class="info-box"><div class="info-row"><div><span class="lbl">Record:</span> <strong>${r.id}</strong></div><div><span class="lbl">Current Type:</span> ${typeBadge(r.ty)}</div><div><span class="lbl">Confidence:</span> ${confBadge(r.co)}</div></div></div>
+    <div style="font-size:.82em;font-weight:700;margin-bottom:8px">Quick Suggestions</div>
+    <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap">
+      ${["LOAN_PAYMENT","INT_INCOME","COMM_FEE","ADMIN_FEE"].map(t=>`<span class="action-chip" onclick="this.classList.toggle('active')">${t}</span>`).join("")}
+    </div>
+    <div class="dlg-grid">
+      <div class="span2"><label>New Transaction Type *</label><select style="font-weight:600">${["LOAN_PAYMENT","LOAN_DISBURSEMENT","INT_INCOME","INT_EXPENSE","SEC_BUY","SEC_SELL","DIV_INCOME","DIV_TAX","BOND_INT","COMM_FEE","MGMT_FEE","ADMIN_FEE","LEGAL_FEE","FX_EXCHANGE","TAX","ASSET_RETURN","INV_INCOME"].map(t=>`<option ${t===r.ty?"selected":""}>${t}</option>`).join("")}</select></div>
+      <div class="span2"><label>Reason for Reclassification *</label><textarea placeholder="Explain why the type was changed..."></textarea></div>
+    </div>
+    <div class="dlg-actions"><button class="btn primary" onclick="closeOverlay();showToast('Type reclassified')">Save</button><button class="btn" onclick="closeOverlay()">Cancel</button></div>`;
+  document.getElementById("overlay-container").innerHTML=dlgWrap("Reclassify Transaction Type","🏷",body);
+}
+
+function openReassignDlg(){
+  const r=WS.find(r=>wsSel.has(r.id));if(!r)return;
+  const body=`
+    <div class="info-box"><div class="info-row"><div><span class="lbl">Record:</span> <strong>${r.id}</strong></div><div><span class="lbl">Current Customer:</span> <strong>${r.cu||"None"}</strong></div></div></div>
+    <div class="dlg-grid">
+      <div class="span2"><label>Search Customer</label><input placeholder="Search by name, registration number, or ID..." style="border:2px solid #3b82f6"></div>
+    </div>
+    <div style="font-size:.82em;font-weight:600;margin-bottom:6px">Search Results</div>
+    <table><thead><tr><th></th><th style="text-align:left">ID</th><th style="text-align:left">Name</th><th>Type</th><th>KYC</th><th>Risk</th></tr></thead>
+    <tbody>
+    <tr class="clickable" style="background:#eff6ff"><td><input type="radio" name="cust" checked></td><td style="font-family:monospace;font-size:.82em">12345678</td><td style="font-weight:600">Genesis Asset Management OÜ</td><td>Corp</td><td><span class="green">completed</span></td><td>low</td></tr>
+    <tr class="clickable"><td><input type="radio" name="cust"></td><td style="font-family:monospace;font-size:.82em">CUST002</td><td style="font-weight:600">OÜ Nordwood</td><td>Corp</td><td><span class="green">completed</span></td><td>medium</td></tr>
+    <tr class="clickable"><td><input type="radio" name="cust"></td><td style="font-family:monospace;font-size:.82em">CUST003</td><td style="font-weight:600">Jaan Tamm</td><td>Ind</td><td><span class="green">completed</span></td><td>low</td></tr>
+    </tbody></table>
+    <div class="dlg-grid" style="margin-top:14px"><div class="span2"><label>Reason *</label><textarea placeholder="Why is the customer being reassigned?"></textarea></div></div>
+    <div class="dlg-actions"><button class="btn primary" onclick="closeOverlay();showToast('Customer reassigned')">Save</button><button class="btn" onclick="closeOverlay()">Cancel</button></div>`;
+  document.getElementById("overlay-container").innerHTML=dlgWrap("Reassign Customer","👤",body,true);
+}
+
+function openFxOverrideDlg(){
+  const r=WS.find(r=>wsSel.has(r.id));if(!r)return;
+  const body=`
+    <div class="info-box"><div class="info-row"><div><span class="lbl">Record:</span> <strong>${r.id}</strong></div><div><span class="lbl">Currency:</span> <strong>${r.cy}</strong></div><div><span class="lbl">Amount:</span> <strong>${fmt(r.to)}</strong></div></div></div>
+    <div class="dlg-grid">
+      <div><label>Current Rate</label><div style="font-family:monospace;font-size:.86em;padding:4px 0">1.068380</div></div>
+      <div><label>Rate Source</label><div style="font-size:.86em;padding:4px 0">ECB (pipeline)</div></div>
+      <div><label>New FX Rate *</label><input value="1.068380" style="font-family:monospace"></div>
+      <div><label>Rate Date</label><input type="date" value="${r.dt}"></div>
+      <div><label>Rate Source</label><select><option>manual</option><option>bloomberg</option><option>ecb</option><option>corporate_rate</option></select></div>
+      <div><label>Resulting EUR Amount</label><div style="font-family:monospace;font-size:.86em;font-weight:700;padding:4px 0;color:#1a365d">${fmt(Math.abs(r.to)/1.0684)}</div></div>
+    </div>
+    <div class="dlg-actions"><button class="btn primary" onclick="closeOverlay();showToast('FX rate overridden')">Apply Override</button><button class="btn" onclick="closeOverlay()">Cancel</button></div>`;
+  document.getElementById("overlay-container").innerHTML=dlgWrap("Override FX Rate","💱",body);
+}
+
+function openLinkLoanDlg(){
+  const r=WS.find(r=>wsSel.has(r.id));if(!r)return;
+  const body=`
+    <div class="info-box"><div class="info-row"><div><span class="lbl">Record:</span> <strong>${r.id}</strong></div><div><span class="lbl">Type:</span> ${typeBadge(r.ty)}</div><div><span class="lbl">Amount:</span> <strong>${fmt(r.to)} ${r.cy}</strong></div></div></div>
+    ${r.lo?`<div class="info-box success"><strong>Currently linked:</strong> ${r.lo}</div>`:`<div class="info-box warn"><strong>Not linked</strong> — select a loan contract below</div>`}
+    <div style="font-size:.82em;font-weight:700;margin:10px 0 6px">Auto-Suggested Contracts (from description)</div>
+    <table><thead><tr><th></th><th>Contract</th><th>Customer</th><th class="r">Outstanding</th><th class="r">Rate</th><th>Maturity</th></tr></thead><tbody>`;
+  let rows="";
+  LOANS.slice(0,3).forEach((l,i)=>{
+    rows+=`<tr class="clickable${i===0?" selected":""}"><td><input type="radio" name="loan" ${i===0?"checked":""}></td><td style="font-family:monospace;font-weight:600;color:#1a365d">${l.id}</td><td style="font-size:.84em">${l.customer}</td><td class="r">${amtHtml(l.outstanding)}</td><td class="r">${l.rate}%</td><td style="font-size:.82em">${l.maturity}</td></tr>`;
+  });
+  const b=body+rows+`</tbody></table>
+    <div class="dlg-actions"><button class="btn primary" onclick="closeOverlay();showToast('Linked to loan contract')">Link Contract</button><button class="btn" onclick="closeOverlay()">Cancel</button></div>`;
+  document.getElementById("overlay-container").innerHTML=dlgWrap("Link to Loan Contract","🔗",b,true);
+}
+
+function openFundAllocDlg(){
+  const r=WS.find(r=>wsSel.has(r.id));if(!r)return;
+  const amt=Math.abs(r.to);
+  const body=`
+    <div class="info-box"><div class="info-row"><div><span class="lbl">Transaction:</span> <strong>${r.id}</strong></div><div>${typeBadge(r.ty)}</div><div><span class="lbl">Amount:</span> <strong>${fmt(r.to)} ${r.cy}</strong></div></div></div>
+    <div class="dlg-grid" style="margin-bottom:6px">
+      <div><label>NAV Reference</label><select><option>2024-06-30 — NAV/unit: €14.82 (confirmed)</option></select></div>
+      <div><label>Total Units Outstanding</label><div style="font-family:monospace;font-size:.86em;padding:4px 0;font-weight:600">10,000.000000</div></div>
+    </div>
+    <div style="font-size:.82em;font-weight:700;margin:8px 0 6px">Allocation Preview</div>
+    <table class="alloc-table"><thead><tr><th style="text-align:left">Investor</th><th class="r">Units</th><th class="r">Share %</th><th class="r">Allocated Amount</th><th class="r">EUR Equivalent</th></tr></thead>
+    <tbody>`;
+  let allocBody="";
+  INVESTORS.forEach(inv=>{
+    const alloc=amt*inv.pct/100;
+    allocBody+=`<tr><td style="font-weight:600">${inv.name}</td><td class="r" style="font-family:monospace">${inv.units.toLocaleString("en",{minimumFractionDigits:2})}</td><td class="r" style="font-weight:600">${inv.pct}%</td><td class="r">${amtHtml(r.to>0?alloc:-alloc)}</td><td class="r">${amtHtml(r.cy==="EUR"?(r.to>0?alloc:-alloc):(r.to>0?alloc:-alloc)/1.0684)}</td></tr>`;
+  });
+  allocBody+=`<tr class="total-row"><td>Total</td><td></td><td class="r">100%</td><td class="r">${amtHtml(r.to,true)}</td><td class="r">${amtHtml(r.cy==="EUR"?r.to:r.to/1.0684,true)}</td></tr>`;
+  const b=body+allocBody+`</tbody></table>
+    <div style="font-size:.78em;color:#64748b;font-style:italic;margin:6px 0">Rounding adjustment (±0.01) applied to largest investor position</div>
+    <div class="dlg-actions"><button class="btn success" onclick="closeOverlay();showToast('Transaction allocated to ${INVESTORS.length} investors')">Confirm Allocation</button><button class="btn" onclick="closeOverlay()">Cancel</button></div>`;
+  document.getElementById("overlay-container").innerHTML=dlgWrap("Fund Allocation — Distribute to Investors","📊",b,true);
+}
+
+function openBatchAllocDlg(){showToast("Select transactions first, then use Allocate Selected");}
+function openNAVCalcDlg(){showToast("NAV calculation wizard would open here");}
+
+function openMergeDlg(){
+  const sr=WS.filter(r=>wsSel.has(r.id));if(sr.length<2)return;
+  let rows="";sr.forEach(r=>{rows+=`<tr><td class="mono" style="font-size:.82em">${r.id}</td><td>${typeBadge(r.ty)}</td><td class="r">${amtHtml(r.to,true)}</td></tr>`;});
+  const body=`
+    <div style="font-size:.82em;font-weight:600;margin-bottom:8px">Merging ${sr.length} records:</div>
+    <table><thead><tr><th style="text-align:left">Record</th><th style="text-align:left">Type</th><th class="r">Total</th></tr></thead>
+    <tbody>${rows}</tbody></table>
+    <div class="dlg-actions"><button class="btn primary" onclick="closeOverlay();showToast('${sr.length} records merged');wsSel=new Set();render()">Confirm Merge</button><button class="btn" onclick="closeOverlay()">Cancel</button></div>`;
+  document.getElementById("overlay-container").innerHTML=dlgWrap("Merge Transactions","⊕",body);
+}
+
+function openDeleteDlg(){
+  const sr=WS.filter(r=>wsSel.has(r.id));
+  const body=`<p style="font-size:.86em;color:#475569">Delete <strong>${sr.length}</strong> selected records? This cannot be undone.</p>
+    <div class="dlg-actions"><button class="btn danger" onclick="closeOverlay();showToast('Records deleted');wsSel=new Set();render()">Delete</button><button class="btn" onclick="closeOverlay()">Cancel</button></div>`;
+  document.getElementById("overlay-container").innerHTML=dlgWrap("Delete Records","×",body);
+}
+
+function openManualDlg(){
+  const body=`<div class="dlg-grid">
+    <div class="span2"><label>Statement *</label><select><option>STM-2024-07 (LHV Jul 2024)</option><option>STM-2024-06 (LHV Jun 2024)</option></select></div>
+    <div><label>Type *</label><select>${["LOAN_PAYMENT","INT_INCOME","INT_EXPENSE","COMM_FEE","ADMIN_FEE","FX_EXCHANGE","ASSET_RETURN","DIV_INCOME","MGMT_FEE","TAX"].map(t=>`<option>${t}</option>`).join("")}</select></div>
+    <div><label>Date *</label><input type="date" value="2024-07-25"></div>
+    <div><label>D/C *</label><select><option>C (Credit)</option><option>D (Debit)</option></select></div>
+    <div><label>Amount *</label><input placeholder="0.00" style="font-family:monospace"></div>
+    <div><label>Currency *</label><select><option>EUR</option><option>USD</option></select></div>
+    <div><label>Customer</label><input placeholder="Customer ID or search..."></div>
+    <div class="span2"><label>Description *</label><input placeholder="Manual entry: reason..."></div>
+    <div class="span2"><label>Origin</label><select><option>manual</option><option>accrual</option><option>accrual_reversal</option><option>fx_gain_loss</option></select></div>
+  </div>
+  <div class="dlg-actions"><button class="btn primary" onclick="closeOverlay();showToast('Manual record created')">Create</button><button class="btn" onclick="closeOverlay()">Cancel</button></div>`;
+  document.getElementById("overlay-container").innerHTML=dlgWrap("New Manual Enrichment Record","＋",body);
+}
+
+// ─── FORM SLIDE-OVER ───────────────────────────────────────────────────────
+function openForm(id){
+  const r=WS.find(x=>x.id===id);if(!r)return;
+  const ed=isEditable(r.st);
+  const loan=r.lo?LOANS.find(l=>l.id===r.lo):null;
+
+  function fld(label,val,opts){
+    opts=opts||{};
+    const cls=opts.wide?"f-field wide":"f-field";
+    let inner;
+    if(opts.badge){const c=SM_[val]||CM_[val]||{b:"#f1f5f9",f:"#64748b"};inner=`<span class="st-badge" style="background:${c.b};color:${c.f}">${(val||"").replace(/_/g," ")}</span>`;}
+    else if(opts.dc){inner=`<span class="${val==="D"?"dc-d":val==="C"?"dc-c":"dc-n"}">${val==="D"?"D (Debit)":val==="C"?"C (Credit)":"N (Neutral)"}</span>`;}
+    else if(opts.typeBadge){inner=typeBadge(val);}
+    else if(opts.err){inner=`<div class="err-val">${val}</div>`;}
+    else if(opts.editable){inner=`<input type="text" value="${val||""}" placeholder="${opts.ph||""}" class="${opts.highlight?"highlight":""}${opts.mono?" mono":""}" style="${opts.mono?"font-family:monospace;":""}">`;}
+    else{inner=`<div class="val${opts.muted?" muted":""}${opts.mono?" mono":""}" style="${opts.bold?"font-weight:700;":""}">${val||"—"}</div>`;}
+    return `<div class="${cls}"><label>${label}</label>${inner}</div>`;
+  }
+  function sec(title,n,content,show){
+    if(show===false)return"";
+    return `<div class="f-section"><button class="f-section-hdr" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none';this.querySelector('.toggle').textContent=this.nextElementSibling.style.display==='none'?'▸':'▾'"><span class="num">§${n}</span><span class="title">${title}</span><span class="toggle">▾</span></button><div class="f-section-body">${content}</div></div>`;
+  }
+
+  // Context-aware action ribbon
+  let ribbon="";
+  if(isLoanType(r.ty)&&!r.lo){ribbon=`<div class="ctx-ribbon"><span class="ctx-ic">⚠</span><span class="ctx-msg">Loan transaction not linked to a contract</span><div class="ctx-actions"><button class="btn xs primary" onclick="closeSlide();wsSel=new Set(['${r.id}']);openLinkLoanDlg()">Link Contract</button></div></div>`;}
+  if(isLoanType(r.ty)&&r.lo&&r.ty==="LOAN_PAYMENT"){ribbon+=`<div class="ctx-ribbon" style="background:#eff6ff;border-color:#bfdbfe"><span class="ctx-ic">💡</span><span class="ctx-msg" style="color:#1e40af">This payment can be split into principal + interest</span><div class="ctx-actions"><button class="btn xs primary" onclick="closeSlide();wsSel=new Set(['${r.id}']);openLoanSplitDlg()">Loan Split</button></div></div>`;}
+  if(isFundTrx(r)&&r.st!=="paired"){ribbon+=`<div class="ctx-ribbon" style="background:#eff6ff;border-color:#bfdbfe"><span class="ctx-ic">📊</span><span class="ctx-msg" style="color:#1e40af">Fund transaction — allocate to investors</span><div class="ctx-actions"><button class="btn xs primary" onclick="closeSlide();wsSel=new Set(['${r.id}']);openFundAllocDlg()">Allocate</button></div></div>`;}
+  if(r.cu==="UNK"){ribbon+=`<div class="ctx-ribbon"><span class="ctx-ic">⚠</span><span class="ctx-msg">Customer is unknown — needs reassignment</span><div class="ctx-actions"><button class="btn xs warn" onclick="closeSlide();wsSel=new Set(['${r.id}']);openReassignDlg()">Reassign</button></div></div>`;}
+
+  // Operation bar
+  let opBar=`<div class="op-bar">`;
+  if(ed){
+    opBar+=`<button class="op-btn" onclick="closeSlide();wsSel=new Set(['${r.id}']);openReclassifyDlg()"><span class="op-ic">🏷</span> Reclassify</button>`;
+    opBar+=`<button class="op-btn" onclick="closeSlide();wsSel=new Set(['${r.id}']);openReassignDlg()"><span class="op-ic">👤</span> Reassign</button>`;
+    opBar+=`<button class="op-btn" onclick="closeSlide();wsSel=new Set(['${r.id}']);openSplitDlg()"><span class="op-ic">⑂</span> Split</button>`;
+    if(isLoanType(r.ty))opBar+=`<button class="op-btn highlight" onclick="closeSlide();wsSel=new Set(['${r.id}']);openLoanSplitDlg()"><span class="op-ic">🏦</span> Loan Split</button>`;
+    if(isFundTrx(r))opBar+=`<button class="op-btn highlight" onclick="closeSlide();wsSel=new Set(['${r.id}']);openFundAllocDlg()"><span class="op-ic">📊</span> Fund Alloc</button>`;
+    if(r.cy!=="EUR")opBar+=`<button class="op-btn" onclick="closeSlide();wsSel=new Set(['${r.id}']);openFxOverrideDlg()"><span class="op-ic">💱</span> FX Override</button>`;
+  }
+  opBar+=`</div>`;
+
+  let body=ribbon+opBar;
+
+  // Sections
+  body+=sec("Traceability","1",`<div class="f-row">${fld("Source Type",r.s==="S"?"Securities":r.s==="B"?"Bank":"Manual")}${fld("Enrichment ID",r.id,{mono:true})}${fld("Statement","STM-2024-07",{muted:true})}</div>`);
+
+  body+=sec("Transaction","2",`<div class="f-row">${fld("Transaction Date",r.dt,{editable:ed})}${fld("Settlement Date","",{editable:ed,ph:"T+2"})}${fld("D/C",r.dc,{dc:true})}</div><div class="f-row">${fld("Amount",fmt(r.am),{mono:true,editable:ed})}${fld("Fee",fmt(r.fe),{mono:true,editable:ed})}${fld("Total",fmt(r.to),{mono:true,bold:true})}</div><div class="f-row">${fld("Description",r.de,{wide:true,editable:ed})}</div>`);
+
+  body+=sec("Classification","3",`<div class="f-row">${fld("Internal Type",r.ty,{typeBadge:true})}${fld("Confidence",r.co,{badge:true})}${fld("Matched Rule","R-"+r.ty+"-001",{muted:true})}</div>`);
+
+  body+=sec("Currency & FX","4",`<div class="f-row">${fld("Currency",r.cy)}${fld("FX Rate to EUR",r.cy==="EUR"?"1.000000":"1.068380",{mono:true,editable:r.cy!=="EUR"&&ed})}${fld("Rate Source",r.cy==="EUR"?"—":"ECB")}</div><div class="f-row">${fld("EUR Amount",fmt(r.cy==="EUR"?Math.abs(r.to):Math.abs(r.to)/1.0684),{mono:true,bold:true})}</div>`);
+
+  body+=sec("Resolved Entities","5",`<div class="f-row">${fld("Customer ID",r.cu,{editable:ed,highlight:!r.cu||r.cu==="UNK"})}${fld("Match Method","pipeline",{muted:true})}</div><div class="f-row">${fld("Asset ID",r.as||"",{editable:ed})}${fld("Counterparty",r.cp||"",{editable:ed})}</div>`);
+
+  // Loan section (conditional)
+  if(loan){
+    body+=sec("Loan Contract","6",`
+      <div class="contract-card" style="margin:0">
+        <div class="cc-hdr"><div class="cc-title">🔗 ${loan.id}</div><span class="st-badge" style="background:#E8F5E9;color:#2E7D32">active</span></div>
+        <div class="cc-grid">
+          <div class="cc-field"><div class="cc-lbl">Customer</div><div class="cc-val">${loan.customer}</div></div>
+          <div class="cc-field"><div class="cc-lbl">Outstanding</div><div class="cc-val">${fmt(loan.outstanding)} ${loan.currency}</div></div>
+          <div class="cc-field"><div class="cc-lbl">Rate</div><div class="cc-val">${loan.rate}% (${loan.basis})</div></div>
+        </div>
+      </div>
+    `);
+  }
+
+  // Fund allocation status (conditional)
+  if(isFundTrx(r)&&r.st!=="paired"){
+    body+=sec("Fund Allocation","7",`<div class="info-box warn"><strong>Not yet allocated</strong> — this transaction needs to be distributed to ${INVESTORS.length} investors proportionally.</div>
+      <button class="btn sm primary" onclick="closeSlide();wsSel=new Set(['${r.id}']);openFundAllocDlg()">Allocate to Investors</button>`);
+  }
+
+  // Status & Notes
+  let s8=`<div class="f-row">${fld("Status",r.st,{badge:true})}${fld("Origin",r.or)}${fld("Version","1",{muted:true})}</div>`;
+  s8+=`<div class="f-row">${fld("Processing Notes","",{wide:true,editable:true,ph:"Add notes about this record..."})}</div>`;
+  body+=sec("Status & Notes","8",s8);
+
+  // Footer buttons
+  let leftBtns="";
+  if(ed)leftBtns+=`<button class="btn primary" onclick="closeSlide();showToast('Record saved')">Save</button>`;
+  leftBtns+=`<button class="btn" onclick="closeSlide()">Close</button>`;
+  let rightBtns="";
+  if(["enriched","adjusted","in_review","paired"].includes(r.st))rightBtns+=`<button class="btn sm success" onclick="closeSlide();showToast('Marked as ready')"><span class="ic">→</span> Mark Ready</button>`;
+  if(r.st==="ready")rightBtns+=`<button class="btn sm" onclick="closeSlide();showToast('Returned to editing')"><span class="ic">↩</span> Return</button>`;
+
+  document.getElementById("slide-container").innerHTML=`<div class="slide-over">
+    <div class="slide-bg" onclick="closeSlide()"></div>
+    <div class="slide-panel">
+      <div class="slide-hdr"><div><div class="meta">Enrichment Record</div><h2>${r.id} <span style="margin-left:8px">${typeBadge(r.ty)}</span></h2></div><div style="display:flex;gap:7px;align-items:center">${stBadge(r.st)}<button class="dlg-close" onclick="closeSlide()">×</button></div></div>
+      <div class="slide-body">${body}</div>
+      <div class="slide-footer"><div style="display:flex;gap:7px">${leftBtns}</div><div style="display:flex;gap:7px">${rightBtns}</div></div>
+    </div>
+  </div>`;
+}
+
+// ─── INIT ──────────────────────────────────────────────────────────────────
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,699 @@
+{
+  "className": "org.joget.apps.form.model.Form",
+  "properties": {
+    "id": "customerForm",
+    "name": "10.01 - Customer",
+    "tableName": "customer",
+    "loadBinder": {
+      "className": "org.joget.apps.form.lib.WorkflowFormBinder",
+      "properties": {}
+    },
+    "storeBinder": {
+      "className": "org.joget.apps.form.lib.WorkflowFormBinder",
+      "properties": {}
+    },
+    "description": "",
+    "permission": {
+      "className": "",
+      "properties": {}
+    },
+    "noPermissionMessage": "",
+    "postProcessor": {
+      "className": "",
+      "properties": {}
+    },
+    "postProcessorRunOn": "create"
+  },
+  "elements": [
+    {
+      "className": "org.joget.apps.form.model.Section",
+      "properties": {
+        "id": "basicInfoSection",
+        "label": "Basic Information"
+      },
+      "elements": [
+        {
+          "className": "org.joget.apps.form.model.Column",
+          "properties": {
+            "width": "50%"
+          },
+          "elements": [
+            {
+              "className": "global.govstack.concatfield.element.ConcatFieldElement",
+              "properties": {
+                "id": "customerId",
+                "label": "Customer ID",
+                "displayType": "readonly",
+                "sourceFields": [
+                  {
+                    "fieldId": "personalId",
+                    "transform": ""
+                  },
+                  {
+                    "fieldId": "registrationNumber",
+                    "transform": ""
+                  }
+                ],
+                "separator": "",
+                "formatPattern": "",
+                "prefix": "",
+                "suffix": "",
+                "skipEmpty": "true",
+                "updateOn": "change",
+                "required": "true",
+                "requiredMessage": "Customer ID is required. Please fill in Personal ID or Registration Number."
+              }
+            },
+            {
+              "className": "global.govstack.concatfield.element.ConcatFieldElement",
+              "properties": {
+                "id": "displayName",
+                "label": "Display Name",
+                "displayType": "readonly",
+                "sourceFields": [
+                  {
+                    "fieldId": "customerFirstName",
+                    "transform": ""
+                  },
+                  {
+                    "fieldId": "customerLastName",
+                    "transform": ""
+                  },
+                  {
+                    "fieldId": "customerName",
+                    "transform": ""
+                  }
+                ],
+                "separator": " ",
+                "formatPattern": "",
+                "prefix": "",
+                "suffix": "",
+                "skipEmpty": "true",
+                "updateOn": "change",
+                "required": "false",
+                "requiredMessage": ""
+              }
+            },
+            {
+              "className": "org.joget.apps.form.lib.SelectBox",
+              "properties": {
+                "id": "customerType",
+                "label": "Customer Type",
+                "options": [],
+                "optionsBinder": {
+                  "className": "org.joget.apps.form.lib.FormOptionsBinder",
+                  "properties": {
+                    "formDefId": "customerType",
+                    "idColumn": "code",
+                    "labelColumn": "name",
+                    "groupingColumn": "",
+                    "extraCondition": "",
+                    "addEmptyOption": "true",
+                    "emptyLabel": "",
+                    "useAjax": "",
+                    "cacheInterval": ""
+                  }
+                },
+                "multiple": "",
+                "value": "",
+                "validator": {
+                  "className": "org.joget.apps.form.lib.DefaultValidator",
+                  "properties": {
+                    "mandatory": "true",
+                    "type": "",
+                    "message": ""
+                  }
+                },
+                "readonly": "",
+                "readonlyLabel": "",
+                "controlField": "",
+                "controlValue": "",
+                "size": "",
+                "workflowVariable": ""
+              }
+            }
+          ]
+        },
+        {
+          "className": "org.joget.apps.form.model.Column",
+          "properties": {
+            "width": "50%"
+          },
+          "elements": [
+            {
+              "className": "org.joget.apps.form.lib.CheckBox",
+              "properties": {
+                "fullWidth": "",
+                "readonly": "",
+                "label": "Is Fund",
+                "readonlyLabel": "",
+                "id": "is_fund",
+                "options": [
+                  {
+                    "value": "yes",
+                    "label": "Yes",
+                    "grouping": ""
+                  }
+                ],
+                "optionsBinder": {
+                  "className": "",
+                  "properties": {}
+                },
+                "value": "",
+                "validator": {
+                  "className": "org.joget.apps.form.lib.DuplicateValueValidator",
+                  "properties": {
+                    "formDefId": "customerForm",
+                    "fieldId": "is_fund",
+                    "errorDuplicateMsg": "There is already fund registered",
+                    "mandatory": "",
+                    "regex": "",
+                    "errorFormatMsg": ""
+                  }
+                },
+                "controlField": "",
+                "workflowVariable": ""
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "className": "org.joget.apps.form.model.Section",
+      "properties": {
+        "id": "individualSection",
+        "label": "Individual Customer Information",
+        "visibilityControl": "customerType",
+        "visibilityValue": "Individual",
+        "regex": "",
+        "join": "",
+        "reverse": "",
+        "readonly": "",
+        "readonlyLabel": "",
+        "loadBinder": {
+          "className": "",
+          "properties": {}
+        },
+        "storeBinder": {
+          "className": "",
+          "properties": {}
+        },
+        "permission": {
+          "className": "",
+          "properties": {}
+        },
+        "permissionReadonly": "",
+        "comment": ""
+      },
+      "elements": [
+        {
+          "className": "org.joget.apps.form.model.Column",
+          "properties": {
+            "width": "50%"
+          },
+          "elements": [
+            {
+              "className": "org.joget.apps.form.lib.TextField",
+              "properties": {
+                "encryption": "",
+                "readonly": "",
+                "style": "",
+                "label": "First Name",
+                "readonlyLabel": "",
+                "storeNumeric": "",
+                "id": "customerFirstName",
+                "value": "",
+                "maxlength": "",
+                "validator": {
+                  "className": "org.joget.apps.form.lib.DefaultValidator",
+                  "properties": {
+                    "mandatory": "true",
+                    "type": "",
+                    "message": ""
+                  }
+                },
+                "requiredSanitize": "",
+                "placeholder": "",
+                "size": "",
+                "workflowVariable": ""
+              }
+            },
+            {
+              "className": "org.joget.apps.form.lib.TextField",
+              "properties": {
+                "encryption": "",
+                "readonly": "",
+                "style": "",
+                "label": "Last Name",
+                "readonlyLabel": "",
+                "storeNumeric": "",
+                "id": "customerLastName",
+                "value": "",
+                "maxlength": "",
+                "validator": {
+                  "className": "org.joget.apps.form.lib.DefaultValidator",
+                  "properties": {
+                    "mandatory": "true",
+                    "type": "",
+                    "message": ""
+                  }
+                },
+                "requiredSanitize": "",
+                "placeholder": "",
+                "size": "",
+                "workflowVariable": ""
+              }
+            }
+          ]
+        },
+        {
+          "className": "org.joget.apps.form.model.Column",
+          "properties": {
+            "width": "50%"
+          },
+          "elements": [
+            {
+              "className": "org.joget.apps.form.lib.TextField",
+              "properties": {
+                "encryption": "",
+                "readonly": "",
+                "style": "",
+                "label": "Personal ID",
+                "readonlyLabel": "",
+                "storeNumeric": "",
+                "id": "personalId",
+                "value": "",
+                "maxlength": "",
+                "validator": {
+                  "className": "org.joget.apps.form.lib.DefaultValidator",
+                  "properties": {
+                    "mandatory": "true",
+                    "type": "",
+                    "message": ""
+                  }
+                },
+                "requiredSanitize": "",
+                "placeholder": "",
+                "size": "",
+                "workflowVariable": ""
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "className": "org.joget.apps.form.model.Section",
+      "properties": {
+        "id": "companySection",
+        "label": "Company Customer Information",
+        "visibilityControl": "customerType",
+        "visibilityValue": "Corporate",
+        "regex": "",
+        "join": "",
+        "reverse": "",
+        "readonly": "",
+        "readonlyLabel": "",
+        "loadBinder": {
+          "className": "",
+          "properties": {}
+        },
+        "storeBinder": {
+          "className": "",
+          "properties": {}
+        },
+        "permission": {
+          "className": "",
+          "properties": {}
+        },
+        "permissionReadonly": "",
+        "comment": ""
+      },
+      "elements": [
+        {
+          "className": "org.joget.apps.form.model.Column",
+          "properties": {
+            "width": "50%"
+          },
+          "elements": [
+            {
+              "className": "org.joget.apps.form.lib.TextField",
+              "properties": {
+                "encryption": "",
+                "readonly": "",
+                "style": "",
+                "label": "Full Name",
+                "readonlyLabel": "",
+                "storeNumeric": "",
+                "id": "customerName",
+                "value": "",
+                "maxlength": "",
+                "validator": {
+                  "className": "org.joget.apps.form.lib.DefaultValidator",
+                  "properties": {
+                    "mandatory": "true",
+                    "type": "",
+                    "message": ""
+                  }
+                },
+                "requiredSanitize": "",
+                "placeholder": "",
+                "size": "",
+                "workflowVariable": ""
+              }
+            },
+            {
+              "className": "org.joget.apps.form.lib.TextField",
+              "properties": {
+                "encryption": "",
+                "readonly": "",
+                "style": "",
+                "label": "Registration #",
+                "readonlyLabel": "",
+                "storeNumeric": "",
+                "id": "registrationNumber",
+                "value": "",
+                "maxlength": "",
+                "validator": {
+                  "className": "org.joget.apps.form.lib.DefaultValidator",
+                  "properties": {
+                    "mandatory": "true",
+                    "type": "",
+                    "message": ""
+                  }
+                },
+                "requiredSanitize": "",
+                "placeholder": "",
+                "size": "",
+                "workflowVariable": ""
+              }
+            }
+          ]
+        },
+        {
+          "className": "org.joget.apps.form.model.Column",
+          "properties": {
+            "width": "50%"
+          },
+          "elements": [
+            {
+              "className": "org.joget.apps.form.lib.TextField",
+              "properties": {
+                "encryption": "",
+                "readonly": "",
+                "style": "",
+                "label": "VAT Number",
+                "readonlyLabel": "",
+                "storeNumeric": "",
+                "id": "vatNumber",
+                "value": "",
+                "maxlength": "",
+                "validator": {
+                  "className": "",
+                  "properties": {}
+                },
+                "requiredSanitize": "",
+                "placeholder": "",
+                "size": "",
+                "workflowVariable": ""
+              }
+            },
+            {
+              "className": "org.joget.apps.form.lib.SelectBox",
+              "properties": {
+                "id": "incorporationCountry",
+                "label": "Incorporation Country",
+                "options": [],
+                "optionsBinder": {
+                  "className": "org.joget.apps.form.lib.FormOptionsBinder",
+                  "properties": {
+                    "formDefId": "country",
+                    "idColumn": "code_iso2",
+                    "labelColumn": "code_iso2",
+                    "groupingColumn": "",
+                    "extraCondition": "",
+                    "addEmptyOption": "true",
+                    "emptyLabel": "",
+                    "useAjax": "",
+                    "cacheInterval": ""
+                  }
+                },
+                "multiple": "",
+                "value": "",
+                "validator": {
+                  "className": "org.joget.apps.form.lib.DefaultValidator",
+                  "properties": {
+                    "mandatory": "true",
+                    "type": "",
+                    "message": ""
+                  }
+                },
+                "readonly": "",
+                "readonlyLabel": "",
+                "controlField": "",
+                "controlValue": "",
+                "size": "",
+                "workflowVariable": ""
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "className": "org.joget.apps.form.model.Section",
+      "properties": {
+        "id": "customerTypeScript",
+        "label": "",
+        "visibilityControl": "",
+        "visibilityValue": ""
+      },
+      "elements": [
+        {
+          "className": "org.joget.apps.form.model.Column",
+          "properties": {
+            "width": "100%"
+          },
+          "elements": [
+            {
+              "className": "org.joget.apps.form.lib.CustomHTML",
+              "properties": {
+                "id": "customerTypeSwitchScript",
+                "label": "",
+                "value": "<script>\n$(document).ready(function() {\n    function clearInactiveSection(selectedType) {\n        if (selectedType === 'Individual') {\n            $('[name=customerName]').val('');\n            $('[name=registrationNumber]').val('');\n            $('[name=vatNumber]').val('');\n        } else if (selectedType === 'Corporate') {\n            $('[name=customerFirstName]').val('');\n            $('[name=customerLastName]').val('');\n            $('[name=personalId]').val('');\n        } else {\n            $('[name=customerFirstName]').val('');\n            $('[name=customerLastName]').val('');\n            $('[name=personalId]').val('');\n            $('[name=customerName]').val('');\n            $('[name=registrationNumber]').val('');\n            $('[name=vatNumber]').val('');\n        }\n        // Trigger change so concat-fields recalculate customerId and displayName\n        $('[name=personalId]').trigger('change');\n        $('[name=registrationNumber]').trigger('change');\n        $('[name=customerFirstName]').trigger('change');\n        $('[name=customerLastName]').trigger('change');\n        $('[name=customerName]').trigger('change');\n    }\n\n    $('[name=customerType]').on('change', function() {\n        clearInactiveSection($(this).val());\n    });\n});\n</script>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "className": "org.joget.apps.form.model.Section",
+      "properties": {
+        "id": "kycSection",
+        "label": "KYC Information"
+      },
+      "elements": [
+        {
+          "className": "org.joget.apps.form.model.Column",
+          "properties": {
+            "width": "50%"
+          },
+          "elements": [
+            {
+              "className": "org.joget.apps.form.lib.DatePicker",
+              "properties": {
+                "readonly": "",
+                "allowManual": "",
+                "yearRange": "c-10:c+10",
+                "dataFormat": "yyyy-MM-dd",
+                "label": "KYC Expiry Date",
+                "datePickerType": "",
+                "currentDateAs": "",
+                "disableWeekends": "",
+                "readonlyLabel": "",
+                "id": "kycExpiryDate",
+                "value": "",
+                "validator": {
+                  "className": "",
+                  "properties": {}
+                },
+                "startDateFieldId": "",
+                "endDateFieldId": "",
+                "placeholder": "",
+                "format": "",
+                "workflowVariable": ""
+              }
+            },
+            {
+              "className": "org.joget.apps.form.lib.SelectBox",
+              "properties": {
+                "id": "riskCategory",
+                "label": "Risk Category",
+                "options": [
+                  {
+                    "value": "",
+                    "label": "Select Risk Category",
+                    "grouping": ""
+                  },
+                  {
+                    "value": "low",
+                    "label": "Low Risk",
+                    "grouping": ""
+                  },
+                  {
+                    "value": "medium",
+                    "label": "Medium Risk",
+                    "grouping": ""
+                  },
+                  {
+                    "value": "high",
+                    "label": "High Risk",
+                    "grouping": ""
+                  }
+                ],
+                "optionsBinder": {
+                  "className": "",
+                  "properties": {}
+                },
+                "multiple": "",
+                "value": "",
+                "validator": {
+                  "className": "org.joget.apps.form.lib.DefaultValidator",
+                  "properties": {
+                    "mandatory": "true",
+                    "type": "",
+                    "message": ""
+                  }
+                },
+                "readonly": "",
+                "readonlyLabel": "",
+                "controlField": "",
+                "controlValue": "",
+                "size": "",
+                "workflowVariable": ""
+              }
+            }
+          ]
+        },
+        {
+          "className": "org.joget.apps.form.model.Column",
+          "properties": {
+            "width": "50%"
+          },
+          "elements": [
+            {
+              "className": "org.joget.apps.form.lib.SelectBox",
+              "properties": {
+                "id": "kycStatus",
+                "label": "KYC Status",
+                "options": [
+                  {
+                    "value": "",
+                    "label": "Select KYC Status",
+                    "grouping": ""
+                  },
+                  {
+                    "value": "pending",
+                    "label": "Pending",
+                    "grouping": ""
+                  },
+                  {
+                    "value": "inprogress",
+                    "label": "In Progress",
+                    "grouping": ""
+                  },
+                  {
+                    "value": "completed",
+                    "label": "Completed",
+                    "grouping": ""
+                  },
+                  {
+                    "value": "expired",
+                    "label": "Expired",
+                    "grouping": ""
+                  }
+                ],
+                "optionsBinder": {
+                  "className": "",
+                  "properties": {}
+                },
+                "multiple": "",
+                "value": "pending",
+                "validator": {
+                  "className": "org.joget.apps.form.lib.DefaultValidator",
+                  "properties": {
+                    "mandatory": "true",
+                    "type": "",
+                    "message": ""
+                  }
+                },
+                "readonly": "",
+                "readonlyLabel": "",
+                "controlField": "",
+                "controlValue": "",
+                "size": "",
+                "workflowVariable": ""
+              }
+            },
+            {
+              "className": "org.joget.apps.form.lib.SelectBox",
+              "properties": {
+                "id": "relationshipManager",
+                "label": "Relationship Manager",
+                "options": [
+                  {
+                    "value": "",
+                    "label": "Select Relationship Manager",
+                    "grouping": ""
+                  },
+                  {
+                    "value": "rm001",
+                    "label": "John Smith",
+                    "grouping": ""
+                  },
+                  {
+                    "value": "rm002",
+                    "label": "Sarah Johnson",
+                    "grouping": ""
+                  },
+                  {
+                    "value": "rm003",
+                    "label": "Michael Chen",
+                    "grouping": ""
+                  },
+                  {
+                    "value": "rm004",
+                    "label": "Emily Davis",
+                    "grouping": ""
+                  }
+                ],
+                "optionsBinder": {
+                  "className": "",
+                  "properties": {}
+                },
+                "multiple": "",
+                "value": "",
+                "validator": {
+                  "className": "org.joget.apps.form.lib.DefaultValidator",
+                  "properties": {
+                    "mandatory": "true",
+                    "type": "",
+                    "message": ""
+                  }
+                },
+                "readonly": "",
+                "readonlyLabel": "",
+                "controlField": "",
+                "controlValue": "",
+                "size": "",
+                "workflowVariable": ""
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

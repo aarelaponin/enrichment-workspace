@@ -1,0 +1,466 @@
+{
+    "id": "list_trxEnrichment",
+    "name": "List - 01.05 - Transaction Enrichment",
+    "pageSize": "100",
+    "order": "",
+    "orderBy": "",
+    "showPageSizeSelector": "true",
+    "pageSizeSelectorOptions": "10,20,30,40,50,100",
+    "buttonPosition": "bothLeft",
+    "checkboxPosition": "left",
+    "useSession": "true",
+    "actions": [],
+    "rowActions": [],
+    "binder": {
+        "className": "org.joget.plugin.enterprise.AdvancedFormRowDataListBinder",
+        "properties": {
+            "formDefId": "trxEnrichment"
+        }
+    },
+    "filters": [
+        {
+            "id": "filter_4",
+            "name": "resolved_customer_id",
+            "label": "Customer",
+            "filterParamName": "d-8227934-fn_resolved_customer_id",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            }
+        },
+        {
+            "id": "filter_2",
+            "name": "source_tp",
+            "label": "Source Type",
+            "filterParamName": "d-8227934-fn_source_tp",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            }
+        },
+        {
+            "id": "filter_0",
+            "name": "debit_credit",
+            "label": "D/C",
+            "filterParamName": "d-8227934-fn_debit_credit",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            }
+        },
+        {
+            "id": "filter_1",
+            "name": "internal_type",
+            "label": "Internal Type",
+            "filterParamName": "d-8227934-fn_internal_type",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            }
+        },
+        {
+            "id": "filter_3",
+            "name": "status",
+            "label": "Status",
+            "filterParamName": "d-8227934-fn_status",
+            "type": {
+                "className": "org.joget.apps.datalist.lib.TextFieldDataListFilterType",
+                "properties": {}
+            }
+        }
+    ],
+    "columns": [
+        {
+            "id": "column_0",
+            "label": "SrcTp",
+            "name": "source_tp",
+            "format": {
+                "className": "org.joget.plugin.enterprise.OptionsValueFormatter",
+                "properties": {
+                    "options": [
+                        {
+                            "value": "bank",
+                            "label": "Bank"
+                        },
+                        {
+                            "value": "secu",
+                            "label": "Securities"
+                        },
+                        {
+                            "value": "manual",
+                            "label": "Manual"
+                        }
+                    ],
+                    "optionsBinder": {
+                        "className": "",
+                        "properties": {}
+                    }
+                }
+            },
+            "datalist_type": "column",
+            "sortable": "true",
+            "renderHtml": "",
+            "hidden": "false",
+            "exclude_export": "",
+            "width": "",
+            "style": "",
+            "alignment": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            }
+        },
+        {
+            "id": "column_9",
+            "name": "status",
+            "label": "Status",
+            "filterable": true,
+            "hidden": "false",
+            "sortable": "true",
+            "datalist_type": "column",
+            "renderHtml": "",
+            "exclude_export": "",
+            "width": "",
+            "style": "",
+            "alignment": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "format": {
+                "className": "",
+                "properties": {}
+            }
+        },
+        {
+            "id": "column_6",
+            "name": "counterparty_short_code",
+            "label": "CP",
+            "filterable": true,
+            "hidden": "false",
+            "sortable": "true",
+            "datalist_type": "column",
+            "renderHtml": "",
+            "exclude_export": "",
+            "width": "",
+            "style": "",
+            "alignment": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "format": {
+                "className": "",
+                "properties": {}
+            }
+        },
+        {
+            "id": "column_5",
+            "name": "asset_class",
+            "label": "AsClass",
+            "filterable": true,
+            "hidden": "false",
+            "sortable": "true",
+            "datalist_type": "column",
+            "renderHtml": "",
+            "exclude_export": "",
+            "width": "",
+            "style": "",
+            "alignment": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "format": {
+                "className": "",
+                "properties": {}
+            }
+        },
+        {
+            "id": "column_1",
+            "name": "statement_date",
+            "label": "StDate",
+            "filterable": true,
+            "hidden": "false",
+            "sortable": "true",
+            "datalist_type": "column",
+            "renderHtml": "",
+            "exclude_export": "",
+            "width": "",
+            "style": "",
+            "alignment": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "format": {
+                "className": "",
+                "properties": {}
+            }
+        },
+        {
+            "id": "column_11",
+            "name": "transaction_date",
+            "label": "TrxDate",
+            "filterable": true,
+            "hidden": "false",
+            "sortable": "false",
+            "datalist_type": "column",
+            "renderHtml": "",
+            "exclude_export": "",
+            "width": "",
+            "style": "",
+            "alignment": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "format": {
+                "className": "",
+                "properties": {}
+            }
+        },
+        {
+            "id": "column_15",
+            "name": "original_amount",
+            "label": "OrAmount",
+            "filterable": true,
+            "hidden": "false",
+            "sortable": "false",
+            "datalist_type": "column",
+            "renderHtml": "",
+            "exclude_export": "",
+            "width": "",
+            "style": "",
+            "alignment": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "format": {
+                "className": "",
+                "properties": {}
+            }
+        },
+        {
+            "id": "column_10",
+            "name": "total_amount",
+            "label": "TAmount",
+            "filterable": true,
+            "hidden": "false",
+            "sortable": "true",
+            "datalist_type": "column",
+            "renderHtml": "",
+            "exclude_export": "",
+            "width": "",
+            "style": "",
+            "alignment": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "format": {
+                "className": "",
+                "properties": {}
+            }
+        },
+        {
+            "id": "column_14",
+            "name": "fee_amount",
+            "label": "Fee",
+            "filterable": true,
+            "hidden": "false",
+            "sortable": "false",
+            "datalist_type": "column",
+            "renderHtml": "",
+            "exclude_export": "",
+            "width": "",
+            "style": "",
+            "alignment": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "format": {
+                "className": "",
+                "properties": {}
+            }
+        },
+        {
+            "id": "column_2",
+            "name": "resolved_customer_id",
+            "label": "Customer",
+            "filterable": true,
+            "hidden": "false",
+            "sortable": "true",
+            "datalist_type": "column",
+            "renderHtml": "",
+            "exclude_export": "",
+            "width": "",
+            "style": "",
+            "alignment": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "format": {
+                "className": "org.joget.plugin.enterprise.OptionsValueFormatter",
+                "properties": {
+                    "options": [],
+                    "optionsBinder": {
+                        "className": "org.joget.apps.form.lib.FormOptionsBinder",
+                        "properties": {
+                            "formDefId": "customerForm",
+                            "idColumn": "id",
+                            "labelColumn": "customerId",
+                            "groupingColumn": "",
+                            "extraCondition": "",
+                            "addEmptyOption": "true",
+                            "emptyLabel": "",
+                            "useAjax": "",
+                            "cacheInterval": ""
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id": "column_12",
+            "name": "asset_base_currency",
+            "label": "AsBsCcy",
+            "filterable": true,
+            "hidden": "false",
+            "sortable": "false",
+            "datalist_type": "column",
+            "renderHtml": "",
+            "exclude_export": "",
+            "width": "",
+            "style": "",
+            "alignment": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "format": {
+                "className": "",
+                "properties": {}
+            }
+        },
+        {
+            "id": "column_8",
+            "name": "internal_type",
+            "label": "IntTp",
+            "filterable": true,
+            "hidden": "false",
+            "sortable": "true",
+            "datalist_type": "column",
+            "renderHtml": "",
+            "exclude_export": "",
+            "width": "",
+            "style": "",
+            "alignment": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "format": {
+                "className": "",
+                "properties": {}
+            }
+        },
+        {
+            "id": "column_13",
+            "name": "debit_credit",
+            "label": "D/C",
+            "filterable": true,
+            "hidden": "false",
+            "sortable": "false"
+        },
+        {
+            "id": "column_7",
+            "name": "description",
+            "label": "Desc",
+            "filterable": true,
+            "hidden": "false",
+            "sortable": "false",
+            "datalist_type": "column",
+            "renderHtml": "",
+            "exclude_export": "",
+            "width": "",
+            "style": "",
+            "alignment": "",
+            "headerAlignment": "",
+            "action": {
+                "className": "",
+                "properties": {}
+            },
+            "format": {
+                "className": "",
+                "properties": {}
+            }
+        },
+        {
+            "id": "column_4",
+            "label": "Origin",
+            "name": "origin",
+            "format": {
+                "className": "org.joget.plugin.enterprise.OptionsValueFormatter",
+                "properties": {
+                    "optionsBinder": {
+                        "className": "",
+                        "properties": {}
+                    },
+                    "options": [
+                        {
+                            "label": "Pipeline",
+                            "value": "pipeline",
+                            "grouping": ""
+                        },
+                        {
+                            "label": "Split",
+                            "value": "split",
+                            "grouping": ""
+                        },
+                        {
+                            "label": "Merge",
+                            "value": "merge",
+                            "grouping": ""
+                        },
+                        {
+                            "label": "Manual",
+                            "value": "manual",
+                            "grouping": ""
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "template": {
+        "className": "",
+        "properties": {}
+    },
+    "hidePageSize": "",
+    "description": "",
+    "showDataWhenFilterSet": "",
+    "considerFilterWhenGetTotal": "",
+    "responsiveMode": "",
+    "rowActionsMode": "",
+    "disableResponsive": "",
+    "draggabletable": "",
+    "showhidecolumns": "",
+    "cardCollapsible": "",
+    "cardCollapseByDefault": ""
+}
